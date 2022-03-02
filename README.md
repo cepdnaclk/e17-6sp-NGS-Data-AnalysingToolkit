@@ -1,5 +1,5 @@
 ___
-# NGS-Data-AnalysingToolkit
+# Next Generation Sequence Data Analysing Toolkit
 ___
 
 ## Introduction
