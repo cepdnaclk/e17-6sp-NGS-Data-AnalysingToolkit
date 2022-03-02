@@ -2,5 +2,13 @@ ___
 # NGS-Data-AnalysingToolkit
 ___
 
-## Please refer the instructions in below URL:
+## Introduction
+
+## Project Objectives
+
+## Solution
+
+## Target Customers
+
+
 
