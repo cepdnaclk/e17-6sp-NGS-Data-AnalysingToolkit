@@ -1,5 +1,5 @@
 ___
-# Next Generation Sequence Data Analysing Toolkit
+# Next Generation Sequencing Data Analysing Toolkit
 ___
 
 ## Introduction
