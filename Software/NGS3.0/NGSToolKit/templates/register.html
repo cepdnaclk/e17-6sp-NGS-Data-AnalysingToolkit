@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container-fluid" style="margin-top: 100px">
-  <div>
-    <h2 class="text-primary page-header text-center">Register Page</h2>
-  </div>
   <div class="col-md-offset-4 col-md-4">
+    <h2 class="text-primary page-header text-center">User Registration</h2>
+  </div>
+  <div class="col-md-offset-4 col-md-4 well">
     <form method="post" autocomplete="off">
-      {{form}}
-      <button type="submit">submit</button>
+      {{form.as_p}}
+      <button type="submit" class="btn btn-primary">submit</button>
     </form>
   </div>
 </div>
