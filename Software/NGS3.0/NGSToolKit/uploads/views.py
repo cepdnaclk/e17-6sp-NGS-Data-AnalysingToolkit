@@ -13,7 +13,6 @@ def home(request):
     return render(request, "home.html")
 
 # CSV file upload
-fileName=''
 def csv_file(request):
     if request.method =="POST":
         uploadedfile = request.FILES['Document']
