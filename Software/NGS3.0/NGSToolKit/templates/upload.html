@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<h2>Upload</h2>
+<div class="upload">
+  <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="Document" accept=".csv" />
+    <button type="submit">Upload file</button>
+  </form>
+</div>
+{% if error %} {error} {% endif %} {% endblock %}
