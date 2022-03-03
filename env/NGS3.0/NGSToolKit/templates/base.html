@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>NGS Data Analysing ToolKit</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'myfont/css/all.min.css'%}">  
+</head>
+  <body>
+    <!--navbar-->
+<nav class="navbar background h-nav-resp">
+  <ul class="nav-list v-class-resp">
+  <div class="logo"><img src="{% static 'images/profile.jpg' %}" alt="logo"></div>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="About.html">About</a></li>
+  <li><a href="#">signUp</a></li>
+  <li><a href="#">Login</a></li>
+
+  <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="rightnav v-class-resp">
+  <input type="text" name="search" id="search" placeholder="Search">
+  <button class="btn btn-sm">Search
+  </div>
+  <div class="burger">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  </div>
+  </nav>
+
+  <!-- Block-->
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
