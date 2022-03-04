@@ -108,12 +108,15 @@
   
     <div class="frame">
       <div class="center">
+        {% if messages%} {%for message in messages%}
+      <div class="alert alert-{{ message.tags }}">{{message}}</div>
+      {% endfor %} {% endif %}
         <div class="title col-md-offset-4 col-md-4">
           <h1>Choose sample file to upload</h1>
         </div>
         <form method="post" action="" enctype="multipart/form-data">
           {% csrf_token %}
-
+          
           <div class="dropzone">
             <img
               src="http://100dayscss.com/codepen/upload.svg"
@@ -123,7 +126,7 @@
               type="file"
               class="upload-input"
               name="Document"
-              accept=".csv"
+              accept=".csv,.xls"
               id="upload"
             />
           </div>
