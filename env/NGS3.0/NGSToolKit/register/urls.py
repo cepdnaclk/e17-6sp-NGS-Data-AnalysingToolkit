@@ -1,11 +1,11 @@
 from re import template
-from .views import register, login, profile
+from .views import login_request, register, login_request, profile
 from django.urls import path
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', register, name='Signup'),
-    path('login',auth_views.LoginView.as_view(template_name = "login.html"), name="Login"),
+    path('signup', register, name='Signup'),
+    path('login',login_request, name="Login"),
     path("profile", profile, name="Profile" )
     
 ]
