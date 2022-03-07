@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
   <link rel="stylesheet" href="{% static 'myfont/css/all.min.css'%}">  
+  <script src="{% static 'jquery/jquery.min.js'%}"> </script>
 </head>
+
   <body>
     <!--navbar-->
 <nav class="navbar background h-nav-resp">
@@ -16,14 +18,14 @@
   <li><a href="{% url 'Upload'%}">Home</a></li>
   <li><a href="About.html">About</a></li>
   <li><a href="{% url 'Signup'%}">signUp</a></li>
-  <li><a href="#">Login</a></li>
+  <li><a href="{% url 'Login'%}">Login</a></li>
 
   <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="rightnav v-class-resp">
+  {% comment %} <div class="rightnav v-class-resp">
   <input type="text" name="search" id="search" placeholder="Search">
   <button class="btn btn-sm">Search
-  </div>
+  </div> {% endcomment %}
   <div class="burger">
   <div class="line"></div>
   <div class="line"></div>
@@ -36,3 +38,11 @@
     {% endblock %}
   </body>
 </html>
+
+<script>
+
+  $(document).ready(function(){
+    $(".alert").hide(4000)
+  })
+
+</script>

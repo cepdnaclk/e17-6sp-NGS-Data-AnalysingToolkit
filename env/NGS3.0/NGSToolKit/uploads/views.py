@@ -1,10 +1,10 @@
-from pyexpat.errors import messages
 from xml.dom.minidom import Document
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
 from .forms import UploadFileForm
 from django.conf import settings
+from django.contrib import messages
 import pandas as pd
 import os
 
@@ -19,7 +19,16 @@ def csv_file(request):
         fileName = uploadedfile.name
         fs = FileSystemStorage()    #Creating an object
         fs.save(fileName, uploadedfile)
-        data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
+        if fileName.endswith('.csv'):
+            data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
+        elif fileName.endswith('.xls'):
+            data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))
+        
+        else:
+            messages.warning(request,"Incorrect file format")
+            return redirect('Upload')
+            
+            
         html_data = data.to_html()
         return render(request,'visualize.html',{'data':html_data})
 
