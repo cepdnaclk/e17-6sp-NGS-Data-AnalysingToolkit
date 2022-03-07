@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %} {% load crispy_forms_tags%}
+<div class="container-fluid" style="margin-top: 100px">
+  <div class="col-md-offset-4 col-md-4">
+    <h2 class="text-primary page-header text-center">User Registration</h2>
+  </div>
+  <div class="col-md-offset-4 col-md-4 well">
+    <form method="post" autocomplete="off">
+      {{form|crispy}}
+      <button type="submit" class="btn btn-primary">submit</button>
+    </form>
+  </div>
+</div>
+{% endblock content %}
