@@ -23,7 +23,6 @@ def register(request):
         return render(request, "register.html",{"form":form})
 
 #Login Page
-
 def login_request(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data = request.POST)

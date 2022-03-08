@@ -7,12 +7,21 @@ from django.conf import settings
 from django.contrib import messages
 import pandas as pd
 import os
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def home(request):
     return render(request, "home.html")
 
 # CSV file upload
+def csv_file(request):
+    if request.method == "POST":
+        file = request.body
+
+
+
+@csrf_exempt
 def csv_file(request):
     if request.method =="POST":
         uploadedfile = request.FILES['Document']
@@ -26,12 +35,15 @@ def csv_file(request):
         
         else:
             messages.warning(request,"Incorrect file format")
-            return redirect('Upload')
+            return HttpResponse("Incorrect file format")
+            # return redirect('Upload')
             
             
-        html_data = data.to_html()
-        return render(request,'visualize.html',{'data':html_data})
+        html_data = data.to_json()
+        # return render(request,'visualize.html',{'data':html_data})
+        return HttpResponse(html_data)
 
     # GET
     else:
-        return render(request, "upload.html")
+        # return render(request, "upload.html")
+        return HttpResponse("GET")
