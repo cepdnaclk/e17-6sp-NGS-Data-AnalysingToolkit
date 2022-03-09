@@ -44,3 +44,27 @@ def csv_file(request):
     else:
         # return render(request, "upload.html")
         return HttpResponse("GET")
+
+@csrf_exempt
+def csv_file_react(request):
+    if request.method =="POST":
+        body= request.body.decode('utf-8')
+        body = json.loads(body)
+        uploadedfile =body['formData']
+        
+        filename =  uploadedfile['file']
+        data = uploadedfile['data']
+     
+        name = os.path.join(settings.MEDIA_ROOT,filename)
+
+        with open(name , 'w', newline='') as file:
+            writer = csv.writer(file)
+            for d in data:
+                writer.writerow(d)
+                print(d)
+
+        data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,filename))
+        html_data = data.to_html()
+        
+        return HttpResponse(html_data)
+            
