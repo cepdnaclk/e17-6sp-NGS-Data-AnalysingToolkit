@@ -46,8 +46,8 @@
     text-align: center;
   }
 
-  h1 {
-    font-size: 16px;
+  h2 {
+    font-size: 18px;
     font-weight: 300;
     color: #666;
   }
@@ -111,8 +111,8 @@
         {% if messages%} {%for message in messages%}
       <div class="alert alert-{{ message.tags }}">{{message}}</div>
       {% endfor %} {% endif %}
-        <div class="title col-md-offset-4 col-md-4">
-          <h1>Choose sample file to upload</h1>
+        <div class="title">
+          <h2>Choose sample file to upload</h2>
         </div>
         <form method="post" action="" enctype="multipart/form-data">
           {% csrf_token %}
