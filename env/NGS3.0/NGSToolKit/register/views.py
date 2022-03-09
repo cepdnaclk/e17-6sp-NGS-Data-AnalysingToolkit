@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import  AuthenticationForm
 from .forms import CreateUserForm
@@ -14,14 +15,16 @@ def register(request):
             login(request, user)
             #Check whether the password are matching
             messages.success(request, 'Your account has been successfully created')
-            return redirect('Login')
+            # return redirect('Login')
+            return HttpResponse("Sucess")
         else:
             messages.warning(request,"Registration failed. Invalid information")
-            return redirect('Signup')
+            # return redirect('Signup')
+            return HttpResponse("Fail")
     else:
         form = CreateUserForm()
-        return render(request, "register.html",{"form":form})
-
+        # return render(request, "register.html",{"form":form})
+        return HttpResponse("GET")
 #Login Page
 def login_request(request):
     if request.method == "POST":

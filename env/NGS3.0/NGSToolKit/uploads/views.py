@@ -14,10 +14,10 @@ from django.views.decorators.csrf import csrf_exempt
 def home(request):
     return render(request, "home.html")
 
-# CSV file upload
-def csv_file(request):
-    if request.method == "POST":
-        file = request.body
+# # CSV file upload
+# def csv_file(request):
+#     if request.method == "POST":
+#         file = request.body
 
 
 
@@ -31,14 +31,11 @@ def csv_file(request):
         if fileName.endswith('.csv'):
             data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
         elif fileName.endswith('.xls'):
-            data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))
-        
+            data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))   
         else:
             messages.warning(request,"Incorrect file format")
             return HttpResponse("Incorrect file format")
             # return redirect('Upload')
-            
-            
         html_data = data.to_json()
         # return render(request,'visualize.html',{'data':html_data})
         return HttpResponse(html_data)
