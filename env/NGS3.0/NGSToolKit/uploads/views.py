@@ -1,6 +1,6 @@
 from xml.dom.minidom import Document
 from django.shortcuts import redirect, render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core.files.storage import FileSystemStorage
 from .forms import UploadFileForm
 from django.conf import settings
@@ -9,6 +9,7 @@ import pandas as pd
 import os
 import json
 from django.views.decorators.csrf import csrf_exempt
+import csv
 
 # Create your views here.
 def home(request):
@@ -22,7 +23,7 @@ def home(request):
 
 
 @csrf_exempt
-def csv_file(request):
+def csv_file_react(request):
     if request.method =="POST":
         uploadedfile = request.FILES['Document']
         fileName = uploadedfile.name
@@ -46,7 +47,7 @@ def csv_file(request):
         return HttpResponse("GET")
 
 @csrf_exempt
-def csv_file_react(request):
+def csv_file(request):
     if request.method =="POST":
         body= request.body.decode('utf-8')
         body = json.loads(body)
@@ -61,10 +62,11 @@ def csv_file_react(request):
             writer = csv.writer(file)
             for d in data:
                 writer.writerow(d)
-                print(d)
 
         data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,filename))
         html_data = data.to_html()
-        
-        return HttpResponse(html_data)
+        html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
+        send = {'html':html,  'name':filename}
+        print(send)
+        return JsonResponse(send)
             
