@@ -25,6 +25,7 @@ def register(request):
         form = CreateUserForm()
         # return render(request, "register.html",{"form":form})
         return HttpResponse("GET")
+
 #Login Page
 def login_request(request):
     if request.method == "POST":
