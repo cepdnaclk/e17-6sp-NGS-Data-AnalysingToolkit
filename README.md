@@ -12,3 +12,15 @@ There is lack of tools to analyze DNA molecules to identify biomarker for rare d
 ## Solution
 Give the fully functional tool to analyze the DNA sequences and identify the Biomarker for the Alzheimer disease in cost and time efficient manner.
 
+## Developers
+
+
+
+
+## Scrum Master
+
+
+## Product Owner
+
+
+## Links
