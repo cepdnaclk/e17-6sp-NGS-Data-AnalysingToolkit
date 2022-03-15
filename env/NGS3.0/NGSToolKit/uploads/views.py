@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.contrib import messages
@@ -8,14 +8,19 @@ import os
 import json
 from matplotlib import pyplot as plt
 from django.views.decorators.csrf import csrf_exempt
+<<<<<<< HEAD
 import numpy
+=======
+import csv
+
+>>>>>>> c74d3fb1779100e19aba2b3a7ae7b0583a07a92c
 # Create your views here.
 def home(request):
     return render(request, "home.html")
 
 
 @csrf_exempt
-def csv_file(request):
+def csv_file_react(request):
     if request.method =="POST":
         uploadedfile = request.FILES['Document']
         fileName = uploadedfile.name
@@ -37,7 +42,7 @@ def csv_file(request):
         # return render(request, "upload.html")
         return HttpResponse("GET")
     
-@csrf_exempt
+
 def normalizeData(request):
         # Normalize the dataset
         # find the mean of the evry column
@@ -80,6 +85,7 @@ def plotData(request):
                 Ad_list.append(col)
             elif col.startswith("control"):
                 control_list.append(col)
+<<<<<<< HEAD
             
         Ad_val = dataFrame[Ad_list].loc[rowName].values.tolist()
         # print(Ad_val)
@@ -89,3 +95,41 @@ def plotData(request):
         control_props = [min(control_val),numpy.quantile(control_val,0.25), numpy.quantile(control_val,0.5), numpy.quantile(control_val,0.75),max(control_val)]
         vals = {"ad":Ad_val, "control":control_val, "Ad_props": Ad_props, "control_props":control_props}
         return HttpResponse(json.dumps(vals))
+=======
+        Ad_val = dataFrame[Ad_list].loc["hsa-mir-30a:hsa-miR-30a-3p"].values.tolist()
+        print(Ad_val)
+        control_val = dataFrame[control_list].loc["hsa-mir-30a:hsa-miR-30a-3p"].values.tolist()
+            
+        vals = {"ad":Ad_val, "control":control_val}
+            
+        
+        return HttpResponse(json.dumps(vals))
+      
+@csrf_exempt
+def csv_file(request):
+    if request.method =="POST":
+        body= request.body.decode('utf-8')
+        body = json.loads(body)
+        uploadedfile =body['formData']
+        
+        filename =  uploadedfile['file']
+        data = uploadedfile['data']
+     
+        name = os.path.join(settings.MEDIA_ROOT,filename)
+
+        with open(name , 'w', newline='') as file:
+            writer = csv.writer(file)
+            for d in data:
+                writer.writerow(d)
+
+        data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,filename))
+        html_data = data.to_html()
+        html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
+        send = {'html':html,  'name':filename}
+        print(send)
+        return JsonResponse(send)
+
+      
+            
+        
+>>>>>>> c74d3fb1779100e19aba2b3a7ae7b0583a07a92c
