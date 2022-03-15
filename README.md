@@ -13,6 +13,6 @@ There is lack of tools to analyze DNA molecules to identify biomarker for rare d
 Give the fully functional tool to analyze the DNA sequences and identify the Biomarker for the Alzheimer disease in cost and time efficient manner.
 
 ## Team Members
-1. E/17/015 Arshad M.R.M.  [e17015@eng.pdn.ac.lk](mailto:e17015@eng.pdn.ac.lk)
+1. E/17/015 Arshad MRM.  [e17015@eng.pdn.ac.lk](mailto:e17015@eng.pdn.ac.lk)
 2. E/17/230 Nishankar S. [e17230@eng.pdn.ac.lk](mailto:e17230@eng.pdn.ac.lk)
 3. E/17/159 Kavinaya Y. [e17159@eng.pdn.ac.lk](mailto:e17159@eng.pdn.ac.lk)
