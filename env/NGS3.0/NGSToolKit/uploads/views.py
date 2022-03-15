@@ -1,6 +1,10 @@
+from tracemalloc import start
+from xml.dom.minidom import Document
 from django.shortcuts import redirect, render
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
+from matplotlib.font_manager import json_dump
+from .forms import UploadFileForm
 from django.conf import settings
 from django.contrib import messages
 import pandas as pd
@@ -8,16 +12,14 @@ import os
 import json
 from matplotlib import pyplot as plt
 from django.views.decorators.csrf import csrf_exempt
-
 import numpy
-
 # Create your views here.
 def home(request):
     return render(request, "home.html")
 
 
 @csrf_exempt
-def csv_file_react(request):
+def csv_file(request):
     if request.method =="POST":
         uploadedfile = request.FILES['Document']
         fileName = uploadedfile.name
@@ -39,7 +41,7 @@ def csv_file_react(request):
         # return render(request, "upload.html")
         return HttpResponse("GET")
     
-
+@csrf_exempt
 def normalizeData(request):
         # Normalize the dataset
         # find the mean of the evry column
