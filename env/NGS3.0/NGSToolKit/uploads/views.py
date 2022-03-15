@@ -1,10 +1,6 @@
-from tracemalloc import start
-from xml.dom.minidom import Document
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
-from matplotlib.font_manager import json_dump
-from .forms import UploadFileForm
 from django.conf import settings
 from django.contrib import messages
 import pandas as pd
@@ -12,7 +8,7 @@ import os
 import json
 from matplotlib import pyplot as plt
 from django.views.decorators.csrf import csrf_exempt
-
+import numpy
 # Create your views here.
 def home(request):
     return render(request, "home.html")
@@ -85,11 +81,11 @@ def plotData(request):
             elif col.startswith("control"):
                 control_list.append(col)
             
-        Ad_val = dataFrame[Ad_list].loc["hsa-mir-30a:hsa-miR-30a-3p"].values.tolist()
-        print(Ad_val)
-        control_val = dataFrame[control_list].loc["hsa-mir-30a:hsa-miR-30a-3p"].values.tolist()
-            
-        vals = {"ad":Ad_val, "control":control_val}
-            
-        
+        Ad_val = dataFrame[Ad_list].loc[rowName].values.tolist()
+        # print(Ad_val)
+        Ad_props = [min(Ad_val),numpy.quantile(Ad_val,0.25), numpy.quantile(Ad_val,0.5), numpy.quantile(Ad_val,0.75),max(Ad_val)]
+        control_val = dataFrame[control_list].loc[rowName].values.tolist()
+        # print(Ad_props)
+        control_props = [min(control_val),numpy.quantile(control_val,0.25), numpy.quantile(control_val,0.5), numpy.quantile(control_val,0.75),max(control_val)]
+        vals = {"ad":Ad_val, "control":control_val, "Ad_props": Ad_props, "control_props":control_props}
         return HttpResponse(json.dumps(vals))
