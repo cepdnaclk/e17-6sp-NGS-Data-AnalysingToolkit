@@ -25,9 +25,9 @@ Give the fully functional tool to analyze the DNA sequences and identify the Bio
 
 
 ## Developers
-1. E/17/015 Arshad MRM.  [e17015@eng.pdn.ac.lk](mailto:e17015@eng.pdn.ac.lk)
-2. E/17/230 Nishankar S. [e17230@eng.pdn.ac.lk](mailto:e17230@eng.pdn.ac.lk)
-3. E/17/159 Kavinaya Y. [e17159@eng.pdn.ac.lk](mailto:e17159@eng.pdn.ac.lk)
+1. E/17/015 Arshad MRM.  [[Email]](mailto:e17015@eng.pdn.ac.lk)
+2. E/17/230 Nishankar S. [[Email]](mailto:e17230@eng.pdn.ac.lk)
+3. E/17/159 Kavinaya Y. [[Email]](mailto:e17159@eng.pdn.ac.lk)
 
 ## Scrum Master
 1. Mr. Imesh Ekanayake [[Email](mailto:)]
