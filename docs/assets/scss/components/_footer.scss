@@ -1,0 +1,37 @@
+.hiro-footer {
+    padding-top: 33px;
+    padding-bottom: 42px;
+    border-top: 1px solid #e6e6e6;
+
+    .footer-text {
+        font-size: 10px;
+        font-weight: $font-weight-medium;
+
+        @media (max-width: 767px) {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .footer-nav {
+        @media (max-width: 767px) {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .nav-link {
+            font-size: 10px;
+            font-weight: $font-weight-medium;
+            color: $black;
+
+            @include hover-focus {
+                color: rgba($black, 0.6);
+            }
+
+            @media (max-width: 767px) {
+                padding: 20px 0 0;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,212 @@
+.hiro-section {
+    padding: 70px;
+    padding-bottom: 90px;
+
+    @media (max-width: 767px) {
+        padding: 35px 20px;
+    }
+}
+
+.service-section {
+    padding-right: 150px;
+    position: relative;
+
+    @media (max-width: 767px) {
+        padding-right: 90px;
+    }
+
+    @media (max-width: 574px) {
+        padding-right: 0;
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        right: 40px;
+        display: block;
+        width: 70px;
+        height: calc(50% - 32px);
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+
+        @media (max-width: 767px) {
+            width: 40px;
+            right: 25px;
+            background-size: auto;
+        }
+
+        @media (max-width: 574px) {
+            content: none;
+        }
+    }
+
+    &::before {
+        background-image: url('../images/img_2@2x.png');
+        bottom: calc(50% + 32px);
+    }
+
+    &::after {
+        background-image: url('../images/img_1@2x.png');
+        top: calc(50% + 32px);
+    }
+
+    .service-category-title {
+        padding-bottom: 4px;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 50%;
+            height: 8px;
+            margin-top: 4px;
+            background-image: url('../images/Team_line.png');
+            background-size: auto 8px;
+
+        }
+    }
+}
+
+.projects-section {
+    background-color: #f5f3eb;
+    padding-bottom: 70px;
+
+    .project-column-indented {
+        @media(min-width: 768px) {
+            padding-top: 66px;
+        }
+    }
+}
+
+.project-card {
+    margin-bottom: 36px;
+
+    .project-thumbnail {
+        width: 100%;
+        margin-bottom: 29px;
+    }
+
+    .project-title {
+        color: theme-color();
+        margin-bottom: 0;
+    }
+
+    .project-category {
+        font-size: 12px;
+        margin-bottom: 0;
+    }
+}
+
+.team-section {
+    background-color: #050605;
+
+    .section-title {
+        color: #fff;
+        margin-top: 40px;
+        margin-bottom: 22px;
+    }
+
+    .section-text-light {
+        color: #d3d3d3;
+        margin-bottom: 52px;
+        max-width: 336px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        position: static;
+        display: inline-block;
+    }
+
+    .carousel-control-prev {
+        margin-right: 30px;
+    }
+
+}
+
+.hiro-team-carousel {
+    .carousel-item {
+        padding: 10px;
+    }
+
+    .team-card {
+        padding: 40px 0;
+        position: relative;
+
+        &::before {
+            content: "";
+            display: block;
+            height: 8px;
+            width: 40%;
+            background-image: url('../images/Team_line.png');
+            background-size: auto 8px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .team-member-thumbnail {
+            width: 100%;
+        }
+
+        .team-member-details {
+            position: absolute;
+            background-color: #050605;
+            padding: 20px 22px;
+            bottom: 0;
+            right: -5px;
+
+            .team-member-name {
+                font-size: 16px;
+                font-weight: $font-weight-semibold;
+                line-height: 1.13;
+                color: $white;
+                margin-bottom: 0;
+            }
+
+            .team-member-title {
+                font-size: 12px;
+                line-height: 1.5;
+                color: $white;
+                margin-bottom: 0;
+            }
+        }
+
+        &.featured {
+            .team-member-details {
+                background-color: theme-color();
+            }
+        }
+    }
+}
+
+.career-section {
+    .section-title {
+        position: relative;
+        padding-bottom: 50px;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 25%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 8px;
+            background-image: url('../images/career_line@1x.svg');
+            background-size: auto 8px;
+        }
+    }
+}
+
+.contact-section {
+    .section-title {
+        font-size: 50px;
+        margin-bottom: 36px;
+
+        @media (max-width: 767px) {
+            font-size: 42px;
+        }
+    }
+}

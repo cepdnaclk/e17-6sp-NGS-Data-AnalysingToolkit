@@ -1,0 +1,28 @@
+.hiro-btn-outline {
+    @extend .btn;
+    border: 1px solid rgba($black, 0.2);
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 4.94px;
+    color: $black;
+    border-radius: 2px;
+}
+
+.go-top-btn {
+    @extend .btn;
+    width: 60px;
+    height: 60px;
+    background-color: theme-color();
+    color: $white;
+    padding: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+
+    @include hover-focus {
+        border: 1px solid theme-color();
+        background-color: transparent;
+    }
+}
