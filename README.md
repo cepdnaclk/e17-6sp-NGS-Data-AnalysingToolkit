@@ -44,6 +44,7 @@ In our application, User can:
 -	the output and results should be available in an easy-to-use format for data tables and plots
 -	The ability to select a good data processing pipeline and NO need for programming skills to put it in place.
 
+# UI Designs
 
 ## ML Model
 
