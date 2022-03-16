@@ -45,6 +45,15 @@ In our application, User can:
 
 ### UI Designs
 
+#### LogIn/SignUp
+<center> <img src='docs/images/UI Designs/Login_SignUp.PNG'> </img> </center>
+#### Upload File
+<center> <img src='docs/images/UI Designs/Upload_File.PNG'> </img> </center>
+#### Data Visualise
+<center> <img src='docs/images/UI Designs/Data Visualise.PNG'> </img> </center>
+#### Boxplot Visualise
+<center> <img src='docs/images/UI Designs/BoxPlot_Visualise.PNG'> </img> </center>
+
 ## ML Model
 
 
