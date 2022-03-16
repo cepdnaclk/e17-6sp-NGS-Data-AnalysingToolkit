@@ -23,7 +23,6 @@ The development of next-generation sequencing (NGS) technology has resulted in a
 
 Our project is to develop a web application which can provide a user-friendly interface for Alzheimer disease prediction and finding biomarker genes for particular disease using differential expression analysis of human mRNA sequence data. We improve on available tools by offering a range of normalization, feature selection and classification methods and a simple to use interface.
 
-Our application can be used to analyze the provided RNA-Seq datasets or users can upload their own human RNA-seq data for finding biomarkers for particular disease and disease prediction. Dataset should have the form that genes as rows and samples as columns which should include both control and AD samples. Files can be uploaded as a .csv or .xls file.
 
 ## High Level Architecture
 
@@ -38,10 +37,10 @@ In our application, User can:
 3.	By selecting a gene from the table, the user can view a box plot that shows whether or not the sample has an impact on a specific disease.
 
 ### Features of our application:
-- Tools must be stable and hosted online, independent of OS or web browser, and not work with local installation.
+- Tool will be keep stable and hosted online, independent for web browser, and not work with local installation.
 -	High quality analysis tools should be packaged in a way that does not require expert knowledge of programming, but be accessed via a graphical user interface (GUI).
 -	Users can choose from different data normalization, feature selection, classification methods, giving them more options for data analysis.
--	the output and results should be available in an easy-to-use format for data tables and plots
+-	The output and results should be available in an easy-to-use format for data tables and plots.
 -	The ability to select a good data processing pipeline and NO need for programming skills to put it in place.
 
 ### UI Designs
