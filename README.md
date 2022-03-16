@@ -28,7 +28,8 @@ Give the fully functional tool to analyze the DNA sequences and identify the Bio
 
 
 ## Links
-
+- [Project Page](https://cepdnaclk.github.io/e17-co328-NGS-Data-AnalysingToolkit/)
+- [Department Web Site](http://www.ce.pdn.ac.lk/)
 
 
 
