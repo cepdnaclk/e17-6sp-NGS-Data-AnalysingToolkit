@@ -5,23 +5,50 @@ ___
 
 #### Table of Contents
 1. [Introduction](#Introduction)
-2. [Project Objectives](#Project-Objectives )
-3. [Software Model](#software-design)
-4. [Team](#Developers)
-5. [Links](#Links)
+3. [High Level Architecture](#High-Level-Architecture)
+4. [Software Model](#software-design)
+5. [Mechine Learning Model](#ML-Model)
+6. [Use case Diagram](#Use-case-Diagram)
+7. [Team](#Developers)
+8. [Links](#Links)
 
 
 
 ## Introduction
-The development of next-generation sequencing (NGS) technology has resulted in a rapid growth in the synthesis of large genomic datasets, but user-friendly tools for finding biomarkers of genes and visualizing this data have not kept pace. 
+Alzheimer’s disease (AD) has now been identified as the sixth most leading death cause in world. According to the Alzheimer’s Association, no cure has still been found for AD.
+there is even no way to weaken the progress of spreading the AD in patient’s body. It also mentions that the only available treatment in the medical field is for reducing its symptoms, like memory loss and confusion. Over the last few decades, doctors have used few methods like medical tests for checking memory and scans like positron emission tomography (PET) for scanning the patient’s brain. But, it is not possible to diagnose Alzheimer’s disease for certain from those methods. microRNAs (miRNAs) are small non coding
+RNAs which mainly help for regulating gene expressions. The potential of miRNAs as biomarkers for disease diagnosis has been emphasized by several researchers, and miRNA biomarkers can be recognized as a set of biomarkers which could benefit not only diagnosis procedure but also the treatments.
+
+The development of next-generation sequencing (NGS) technology has resulted in a rapid growth in the synthesis of large genomic datasets of miRNAs,and we are developing user-friendly tools for finding biomarkers of genes and visualizing this data have not kept pace. 
 
 Our project is to develop a web application which can provide a user-friendly interface for Alzheimer disease prediction and finding biomarker genes for particular disease using differential expression analysis of human mRNA sequence data. We improve on available tools by offering a range of normalization, feature selection and classification methods and a simple to use interface.
 
-## Project Objectives
-There is lack of tools to analyze DNA molecules to identify biomarker for rare diseases. Cost and time for detecting biomarkers are also high. Alzheimer has become Sixth most leading death cause in world. So, identifying the patients of Alzheimer in early condition is very important.
+Our application can be used to analyze the provided RNA-Seq datasets or users can upload their own human RNA-seq data for finding biomarkers for particular disease and disease prediction. Dataset should have the form that genes as rows and samples as columns which should include both control and AD samples. Files can be uploaded as a .csv or .xls file.
 
-## Solution
-Give the fully functional tool to analyze the DNA sequences and identify the Biomarker for the Alzheimer disease in cost and time efficient manner.
+## High Level Architecture
+
+
+## Software design
+
+Our application can be used to analyze the provided RNA-Seq datasets or users can upload their own human RNA-seq data for finding biomarkers for particular disease and disease prediction. Dataset should have the form that genes as rows and samples as columns which should include both control and AD samples. Files can be uploaded as a .csv or .xls file.
+
+In our application, User can:
+1.	browse a table of provided data or upload their own, then apply various normalization, feature selection algorithms, and classifiers to it.
+2.	use the single field search bar, which can be used to find genes in the table.
+3.	By selecting a gene from the table, the user can view a box plot that shows whether or not the sample has an impact on a specific disease.
+
+# Features of our application:
+- Tools must be stable and hosted online, independent of OS or web browser, and not work with local installation.
+-	High quality analysis tools should be packaged in a way that does not require expert knowledge of programming, but be accessed via a graphical user interface (GUI).
+-	Users can choose from different data normalization, feature selection, classification methods, giving them more options for data analysis.
+-	the output and results should be available in an easy-to-use format for data tables and plots
+-	The ability to select a good data processing pipeline and NO need for programming skills to put it in place.
+
+
+## ML Model
+
+
+## Use case Diagram
 
 
 ## Developers
