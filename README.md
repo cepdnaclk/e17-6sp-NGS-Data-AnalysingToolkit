@@ -37,14 +37,14 @@ In our application, User can:
 2.	use the single field search bar, which can be used to find genes in the table.
 3.	By selecting a gene from the table, the user can view a box plot that shows whether or not the sample has an impact on a specific disease.
 
-# Features of our application:
+### Features of our application:
 - Tools must be stable and hosted online, independent of OS or web browser, and not work with local installation.
 -	High quality analysis tools should be packaged in a way that does not require expert knowledge of programming, but be accessed via a graphical user interface (GUI).
 -	Users can choose from different data normalization, feature selection, classification methods, giving them more options for data analysis.
 -	the output and results should be available in an easy-to-use format for data tables and plots
 -	The ability to select a good data processing pipeline and NO need for programming skills to put it in place.
 
-# UI Designs
+### UI Designs
 
 ## ML Model
 
