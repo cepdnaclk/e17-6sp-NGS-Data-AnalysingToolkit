@@ -57,7 +57,7 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 
 ## 4.Solution Architecture
 
-<img src = "images/SolutionArchitecture.png" width="600">
+<img src = "images/solutionArchitecture.PNG" width="600">
 
 
 ## 5.Data Flow
@@ -65,9 +65,14 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 <img src = "images/dataflow.png" width="600">
 
 
-## Demo
+## UI & UX
 
-<img src = "images/web-gif.gif" width="1000" height="500">
+<img src = "images/UIDesigns/Login_SignUp.png" width="1000" height="500">
+<img src = "images/UIDesigns/Upload_File.png" width="1000" height="500">
+<img src = "images/UIDesigns/Data Visualise.png" width="1000" height="500">
+<img src = "images/UIDesigns/BoxPlot_Visualise.png" width="1000" height="500">
+
+
 
 
 ## 6.Requirements Analysis
@@ -116,7 +121,7 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 ## 9.MACHINE LEARNING WORKFLOW
 
 
-<img src = "images/MLworkflow.png" width="600">
+<img src = "images/MlModel.PNGG" width="600">
 
 
 
