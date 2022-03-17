@@ -1,0 +1,412 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.hiro-header.home-header {
+    background-image: linear-gradient(to right, #fff 0%, #fff 70%, #000 70%, #000 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @media (max-width: 767px) {
+        background-size: 100% 81px;
+        background-position: top;
+    }
+
+    .hiro-nav-popup-toggle #hiro-agency {
+        fill: $white;
+    }
+
+}
+
+.hiro-nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    position: relative;
+    z-index: 1001;
+
+    .logo-white {
+        display: none;
+    }
+}
+
+.hiro-nav-popup-toggle {
+    border: 0;
+    background-color: transparent;
+
+    #hiro-agency {
+        fill: $black;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    #menu rect {
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.hiro-nav-popup-modal-open {
+    overflow: hidden;
+
+    @media (max-width: 767px) {
+        padding-top: 81px;
+    }
+
+    .hiro-header {
+        background-image: none;
+
+        > nav {
+            @media (max-width: 767px) {
+                background-color: #000;
+                position: fixed;
+                width: 100%;
+                height: 81px;
+                top: 0;
+                z-index: 1001;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+    }
+
+    .nav-brand {
+        .logo {
+            display: none;
+        }
+
+        .logo-white {
+            display: inline-block;
+        }
+    }
+
+    .hiro-nav-popup-toggle #hiro-agency {
+        fill: $white;
+    }
+
+
+    #menu rect {
+        &:first-child {
+            transform: rotate(45deg);
+            transform-origin: center;
+        }
+
+        &:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        &:last-child {
+            transform: rotate(-45deg)translateY(7px);
+            transform-origin: center;
+        }
+    }
+}
+
+.hiro-nav-popup-modal {
+    z-index: 1000;
+    position: fixed;
+    visibility: hidden;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    transform: translateX(0%) translateY(-100%);
+    transition: all 0.4s ease-in-out;
+
+    .hiro-nav-popup-modal-open & {
+        visibility: visible;
+        transform: translateX(0%) translateY(0%);
+    }
+
+    @media (max-width: 767px) {
+        display: block;
+        padding-bottom: 0;
+    }
+
+    &:before,&:after{
+		content: "";
+		position: fixed;
+		width:100vw;
+		height:100vh;
+		background: rgba(#eaeaea, 0.2);
+		z-index: -1;
+		transition: transform cubic-bezier(.77,0,.175,1) 0.8s;
+        transform: translateX(0%) translateY(-100%);
+        
+        .hiro-nav-popup-modal-open & {
+            transform: translateX(0%) translateY(0%);
+        }
+	}
+	&:after{
+		background: rgba(#ffffff, .1);
+        transition-delay: 0s;
+        
+        .hiro-nav-popup-modal-open & {
+            transition-delay: .1s;
+        }
+	}
+	&:before{
+        transition-delay: .1s;
+        
+        .hiro-nav-popup-modal-open & {
+            transition-delay: 0s;
+        }
+    }
+    
+    &-content {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: $black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 81px;
+        padding-bottom: 81px;
+
+        @media (max-width: 767px) {
+            display: block;
+            padding-bottom: 0;
+        }
+
+        &>.container {
+            overflow: auto;
+            max-height: 100%;
+            overflow: auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    .menu-wrapper {
+        border-right: 1px solid rgba($white, 0.29);
+        padding-right: 115px;
+        display: flex;
+        justify-content: flex-end;
+
+        @media (max-width: 767px) {
+            padding-right: 15px;
+            display: block;
+            border-right: 0;
+            border-bottom: 1px solid rgba($white, 0.29);
+        }
+    }
+
+    .blog-posts {
+        padding-left: 90px;
+
+        @media (max-width: 767px) {
+            padding-left: 15px;
+            padding-top: 30px;
+        }
+
+        .popup-blog-headng {
+            margin-bottom: 33px;
+            color: $white;
+        }
+
+        .popup-blog-post-title {
+            font-size: 20px;
+            font-weight: $font-weight-medium;
+            line-height: 1.25;
+            color: $white;
+            margin-bottom: 0;
+        }
+    }
+
+    .hiro-main-nav {
+        flex-direction: column;
+
+        .nav-link {
+            padding: 0;
+            font-size: 25px;
+            font-weight: $font-weight-semibold;
+            line-height: 1;
+            color: $white;
+            margin-bottom: 30px;
+            display: inline-block;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -10px;
+                width: 0;
+                height: 5px;
+                opacity: 0;
+                background-color: #44d7b6;
+                transition: 0.3s ease-in-out all;
+            }
+
+            &:hover::after {
+                opacity: 1;
+                width: 100%;
+            }
+        }
+    }
+}
+
+.hiro-header-carousel {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+
+    @media (min-width: 768px) {
+        padding-right: 50px;
+        padding-top: 50px;
+        padding-bottom: 110px;
+
+    }
+
+    .carousel-indicators {
+        position: absolute;
+        width: 50px;
+        right: 0;
+        left: auto;
+        top: 0;
+        bottom: 0;
+        margin: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+
+        @media (max-width: 767px) {
+            position: static;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        li {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #d8d8d8;
+            opacity: 0.18;
+
+            @media (max-width: 767px) {
+                background-color: $black;
+            }
+
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+
+    .carousel-item-title {
+        font-size: 48px;
+        font-weight: $font-weight-bold;
+        line-height: 1.21;
+        padding-top: 83px;
+        margin-bottom: 28px;
+        animation-delay: 0.25s;
+        animation-duration: 1s;
+        position: relative;
+
+        @media (max-width: 767px) {
+            font-size: 40px;
+            padding-top: 40px;
+        }
+
+         span {
+             position: relative;
+            z-index: 2;
+        }
+
+        &::before {
+            content: attr(data-number);
+            position: absolute;
+            color: rgba(theme-color(), 0.62);
+            z-index: 1;
+            font-size: 200px;
+            left: 0;
+            top: 0;
+
+            @media (max-width: 991px) {
+                top: -20px;
+            }
+
+            @media (max-width: 767px) {
+                font-size: 150px;
+                top: -30px;
+            }
+        }
+    }
+
+    .carousel-item-description {
+        font-size: 17px;
+        line-height: 1.59;
+        margin-bottom: 12px;
+        animation-delay: 0.5s;
+        animation-duration: 1s;
+    }
+
+    .carousel-item-link {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: $font-weight-bold;
+        color: $black;
+        margin-bottom: 52px;
+        animation-delay: 1.25s;
+        animation-duration: 1s;
+
+        @include hover-focus {
+            color: rgba(#000000, 0.7);
+            text-decoration: none;
+        }
+    }
+
+    .carousel-item-social-links {
+        animation-delay: 1.25s;
+        animation-duration: 1s;
+
+        @media (max-width: 767px) {
+            margin-bottom: 30px;
+        }
+
+        li+li {
+            &::before {
+                content: "";
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                background-color: #000;
+                margin-bottom: 3px;
+            }
+        }
+
+        a {
+            font-size: 16px;
+            font-weight: $font-weight-bold;
+            color: #000000;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            @include hover-focus {
+                color: rgba(#000000, 0.7);
+                text-decoration: none;
+            }
+
+            @media (max-width: 767px) {
+                padding-left: 10px;
+                padding-right: 10px;
+                font-size: 14px;
+            }
+        }
+
+        li:first-child a {
+            padding-left: 0;
+        }
+
+        li:last-child a {
+            padding-right: 0;
+        }
+    }
+}

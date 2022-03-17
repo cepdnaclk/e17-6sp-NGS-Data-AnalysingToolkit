@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GeNet</title>
+    <link rel="stylesheet" href="assets/vendors/animate.css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/vendors/jquery/jquery.min.js"></script>
+    <script src="assets/js/loader.js"></script>
+</head>
+
+<body>
+    <div class="hiro-loader"></div>
+    <header class="hiro-header home-header" id="top">
+        <nav>
+            <div class="container">
+                <div class="hiro-nav">
+                    <a href="index.html" class="nav-brand">
+                        <h2 style="color: green;">GeNet</h2>
+                        <!-- <img src="assets/images/logo.svg" alt="Hiro" class="logo"> -->
+                        <!-- <img src="assets/images/logo_white.svg" alt="Hiro" class="logo-white">  -->
+                    </a>
+                    <button class="hiro-nav-popup-toggle">
+                        <svg width="20px" height="18px" viewBox="0 0 20 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Hiro" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="hiro-agency" transform="translate(-964.000000, -37.000000)" fill="#FFFFFF">
+                                    <g id="Menu" transform="translate(964.000000, 37.000000)">
+                                        <g id="menu">
+                                            <rect id="Rectangle" fill-rule="nonzero" x="-8.05281767e-14" y="7.50795322" width="19.9609942" height="2.4951462"></rect>
+                                            <rect id="Rectangle" fill-rule="nonzero" x="-8.05281767e-14" y="14.9964327" width="19.9609942" height="2.4951462"></rect>
+                                            <rect id="Rectangle" fill-rule="nonzero" x="-8.05281767e-14" y="0.0194736842" width="19.9609942" height="2.4951462"></rect>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div class="container wow fadeInUp">
+            <div id="hiroHeaderCarousel" class="hiro-header-carousel carousel slide" data-ride="carousel" data-interval="3500">
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1 class="carousel-item-title" data-animation="animated fadeInRight" data-number="01"><span>Introduction to our NGS ToolKit</span></h1>
+                                <p class="carousel-item-description" data-animation="animated fadeInRight">DNA sequencing is a laboratory technique used 
+                                    to determine the sequence of bases (A, C, G, and T) in a DNA molecule. 
+                                    It helps to identify some major diseases (Alzheimer, Cancer) in early 
+                                    condition before it gets critical. DNA sequence can be determined by 
+                                    many ways and NGS is one of the most popular ways to identify them. 
+                                    Our project’s aim is to create a tool which is identify the one of 
+                                    the major disease Alzheimer by using the given input DNA sequence dataset.</p>
+                                <!-- <a href="#!" class="carousel-item-link link-hover-fx" data-animation="animated fadeInRight">READ MORE</a> -->
+                                <ul class="carousel-item-social-links nav" data-animation="animated fadeInRight">
+                                    <li>
+                                        <a href="https://github.com/cepdnaclk/e17-co328-NGS-Data-AnalysingToolkit" class="link-hover-fx">Github</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://dev.azure.com/UOP-E17-G02/NGS%20Analysing%20ToolKit/_wiki/wikis/NGS-Analysing-ToolKit.wiki/3/Introduction" class="link-hover-fx">Azure Devops</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="assets/images/avatar.jpeg" alt="Remarkable Digital Products" class="img-fluid w-100 rounded" width="372px">
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </header>
+
+    <!-- NavBAR -->
+    <div class="hiro-nav-popup-modal">
+        <div class="hiro-nav-popup-modal-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 menu-wrapper">
+                        <ul class="nav hiro-main-nav">
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#about" class="nav-link">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#services" class="nav-link">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#works" class="nav-link">GeNet</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="contact.html" class="nav-link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+<!-- End of NavBar -->
+
+
+                        
+                        
+                           
+                       
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Problem -->
+    <section class="bg-primary hiro-section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex flex-column justify-content-center wow fadeInUp">
+                    <h2 class="section-title mb-3">Problems</h2>
+                    <p class="section-text-ct">There is lack of tools to analyze DNA molecules to identify 
+                        biomarker for rare diseases. Cost and time for detecting biomarkers are also high. 
+                        Alzheimer has become Sixth most leading death cause in world. So, identifying the 
+                        patients of Alzheimer in early condition is very important.</p>
+                </div>
+                <div class="col-md-6 wow fadeInUp">
+                    <img src="assets/images/img_3.png" class="w-100 mb-5" alt="Digital Product Design">
+                    <p class="section-text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <!-- <button class="hiro-btn-outline">VIEW MORE</button> -->
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Problem End -->
+
+
+<!-- Solution -->
+<section class="bg-primary-solution hiro-section" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column justify-content-center wow fadeInUp">
+                <h2 class="section-title mb-3">Solutions</h2>
+                <p class="section-text-ct">Give the fully functional tool to analyze the DNA sequences 
+                    and identify the Biomarker for the Alzheimer disease in cost and time efficient 
+                    manner.</p>
+            </div>
+            <div class="col-md-6 wow fadeInUp">
+                <img src="assets/images/img_3.png" class="w-100 mb-5" alt="Digital Product Design">
+                <p class="section-text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <!-- <button class="hiro-btn-outline">VIEW MORE</button> -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Solution End -->
+
+<!-- Features -->
+    <section class="hiro-section" id="services">
+        <div class="container">
+            <div class="service-section">
+                <h2 class="section-title career-section-title">Features</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
+                        <h6 class="service-category-title">Strategy</h6>
+                        <ul class="service-list list-group list-group-flush">
+                            <li class="list-group-item">UI & UX design</li>
+                            <li class="list-group-item">Graphic Design & identity</li>
+                            <li class="list-group-item">Video Production</li>
+                            <li class="list-group-item">Market Analysis</li>
+                            <li class="list-group-item">Deep Campaign Strategy</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
+                        <h6 class="service-category-title">Design</h6>
+                        <ul class="service-list list-group list-group-flush">
+                            <li class="list-group-item">UI & UX design</li>
+                            <li class="list-group-item">Graphic Design & identity</li>
+                            <li class="list-group-item">Video Production</li>
+                            <li class="list-group-item">Market Analysis</li>
+                            <li class="list-group-item">Deep Campaign Strategy</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 mb-4 mb-md-0 wow fadeInUp">
+                        <h6 class="service-category-title">Development</h6>
+                        <ul class="service-list list-group list-group-flush">
+                            <li class="list-group-item">UI & UX design</li>
+                            <li class="list-group-item">Graphic Design & identity</li>
+                            <li class="list-group-item">Video Production</li>
+                            <li class="list-group-item">Market Analysis</li>
+                            <li class="list-group-item">Deep Campaign Strategy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- End Of the features -->
+
+    <!--UI Designs  -->
+    <section class="projects-section hiro-section" id="works">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6wow fadeInUp">
+                    <div class="project-card wow fadeInUp">
+                        <img src="assets/images/Works4.png" alt="Project" class="project-thumbnail">
+                        <h6 class="project-title">See what we do</h6>
+                        <p class="Project-category">Branding system / Motion design </p>
+                    </div>
+                    <div class="project-card wow fadeInUp">
+                        <img src="assets/images/Works2.png" alt="Project" class="project-thumbnail">
+                        <h6 class="project-title">See what we do</h6>
+                        <p class="Project-category">Branding system / Motion design </p>
+                    </div>
+                </div>
+                <div class="col-md-6 project-column-indented">
+                    <div class="project-card wow fadeInUp">
+                        <img src="assets/images/Works3.png" alt="Project" class="project-thumbnail">
+                        <h6 class="project-title">See what we do</h6>
+                        <p class="Project-category">Branding system / Motion design </p>
+                    </div>
+                    <div class="project-card wow fadeInUp">
+                        <img src="assets/images/Works1.png" alt="Project" class="project-thumbnail">
+                        <h6 class="project-title">See what we do</h6>
+                        <p class="Project-category">Branding system / Motion design </p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <a href="#!" class="load-more-link">VIEW ALL PROJECTS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- End Of UI designs -->
+
+<!-- Team -->
+    <section class="team-section hiro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 wow fadeInUp">
+                    <h2 class="section-title">Meet <br> The Team</h2>
+                    <p class="section-text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                    <div>
+                        <a class="carousel-control-prev" href="#hiroTeamCarousel" role="button" data-slide="prev">
+                            <img src="assets/images/arrow_left.png" alt="left arrow" width="20px">
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#hiroTeamCarousel" role="button" data-slide="next">
+                            <img src="assets/images/Arrow_right.png" alt="right arrow" width="20px">
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-7 wow fadeInRight">
+                    <div id="hiroTeamCarousel" class="hiro-team-carousel carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="team-card" data-animation="animated flipInY">
+                                            <img src="assets/images/img_5.png" alt="Paulina Gayoso" class="team-member-thumbnail">
+                                            <div class="team-member-details">
+                                                <h6 class="team-member-name">Paulina Gayoso</h6>
+                                                <p class="team-member-title">Project Manager</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="team-card featured" data-animation="animated flipInY">
+                                            <img src="assets/images/img_4.png" alt="Edwards" class="team-member-thumbnail">
+                                            <div class="team-member-details">
+                                                <h6 class="team-member-name">Edwards</h6>
+                                                <p class="team-member-title">CTO, Co-Founder</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="team-card" data-animation="animated flipInY">
+                                            <img src="assets/images/img_5.png" alt="Paulina Gayoso" class="team-member-thumbnail">
+                                            <div class="team-member-details">
+                                                <h6 class="team-member-name">Paulina Gayoso</h6>
+                                                <p class="team-meber-title">Project Manager</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="team-card featured" data-animation="animated flipInY">
+                                            <img src="assets/images/img_4.png" alt="Edwards" class="team-member-thumbnail">
+                                            <div class="team-member-details">
+                                                <h6 class="team-member-name">Edwards</h6>
+                                                <p class="team-meber-title">CTO, Co-Founder</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="team-card" data-animation="animated flipInY">
+                                            <img src="assets/images/img_5.png" alt="Paulina Gayoso" class="team-member-thumbnail">
+                                            <div class="team-member-details">
+                                                <h6 class="team-member-name">Paulina Gayoso</h6>
+                                                <p class="team-meber-title">Project Manager</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" data-animation="animated flipInY">
+                                        <div class="team-card featured">
+                                            <img src="assets/images/img_4.png" alt="Edwards" class="team-member-thumbnail">
+                                            <div class="team-member-details">
+                                                <h6 class="team-member-name">Edwards</h6>
+                                                <p class="team-meber-title">CTO, Co-Founder</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Team End -->
+
+
+<!-- Footer -->
+    <section class="career-section hiro-section bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="section-title wow fadeInLeft">
+                        Contact Us
+                    </h2>
+                </div>
+                <div class="col-md-6 wow fadeInRight">
+                    <p class="section-text-ct mb-5">Our work transforms how customers experience your business – creating distinction, shifting perceptions and driving growth.</p>
+                    <button class="hiro-btn-outline">VIEW MORE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact-section hiro-section">
+        <div class="container wow fadeInUp">
+            <h6 class="font-weight-semibold mb-4 mb-md-0">At Explose, it’s always storytelling time. Swing by & share yours.</h6>
+            <h2 class="section-title">Let’s talk</h2>
+            <div class="contact-address">
+                <div class="row">
+                    <div class="col-md-5">
+                        <p class="font-weight-medium">9010 Varna, Bulgaria, <br> Breeze Borough, <br> Saint Nicholas, 26</p>
+                    </div>
+                    <div class="col-md-5 mb-4 mb-md-0">
+                        <p class="font-weight-medium">UK: +44 567 637 0000 <br> hey@costomarl.com</p>
+                        <ul class="nav contact-social-links">
+                            <li class="nav-item">
+                                <a href="#!" class="nav-link">
+                                    <img src="assets/images/twitter@1x.svg" alt="twitter">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#!" class="nav-link">
+                                    <img src="assets/images/linkedin@1x.svg" alt="linkedin">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#!" class="nav-link">
+                                    <img src="assets/images/facebook@1x.svg" alt="facebook">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#!" class="nav-link">
+                                    <img src="assets/images/behance@1x.svg" alt="behance">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#!" class="nav-link">
+                                    <img src="assets/images/medium@1x.svg" alt="medium">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <a href="#top" class="go-top-btn">
+                            <img src="assets/images/arrow_up@1x.svg" alt="arrow up">
+                            <span class="sr-only">Go to top</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="hiro-footer wow fadeInUp">
+        <div class="container d-flex flex-wrap justify-content-lg-between align-items-center">
+            <p class="mb-0 footer-text">© <a href="https://www.bootstrapdash.com" target="_blank" rel="noopener noreferrer" class="text-reset">BootstrapDash</a> 2020. All rights reserved.</p>
+            <nav class="footer-nav nav">
+                <a href="#!" class="nav-link">Terms and Conditions</a>
+                <a href="#!" class="nav-link">Privacy Policy</a>
+                <a href="#!" class="nav-link">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="assets/vendors/wowjs/wow.min.js"></script>
+    <script src="assets/vendors/popper.js/popper.min.js"></script>
+    <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+
+</html>

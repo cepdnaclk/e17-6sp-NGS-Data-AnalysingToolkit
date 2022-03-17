@@ -1,0 +1,55 @@
+.font-weight-medium {
+    font-weight: $font-weight-medium;
+}
+
+.font-weight-semibold {
+    font-weight: $font-weight-semibold;
+}
+
+.font-ct {
+    font-family: 'Crimson Text', serif;
+}
+
+.section-title {
+    font-size: 45px;
+
+    @media (max-width: 767px) {
+        font-size: 38px;
+    }
+}
+
+.section-text-ct {
+    font-family: 'Crimson Text', serif;
+    font-size: 22px;
+    color: #000000;
+    font-weight: $font-weight-semibold;
+    line-height: 1.23;
+}
+.section-text-light {
+    font-size: 14px;
+    font-weight: $font-weight-light;
+    line-height: 1.71;
+    margin-bottom: 36px;
+}
+.career-section-title {
+    margin-bottom: 52px;
+}
+.service-list {
+    .list-group-item {
+        padding: 8px 0;
+        border-color: theme-color();
+        font-size: 14px;
+        font-weight: $font-weight-medium;
+    }
+}
+
+.load-more-link {
+    font-size: 16px;
+    font-weight: $font-weight-bold;
+    color: $black;
+
+    @include hover-focus {
+        color: rgba($black, 0.6);
+        text-decoration: none;
+    }
+}
