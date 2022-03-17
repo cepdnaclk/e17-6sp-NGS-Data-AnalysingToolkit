@@ -29,13 +29,13 @@ title: NGS ToolKit
 
 ---
 
-## 1.Introduction
+## Introduction
 
 This is a Online toolkit to detect the biomarkers for Alzheimer’s Disease using the Next generation Sequencing Data Set. Simple and self explanatory GUI elements of our toolkit will help to analyse the data and visualize them in different ways (different graps and tables).
 
-## 2.Problem Overview
+## Problem Overview
 
-### 2.1 Problem related to Alzheimer's Disease
+### Problem related to Alzheimer's Disease
 
 -   Found in people aged 65 or above
 -   Still has no efficient cure
@@ -43,7 +43,7 @@ This is a Online toolkit to detect the biomarkers for Alzheimer’s Disease usin
 -   Spreads in human body before 20 years when the symptoms are shown
 -   Can be found at early stage
 
-### 2.2 Problem related to detecting biomarkers
+### Problem related to detecting biomarkers
 
 - High cost and time 
 - Lack of online tools
@@ -57,17 +57,22 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 
 ## 4.Solution Architecture
 
-<img src = "images/SolutionArchitecture.png" width="600">
+<img src = "images/solutionArchitecture.PNG" width="600">
 
 
 ## 5.Data Flow
 
-<img src = "images/dataflow.png" width="600">
+<!-- <img src = "images/dataflow.png" width="600"> -->
 
 
-## Demo
+## UI & UX
 
-<img src = "images/web-gif.gif" width="1000" height="500">
+<img src = "images/UIDesigns/Login_SignUp.png" width="1000" height="500">
+<img src = "images/UIDesigns/Upload_File.png" width="1000" height="500">
+<img src = "images/UIDesigns/Data Visualise.png" width="1000" height="500">
+<img src = "images/UIDesigns/BoxPlot_Visualise.png" width="1000" height="500">
+
+
 
 
 ## 6.Requirements Analysis
@@ -105,27 +110,20 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 - System should be available for 24/7.
 - Able to access across the globe.
 
-    
-## 7.UML Class Diagram
+## 7.Use case Diagrams
 
-<img src = "images/UMLC.png" width="600" >
+<img src = "images/use-case-diagram.PNG" width="600">
 
+## 8.Machine Learning Proposal
 
-## 8.Use case Diagrams
-
-
-### 8.2.Web app
-
-<img src = "images/uc-web.png" width="600">
-
-## 9.Machine Learning Proposal
+We are propossing different kinds of feature selection methods & classification insted of specific one. So, the user can tryout different methods and can comeup with a most accurate one.
 
 
 
-## 10.MACHINE LEARNING WORKFLOW
+## 9.Machine Learning Work Flow
 
 
-<img src = "images/MLworkflow.png" width="600">
+<img src = "images/MlModel.png" width="600">
 
 
 
