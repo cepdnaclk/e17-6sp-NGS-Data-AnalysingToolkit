@@ -52,7 +52,7 @@ In our application, User can:
 <center> <img src='docs/images/UIDesigns/Upload_File.png'> </img> </center>
 
 #### Data Visualise
-<center> <img src='docs/images/UI Designs/Data Visualise.png'> </img> </center>
+<center> <img src='docs/images/UIDesigns/Data Visualise.png'> </img> </center>
 
 #### Boxplot Visualise
 <center> <img src='docs/images/UIDesigns/BoxPlot_Visualise.png'> </img> </center>
