@@ -1,0 +1,30 @@
+{
+  "team": [
+    {
+      "name": "Arshad MRM",
+      "email": "e17015@eng.pdn.ac.lk",
+      "eNumber": "E/17/015"
+    },
+    {
+      "name": "Kavinaya Y",
+      "email": "e17159@eng.pdn.ac.lk",
+      "eNumber": "E/17/159"
+    },
+    {
+      "name": "Nishankar S",
+      "email": "e17230@eng.pdn.ac.lk",
+      "eNumber": "E/yy/xxx"
+    }
+  ],
+  "supervisors": [
+    {
+      "name": "Dr. Supervisor 1",
+      "email": "email@eng.pdn.ac.lk"
+    },
+    {
+      "name": "Supervisor 2",
+      "email": "email@eng.pdn.ac.lk"
+    }
+  ],
+  "tags": ["Web", "Embedded Systems"]
+}

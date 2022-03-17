@@ -1,0 +1,144 @@
+.blog-page-wrapper {
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.blog-post-archive {
+    .blog-post {
+        margin-bottom: 73px;
+        max-width: 570px;
+        @media(max-width: 767px) {
+            display: block;
+        }
+
+        &-thumbnail {
+            width: 100%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            @media(min-width: 768px){
+                width: 168px;
+                height: 141px;
+                margin-right: 25px;
+                align-self: center;  
+            }
+            
+        }
+
+        &-title {
+            font-size: 20px;
+            font-weight: $font-weight-medium;
+            line-height: 1.25;
+            color: #312c2c;
+            margin-bottom: 14px;
+        }
+
+        &-excerpt {
+            font-size: 14px;
+            font-weight: $font-weight-light;
+            line-height: 1.71;
+            color: #131415;
+            margin-bottom: 13px;
+        }
+
+        &-link {
+            font-size: 15px;
+            font-weight: $font-weight-medium;
+            color: #000000;
+        }
+    }
+}
+
+.blog-sidebar {
+    .widget-title {
+        margin-bottom: 24px;
+    }
+    .widget-twitter {
+        background-color: $black;
+        padding: 78px 64px 54px 44px;
+        color: $white;
+        margin-bottom: 36px;
+        background-image: url(../images/Bg_blog_right.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        .tweet {
+            line-height: 1.25;
+            margin-bottom: 31px;
+        }
+
+        .username {
+            font-size: 12px;
+            font-weight: $font-weight-medium;
+            color: #c1b8b8;
+            padding-left: 34px;
+            background-image: url('../images/twitter_blog_widget.png');
+            background-repeat: no-repeat;
+            background-size: 20px;
+            margin-bottom: 0;
+        }
+    }
+
+    .widget-subscribe {
+        margin-bottom: 20px;
+    }
+
+    .subscribe-form {
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-control {
+            border: 0;
+            border-radius: 0;
+            border-bottom: 1px solid #d3d3d3;
+            padding: 5px 0;
+            font-size: 16px;
+            font-weight: $font-weight-medium;
+    
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
+    
+            &::placeholder {
+                color: #d3d3d3;
+            }
+        }
+
+        .btn-subscribe {
+            background-color: rgba(#0091ff, 0.66);
+            color: $white;
+            font-weight: $font-weight-normal;
+            padding-top: 13px;
+            padding-bottom: 14px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .subscribe-text {
+        font-size: 13px;
+        line-height: 1.54;
+        color: #312c2c;
+    }
+
+    .widget-posts {
+        .blog-post {
+            margin-bottom: 27px;
+
+            .post-thumbnail {
+                width:80px;
+                height:59px;
+                object-fit: cover;
+                margin-right: 13px;
+            }
+
+            .post-title {
+                font-size: 14px;
+                font-weight: $font-weight-medium;
+                line-height: 1.43;
+                color: #312c2c;
+            }
+        }
+    }
+
+}

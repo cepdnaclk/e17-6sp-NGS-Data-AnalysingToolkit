@@ -1,0 +1,22 @@
+.link-hover-fx {
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        opacity: 0;
+        background-color: theme-color();
+        transition: 0.3s ease-in-out all;
+    }
+
+    &:hover {
+        &::after {
+            opacity: 1;
+            width: 100%;
+        }
+    }
+}
