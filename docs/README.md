@@ -131,8 +131,8 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 
 ## Links
 <!-- - [Project Page](https://cepdnaclk.github.io/e17-3yp) -->
-- [Project Repository](https://github.com/cepdnaclk/e17-co328-ContactTracingApp)
-- [Project Page](https://cepdnaclk.github.io/e17-co328-ContactTracingApp/)
+- [Project Repository](https://github.com/cepdnaclk/e17-co328-NGS-Data-AnalysingToolkit)
+- [Project Page](https://cepdnaclk.github.io/e17-co328-NGS-Data-AnalysingToolkit/)
 - [Department of Computer Engineering](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
 
