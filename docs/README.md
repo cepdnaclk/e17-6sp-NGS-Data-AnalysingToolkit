@@ -60,19 +60,12 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 <img src = "images/solutionArchitecture.PNG" width="600">
 
 
-## 5.Data Flow
-
-<img src = "images/dataflow.png" width="600">
-
-
-## UI & UX
+## 5.UI & UX
 
 <img src = "images/UIDesigns/Login_SignUp.png" width="1000" height="500">
 <img src = "images/UIDesigns/Upload_File.png" width="1000" height="500">
 <img src = "images/UIDesigns/Data Visualise.png" width="1000" height="500">
 <img src = "images/UIDesigns/BoxPlot_Visualise.png" width="1000" height="500">
-
-
 
 
 ## 6.Requirements Analysis
