@@ -62,7 +62,7 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 
 ## 5.Data Flow
 
-<!-- <img src = "images/dataflow.png" width="600"> -->
+<img src = "images/dataflow.png" width="600">
 
 
 ## UI & UX
@@ -117,9 +117,13 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 ## 8.Machine Learning Proposal
 
 
-## 9.Machine Learning Work Flow
 
-<img src = "images/MlModel.png" width="600">
+## 9.MACHINE LEARNING WORKFLOW
+
+
+<img src = "images/MlModel.PNGG" width="600">
+
+
 
 ## Links
 <!-- - [Project Page](https://cepdnaclk.github.io/e17-3yp) -->
