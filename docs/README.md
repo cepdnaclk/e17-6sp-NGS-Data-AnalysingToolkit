@@ -105,24 +105,15 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 - System should be available for 24/7.
 - Able to access across the globe.
 
-    
-## 7.UML Class Diagram
+## 7.Use case Diagrams
 
-<img src = "images/UMLC.png" width="600" >
+<img src = "images/use-case-diagram.PNG" width="600">
 
-
-## 8.Use case Diagrams
-
-
-### 8.2.Web app
-
-<img src = "images/uc-web.png" width="600">
-
-## 9.Machine Learning Proposal
+## 8.Machine Learning Proposal
 
 
 
-## 10.MACHINE LEARNING WORKFLOW
+## 9.MACHINE LEARNING WORKFLOW
 
 
 <img src = "images/MLworkflow.png" width="600">
