@@ -31,23 +31,23 @@ title: NGS ToolKit
 
 ## 1.Introduction
 
-This is a Online toolkit to detect the biomarkers for Alzheimer’s Disease using the Next generation Sequencing Data Set. Simple and self explanatory GUI elements of our toolkit will help to analyse the data and visualize them in different ways (different graps and tables).
+    This is a Online toolkit to detect the biomarkers for Alzheimer’s Disease using the Next generation Sequencing Data Set. Simple and self explanatory GUI elements of our toolkit will help to analyse the data and visualize them in different ways (different graps and tables).
 
 ## 2.Problem Overview
 
 ### 2.1 Problem related to Alzheimer's Disease
 
-    * Found in people aged 65 or above
-    * Still has no efficient cure
-    * Sixth most leading death cause in world.
-    * Spreads in human body before 20 years when the symptoms are shown
-    * Can be found at early stage
+    - Found in people aged 65 or above
+    - Still has no efficient cure
+    - Sixth most leading death cause in world.
+    - Spreads in human body before 20 years when the symptoms are shown
+    - Can be found at early stage
 
 ### 2.2 Problem related to detecting biomarkers
 
-    * High cost and time 
-    * Lack of online tools
-    * People without programming knowledge tends to have difficulties when using existing tools
+    - High cost and time 
+    - Lack of online tools
+    - People without programming knowledge tends to have difficulties when using existing tools
 
 ## 3.Solution Overview
 
@@ -64,15 +64,8 @@ This is a Online toolkit to detect the biomarkers for Alzheimer’s Disease usin
 
 <img src = "images/dataflow.png" width="600">
 
-## Mobile App Demo
 
-<img src = "images/My-Video.gif" width="400" height="600">
-
-## GPS tracking
-
-<img src = "images/blutrac.gif" width="1000" height="500">
-
-## Web App Demo
+## Demo
 
 <img src = "images/web-gif.gif" width="1000" height="500">
 
@@ -82,35 +75,35 @@ This is a Online toolkit to detect the biomarkers for Alzheimer’s Disease usin
 ### 6.1.Functional Requirements
 
 #### Users 
-    * Login and sign up
-    * View the results of provided data sample 
+    - Login and sign up
+    - View the results of provided data sample 
 
 #### Registered users 
-    * Browse a table of provided data or upload their own files
-    * Manage their files and data
-    * Search bar 
-    * Able to visualize the data using different methods (Box plot, Scatter plot, heatmap, ROC)
-    * Able to normalize the data
-    * Able to use different feature selection methods
-    * Make future predictions
-    * The output and results should be downloadable
+    - Browse a table of provided data or upload their own files
+    - Manage their files and data
+    - Search bar 
+    - Able to visualize the data using different methods (Box plot, Scatter plot, heatmap, ROC)
+    - Able to normalize the data
+    - Able to use different feature selection methods
+    - Make future predictions
+    - The output and results should be downloadable
 
 
 ### 6.2.Non-Functional Requirements
 
 #### Scalability
-    * System should be utilized.
-    * Scalability of the system should be high in order to handle a huge amount of data.
+    - System should be utilized.
+    - Scalability of the system should be high in order to handle a huge amount of data.
 
 #### Usability
-    * Take minimal time to detect biomarkers
-    * User’s data need to be recoverable.
-    * Good data processing pipeline
-    * No need for programming skills
+    - Take minimal time to detect biomarkers
+    - User’s data need to be recoverable.
+    - Good data processing pipeline
+    - No need for programming skills
 
 #### Availability
-    * System should be available for 24/7.
-    * Able to access across the globe.
+    - System should be available for 24/7.
+    - Able to access across the globe.
 
     
 ## 7.UML Class Diagram
