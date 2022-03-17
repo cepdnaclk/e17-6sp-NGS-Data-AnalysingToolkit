@@ -62,7 +62,7 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 
 ## 5.Data Flow
 
-<img src = "images/dataflow.png" width="600">
+<!-- <img src = "images/dataflow.png" width="600"> -->
 
 
 ## UI & UX
@@ -120,10 +120,10 @@ We are propossing different kinds of feature selection methods & classification 
 
 
 
-## 9.MACHINE LEARNING WORKFLOW
+## 9.Machine Learning Work Flow
 
 
-<img src = "images/MlModel.PNG" width="600">
+<img src = "images/MlModel.png" width="600">
 
 
 
