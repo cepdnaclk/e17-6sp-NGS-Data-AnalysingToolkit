@@ -116,12 +116,14 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 
 ## 8.Machine Learning Proposal
 
+We are propossing different kinds of feature selection methods & classification insted of specific one. So, the user can tryout different methods and can comeup with a most accurate one.
+
 
 
 ## 9.MACHINE LEARNING WORKFLOW
 
 
-<img src = "images/MlModel.PNGG" width="600">
+<img src = "images/MlModel.PNG" width="600">
 
 
 
