@@ -25,7 +25,7 @@ Our project is to develop a web application which can provide a user-friendly in
 
 
 ## High Level Architecture
-
+<center> <img src='docs/images/solutionArchitecture.PNG'> </img> </center>
 
 ## Software design
 
@@ -46,22 +46,22 @@ In our application, User can:
 ### UI Designs
 
 #### LogIn/SignUp
-<center> <img src='docs/images/UI Designs/Login_SignUp.png'> </img> </center>
+<center> <img src='docs/images/UIDesigns/Login_SignUp.png'> </img> </center>
 
 #### Upload File
-<center> <img src='docs/images/UI Designs/Upload_File.png'> </img> </center>
+<center> <img src='docs/images/UIDesigns/Upload_File.png'> </img> </center>
 
 #### Data Visualise
-<center> <img src='docs/images/UI Designs/Data Visualise.png'> </img> </center>
+<center> <img src='docs/images/UIDesigns/Data Visualise.png'> </img> </center>
 
 #### Boxplot Visualise
-<center> <img src='docs/images/UI Designs/BoxPlot_Visualise.png'> </img> </center>
+<center> <img src='docs/images/UIDesigns/BoxPlot_Visualise.png'> </img> </center>
 
 ## ML Model
-
+<center> <img src='docs/images/MlModel.PNG'> </img> </center>
 
 ## Use case Diagram
-<center> <img src='docs/images/use case diagram.PNG'> </img> </center>
+<center> <img src='docs/images/use-case-diagram.PNG'> </img> </center>
 
 ## Developers
 1. E/17/015 Arshad MRM.  [[Email]](mailto:e17015@eng.pdn.ac.lk)
