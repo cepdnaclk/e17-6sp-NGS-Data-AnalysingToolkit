@@ -29,13 +29,13 @@ title: NGS ToolKit
 
 ---
 
-## 1.Introduction
+## Introduction
 
 This is a Online toolkit to detect the biomarkers for Alzheimer’s Disease using the Next generation Sequencing Data Set. Simple and self explanatory GUI elements of our toolkit will help to analyse the data and visualize them in different ways (different graps and tables).
 
-## 2.Problem Overview
+## Problem Overview
 
-### 2.1 Problem related to Alzheimer's Disease
+### Problem related to Alzheimer's Disease
 
 -   Found in people aged 65 or above
 -   Still has no efficient cure
@@ -43,7 +43,7 @@ This is a Online toolkit to detect the biomarkers for Alzheimer’s Disease usin
 -   Spreads in human body before 20 years when the symptoms are shown
 -   Can be found at early stage
 
-### 2.2 Problem related to detecting biomarkers
+### Problem related to detecting biomarkers
 
 - High cost and time 
 - Lack of online tools
