@@ -117,7 +117,6 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 ## 8.Machine Learning Proposal
 
 
-
 ## 9.MACHINE LEARNING WORKFLOW
 
 
