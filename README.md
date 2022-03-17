@@ -46,22 +46,22 @@ In our application, User can:
 ### UI Designs
 
 #### LogIn/SignUp
-<center> <img src='docs/images/UI Designs/Login_SignUp.png'> </img> </center>
+<center> <img src='docs/images/UIDesigns/Login_SignUp.png'> </img> </center>
 
 #### Upload File
-<center> <img src='docs/images/UI Designs/Upload_File.png'> </img> </center>
+<center> <img src='docs/images/UIDesigns/Upload_File.png'> </img> </center>
 
 #### Data Visualise
 <center> <img src='docs/images/UI Designs/Data Visualise.png'> </img> </center>
 
 #### Boxplot Visualise
-<center> <img src='docs/images/UI Designs/BoxPlot_Visualise.png'> </img> </center>
+<center> <img src='docs/images/UIDesigns/BoxPlot_Visualise.png'> </img> </center>
 
 ## ML Model
 
 
 ## Use case Diagram
-<center> <img src='docs/images/use case diagram.PNG'> </img> </center>
+<center> <img src='docs/images/use-case-diagram.PNG'> </img> </center>
 
 ## Developers
 1. E/17/015 Arshad MRM.  [[Email]](mailto:e17015@eng.pdn.ac.lk)
