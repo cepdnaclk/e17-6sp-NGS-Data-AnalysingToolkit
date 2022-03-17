@@ -4,14 +4,9 @@ permalink: index.html
 
 # Please update this with your repository name and title
 repository-name: e17-co328-NGS-Data-AnalysingToolkit
-title:
-NGS ToolKit
-
-[comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
-
-# CONTACT TRACING APP
-
+title: NGS ToolKit
 ---
+
 
 ## Team
 -  E/17/015, ARSHAD MRM  , [e17015@eng.pdn.ac.lk](mailto:e17015@eng.pdn.ac.lk)
