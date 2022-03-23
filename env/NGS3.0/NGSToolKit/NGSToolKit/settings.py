@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'register.apps.RegisterConfig',
     'crispy_forms',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
