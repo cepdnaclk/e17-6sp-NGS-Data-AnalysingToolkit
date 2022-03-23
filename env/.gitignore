@@ -1,7 +1,4 @@
-# created by virtualenv automatically
-Lib/
-Scripts/
-media/
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 _pycache_/
