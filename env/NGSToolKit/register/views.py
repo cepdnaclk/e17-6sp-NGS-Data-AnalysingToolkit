@@ -4,9 +4,11 @@ from django.contrib.auth.forms import  AuthenticationForm
 from .forms import CreateUserForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
 
 # Create your views here.
+@csrf_exempt
 def register(request):
     if request.method =="POST":
         form = CreateUserForm(request.POST)
@@ -27,6 +29,7 @@ def register(request):
         return HttpResponse("GET")
 
 #Login Page
+@csrf_exempt
 def login_request(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data = request.POST)
