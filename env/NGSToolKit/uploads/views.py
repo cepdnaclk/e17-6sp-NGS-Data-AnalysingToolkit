@@ -10,6 +10,7 @@ import json
 from matplotlib import pyplot as plt
 from django.views.decorators.csrf import csrf_exempt
 import numpy
+from .models import userFiles
 
 
 # Create your views here.
@@ -22,19 +23,21 @@ def csv_file(request):
     if request.method =="POST":
         uploadedfile = request.FILES['Document']
         fileName = uploadedfile.name
-        fs = FileSystemStorage()    #Creating an object
-        fs.save(fileName, uploadedfile)
-        if fileName.endswith('.csv'):
-            data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
-        elif fileName.endswith('.xls'):
-            data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))   
+        if fileName.endswith('.csv') | fileName.endswith('.xls'):   #check the file format are correct
+            fs = FileSystemStorage()    #Creating an object
+            fs.save(fileName, uploadedfile)
+            userfile = userFiles(title = fileName)
+            if fileName.endswith('.csv'):
+                data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
+            elif fileName.endswith('.xls'):
+                data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))   
+                # return redirect('Upload')
+            json_data = data.to_json()
+            # return render(request,'visualize.html',{'data':html_data})
+            return HttpResponse(json_data)
         else:
-            messages.warning(request,"Incorrect file format")
-            return HttpResponse("Incorrect file format")
-            # return redirect('Upload')
-        json_data = data.to_json()
-        # return render(request,'visualize.html',{'data':html_data})
-        return HttpResponse(json_data)
+                messages.warning(request,"Incorrect file format")
+                return HttpResponse("Incorrect file format")
     # GET
     else:
         # return render(request, "upload.html")

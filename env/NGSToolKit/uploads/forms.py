@@ -1,5 +1,10 @@
 from django import forms
-from matplotlib.pyplot import title
+from .models import userFiles
 
 class UploadFileForm(forms.Form):
-    file = forms.FileField()
+    
+    class Meta:
+        model = userFiles
+        fields = '__all__'
+    
+    
