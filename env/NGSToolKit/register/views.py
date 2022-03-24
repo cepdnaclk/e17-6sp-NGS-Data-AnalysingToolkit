@@ -22,7 +22,7 @@ def register(request):
             # return redirect('Signup')
             return HttpResponse("Fail")
     else:
-        form = CreateUserForm()
+        # form = CreateUserForm()
         # return render(request, "register.html",{"form":form})
         return HttpResponse("GET")
 
@@ -42,7 +42,7 @@ def login_request(request):
                 messages.error(request, "Invalid username or password.")
         else:
             messages.error(request, "Invalid username or password.")
-    form = AuthenticationForm()
+    # form = AuthenticationForm()
     return render(request, "login.html", context={"form": form})                   
 
 

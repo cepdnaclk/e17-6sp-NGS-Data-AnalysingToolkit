@@ -21,7 +21,7 @@ def home(request):
 
 
 @csrf_exempt
-def csv_file_react(request):
+def csv_file(request):
     if request.method =="POST":
         uploadedfile = request.FILES['Document']
         fileName = uploadedfile.name
@@ -43,30 +43,6 @@ def csv_file_react(request):
         # return render(request, "upload.html")
         return HttpResponse("GET")
 
-@csrf_exempt
-def csv_file(request):
-    if request.method =="POST":
-        body= request.body.decode('utf-8')
-        body = json.loads(body)
-        uploadedfile =body['formData']
-        
-        filename =  uploadedfile['file']
-        data = uploadedfile['data']
-     
-        name = os.path.join(settings.MEDIA_ROOT,filename)
-
-        with open(name , 'w', newline='') as file:
-            writer = csv.writer(file)
-            for d in data:
-                writer.writerow(d)
-
-        data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,filename))
-        html_data = data.to_html()
-        html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
-        send = {'html':html,  'name':filename}
-        print(send)
-        return JsonResponse(send)
-    
 @csrf_exempt
 def normalizeData(request):
         # Normalize the dataset
@@ -98,8 +74,6 @@ def plotData(request):
         body = json.loads(body)
         fileName = body["fileName"]
         geneName = body["name"]
-        print(fileName)
-        print(geneName)
         if fileName.endswith('.csv'):
             dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
         elif fileName.endswith('.xls'):
@@ -114,17 +88,9 @@ def plotData(request):
                 Ad_list.append(col)
             elif col.startswith("control"):
                 control_list.append(col)
-            
         Ad_val = dataFrame[Ad_list].loc[geneName].values.tolist()
-        
-        print(Ad_val)
         control_val = dataFrame[control_list].loc[geneName].values.tolist() 
-        
-        vals = {"ad":Ad_val, "control":control_val}
         Ad_props = [min(Ad_val),numpy.quantile(Ad_val,0.25), numpy.quantile(Ad_val,0.5), numpy.quantile(Ad_val,0.75),max(Ad_val)]
         Control_props = [min(control_val),numpy.quantile(control_val,0.25), numpy.quantile(control_val,0.5), numpy.quantile(control_val,0.75),max(control_val)]
-        print(Ad_props)
         vals = {"ad":Ad_val, "control":control_val, "Ad_props": Ad_props, "Control_props":Control_props}
-             
-        
         return HttpResponse(json.dumps(vals))
