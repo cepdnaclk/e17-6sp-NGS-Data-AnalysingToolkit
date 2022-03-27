@@ -8,14 +8,12 @@ class FileUpload {
 
     upload(formData) {
         console.log("upload called");
-
         return axios.post(API_URL + '/upload', { formData },
             // { headers: { 'Content-Type': 'multipart/form-data' } }
         )
             .then(res => {
                 return res;
             })
-
     }
 }
 
