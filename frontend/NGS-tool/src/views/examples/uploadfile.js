@@ -11,6 +11,7 @@ import { Button, FormGroup, Form } from 'react-bootstrap';
 import PaPa from 'papaparse';   
 import styled from 'styled-components';
 import { 
+      
     Card, 
     CardHeader,
     CardBody,
@@ -21,29 +22,39 @@ import {
     Table,
     Container,
     Row,
-    Col,} from "reactstrap";
+    Col,
+  } from "reactstrap";
 
-
+ 
 function UploadFile() {
     const [files, setFiles] = useState([]);
     const [upload, setUpload] = useState('');//true) 
     const [data, setData] = useState({});
 
-    let history = useHistory();
+  let history = useHistory();
+
     let formData = new FormData();
     const uploadHandler = async (event) => {
+
         const file = event.target.files[0];
         console.log(file)
         // if (!file) return;
         //file.isUploading = true;
         setFiles([...files, file])
+
+
         // form data -------------------------------------
+
         formData.append(
             'newfile', event.target.files[0],
         )
         // await FileUpload.upload(formData).then(res => {
         //     console.log(res.data);
+
         // })
+
+
+
 
         // let reader = new FileReader();
         // reader.readAsText(file);
@@ -51,6 +62,7 @@ function UploadFile() {
         //     file.isUploading = false;
         //     setFiles([...files, file])
         //     // setUpload(false)
+
         // }
 
 
@@ -63,8 +75,10 @@ function UploadFile() {
             // skipEmptyLines: true,
             complete: function (results) {
                 
-                const Data = { file: file.name, data: results.data, userid: 1 }
+                const Data = { file: file.name, data: results.data }
+
                 FileUpload.upload(Data).then(res => {
+                   
                     var dd = res.data
                     //dd=  JSON.parse(dd)
                     console.log(typeof dd);
@@ -98,41 +112,54 @@ function UploadFile() {
 
     return (
         <>
-            <Header />
+             <Header />
 
 
-                <Container className="mt--7" fluid>
-
-                    <Row className="mt-5">
-    
-                        <Col>
-                            {/* xl="4"> */}
-                            <Card className="shadow">
-                            <CardHeader className="border-0">
-                            <Row className="align-items-center">
-                            <div className="col">
-            <h3 className="mb-0">Upload File</h3>
+             <Container className="mt--7" fluid>
+      
+               
+              
+      <Row className="mt-5">
+      
+        <Col>
+         {/* xl="4"> */}
+          <Card className="shadow">
+            <CardHeader className="border-0">
+              <Row className="align-items-center">
+                <div className="col">
+              <h3 className="mb-0">Upload File</h3>
                 </div>
               </Row>
             </CardHeader>
           <Card className="shadow align-items-center">
+
             <StyledButton style={{  marginBottom : 25,   marginTop : 25}}>
                 {/* <div className='title'>Upload File</div> */}
                 <div className='App' >
+
                     <>
+
                         <div className="file-card">
+
                             <div className="file-inputs">
+
                                 <input type="file" accept='.csv'
                                     onChange={uploadHandler} />
                                 <button type='submit'>
+
                                     <i>
                                         <FontAwesomeIcon icon={faPlus} />
                                     </i>
+
                                     Upload Sample File
                                 </button>
+
+                              
                             </div>
+
                             <p className="main">Supported files</p>
                             <p className="info">CSV</p>
+
                             <>
                                 <ul className="file-list">
                                     {
@@ -157,15 +184,29 @@ function UploadFile() {
                                 </ul>
                             </>
                         </div>
+
+                       
+
                     </>
+
                 </div>
+               
             </StyledButton >
 </Card>
-        </Card>
+          </Card>
         </Col>
-</Row>
+      
+
+       
+      </Row>
+
+      
     </Container>
+    
+
+
         </>
+
     )
 }
 
