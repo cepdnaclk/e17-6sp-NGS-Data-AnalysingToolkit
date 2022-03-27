@@ -1,4 +1,4 @@
-/// reactstrap components
+ /// reactstrap components
 import {
   Button,
   Card,
@@ -14,7 +14,8 @@ import {
   Col,
 } from "reactstrap";
 import React, {useState, useEffect, useContext} from 'react';
-import {Redirect, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
+import authService from '../../services/auth'; 
 
 const Login = () => {
 
@@ -26,8 +27,8 @@ const Login = () => {
 
     const handleChange = e => { 
         setUser({...user, [e.target.name]:e.target.value});
-        setErrors(validate(user));
-        console.log(user)
+        // setErrors(validate(user));
+        // console.log(user)
     };
 
     const handleSubmit = e => {
@@ -40,12 +41,12 @@ const Login = () => {
     useEffect(()=>{
         let errorx = {}
         if(Object.keys(error).length === 0 && submit){
-            console.log(user);
+            // console.log(user);
             let email = user.email;
             let password = user.password;
-    //         authService.login(email, password)
-    //         .then(res => {console.log(res)
-    //             //console.log(res);
+            authService.login(email, password)
+            .then(res => {console.log(res)
+                //console.log(res);
 
     //         if(res.data.message)     //INVALID LOGIN
     //         errorx.all = 'Invalid User!, Email or Password is incorrect.'; 
@@ -66,15 +67,15 @@ const Login = () => {
            
     //         } 
     // setErrors(errorx); 
-    //         })
+            })
                 
-    //         .catch(err=>{console.log(err)});
+            .catch(err=>{console.log(err)});
         }
     } );
 
     const validate = (values) => {
       const errors = {};
-      console.log(errors)
+      // console.log(errors)
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
       if( !values.email ||  !values.password  ){
                   errors.all ='has-danger';
@@ -89,9 +90,9 @@ const Login = () => {
           errors.msg = '';
          
       }
-      else{
-        errors = {};
-      }
+      // else{
+      //   errors = {};
+      // }
       
       return errors;
   }
@@ -129,17 +130,19 @@ const Login = () => {
               <small>Or sign in with credentials</small>
             </div>
             <Form role="form" onChange={handleChange} onSubmit={handleSubmit} className={error.all}>
-            <div style={{color:'red', fontWeight:'bold', align:'center'}}>
-                   
-                        <p  >{error.msg}</p>
+            <div className="text-muted font-italic"> <small>
+                        <span className="text-danger font-weight-700">{error.msg}</span>
+                        </small>
                     </div>
+
 
                   
               <FormGroup className="mb-3" action=''   className={error.email}>
-              <div style={{color:'red', fontWeight:'bold'}}>
-                   
-                   <p className="control-label ">{error.emsg}</p>
-               </div>
+              <div className="text-muted font-italic"> <small>
+                        <span className="text-danger font-weight-700">{error.emsg}</span>
+                        </small>
+                    </div>
+
                 <InputGroup className="input-group-alternative">
                   <InputGroupAddon addonType="prepend"  >
                     <InputGroupText >

@@ -1,4 +1,4 @@
-// reactstrap components
+ // reactstrap components
 import {
   Button,
   Card,
@@ -14,6 +14,8 @@ import {
   Col,
 } from "reactstrap";
 import React, {useEffect, useState} from 'react'
+import authService from '../../services/auth'; 
+
 
 const Register = () => {
 
@@ -27,7 +29,7 @@ const Register = () => {
     const handleChange = e => { 
         setUser({...user, [e.target.name]:e.target.value});
         // setErrors(validate(user));
-        console.log(user)
+        // console.log(user)
     };
 
     const handleSubmit = e => {
@@ -41,8 +43,8 @@ const Register = () => {
         let errorx = {}
         if(Object.keys(error).length === 0 && submit){
                  let {username, email, password} = user;
-      //  authServices.signup(name, email, address, phoneno, nic, password)
-      //   .then(res => {console.log(res);
+       authService.signup(username, email, password)
+        .then(res => {console.log(res);
       //       if(res.data.email) {     //error
 
       //           errorx.success ='User created Succssfully!, Please confirm your email to login';
@@ -53,9 +55,9 @@ const Register = () => {
       //           //alert(res.headers);
       //         }
       //   setErrors(errorx);
-      //   })
+        })
             
-      //   .catch(error=>{console.log(error)});
+        .catch(error=>{console.log(error)});
         }
     }, [error]);
 

@@ -11,7 +11,7 @@ from matplotlib import pyplot as plt
 from django.views.decorators.csrf import csrf_exempt
 import numpy
 from .models import userFiles
-
+import csv
 
 # Create your views here.
 def home(request):
@@ -19,7 +19,7 @@ def home(request):
 
 
 @csrf_exempt
-def csv_file(request):
+def csv_file_react(request):
     if request.method =="POST":
         uploadedfile = request.FILES['Document']
         fileName = uploadedfile.name
@@ -43,6 +43,31 @@ def csv_file(request):
         # return render(request, "upload.html")
         return HttpResponse("GET")
 
+
+
+@csrf_exempt
+def csv_file(request):
+    if request.method =="POST":
+        body= request.body.decode('utf-8')
+        body = json.loads(body)
+        uploadedfile =body['formData']
+        
+        filename =  uploadedfile['file']
+        data = uploadedfile['data']
+     
+        name = os.path.join(settings.MEDIA_ROOT,filename)
+
+        with open(name , 'w', newline='') as file:
+            writer = csv.writer(file)
+            for d in data:
+                writer.writerow(d)
+
+        data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,filename))
+        html_data = data.to_html()
+        html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
+        send = {'html':html,  'name':filename}
+        print(send)
+        return JsonResponse(send)
     
 @csrf_exempt
 def normalizeData(request):
