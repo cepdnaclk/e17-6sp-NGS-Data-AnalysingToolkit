@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 import numpy
 from .models import userFiles
 import csv
-import s
+# import sklearn 
 
 # Create your views here.
 def home(request):
