@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login
+import json
+from uploads.models import userFiles
 
 # Create your views here.
 @csrf_exempt
@@ -17,11 +19,9 @@ def register(request):
             login(request, user)
             #Check whether the password are matching
             messages.success(request, 'Your account has been successfully created')
-            # return redirect('Login')
             return HttpResponse("Sucess")
         else:
             messages.warning(request,"Registration failed. Invalid information")
-            # return redirect('Signup')
             return HttpResponse("Fail")
     else:
         form = CreateUserForm()
@@ -48,7 +48,15 @@ def login_request(request):
     form = AuthenticationForm()
     return render(request, "login.html", context={"form": form})                   
 
-
 #Profile page
+@csrf_exempt
 def profile(request):
-    return render(request, "profile.html",)
+    if request.method == "POST":
+        userId = request.POST["userid"]
+        userfiles = userFiles.objects.filter(id=userId)
+        fileLis = []
+        for file in userFiles:
+            fileLis.append(file.title)
+        return HttpResponse(fileLis)
+    else:
+        return HttpResponse("Get")
