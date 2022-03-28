@@ -1,0 +1,66 @@
+p value
+fold change
+
+UML diagram (On going)
+-----------
+
+
+Requirements
+	1. Functional Requirements
+	--> System Should be able to detect all the biomarkers for a ceratain disease when ".csv" or ".xlrd" files uploaded
+	--> User able to login with the credentials and able to manage his/her files and datas.
+	--> User able to visualize the data using different methods(Box plot, Scatter plot)
+	--> User able to normalize the data.
+	--> user able to use different feature selection methods(Selected few)
+	--> User able to use different classification methods to classify the person as diseased or not
+ 
+
+	2. Non Functional requirements
+	--> For handling vast amount of data the sytem should be utilized.
+	--> Time taken to detect the biomarkers need to minimize as much as possible.
+	--> User data's need to recoverable.
+	--> Scalability of the system should be high inorder to handle a huge amount of data.
+	--> System should be available 24/7.
+	--> Able to access across the globe.
+
+Normalization methods 
+	1. Min Max Normalization
+	2. Standard normalization
+
+
+****Visualization Methods
+	1. Box plot
+	2. Scatter plot
+
+
+Feature Selection Methods
+	1. Intrinsic
+		i. Pearson's Coefficient
+			
+		ii. Chi Squared
+			categorical ----> categorical
+
+		iii. Anova Coefficient
+
+	2. Wrapper Method
+		i. Recursive Feature Elimination
+		ii. Genetic Algorithms
+
+	3. Filter Method
+
+		i. lasso Regularization
+		ii. Decission tree
+
+
+Binary Classification
+Biomarker Or Not
+
+Classification methods
+	1. Logistic Regression
+	2. Naive Bayes
+	3. Stochastic Gradient Descent
+	4. K-Nearest Neighbours
+	5. Decision tree
+	6. Random Forest
+	7. Support Vector Machine
+
