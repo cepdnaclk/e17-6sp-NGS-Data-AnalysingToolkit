@@ -1,6 +1,6 @@
 import { useState , useEffect} from "react";
 // node.js library that concatenates classes (strings)
-import classnames from "classnames";
+import {useHistory} from 'react-router-dom';
 // javascipt plugin for creating charts
 import Chart from "chart.js";
 // react plugin used to create charts
@@ -61,6 +61,9 @@ const Index = (props) => {
   const [ADpoints, setAdPoints] = useState(0);
   const [controlPoints, setControlPoinnts] = useState(0);
   
+  let history = useHistory();
+
+
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
@@ -106,7 +109,11 @@ useEffect(() => {
     setModalOpen(false)
   }
 
-
+  const find_bio_click = ()=>{
+    history.push(
+      {
+        pathname:'/admin/findbiomarker', state:{fileName}})
+  }
   // const  AD = [54, 66, 69, 75, 88, 90];
   // const control = [54, 59, 66, 71, 88];
   const  series= [
@@ -183,9 +190,18 @@ useEffect(() => {
                   <div className="col">
                     <h3 className="mb-0">{fileName}</h3>
                   </div>
-                  {/* <div className="col text-right">
-                  
-                  </div> */}
+                  <div className="col ">
+                    <Nav className="justify-content-end" pills>
+                    <Button
+                      color="success"
+                      onClick={find_bio_click}
+                      size="sm"
+                    >
+                      Find biomarkers
+                    </Button>
+                      
+                    </Nav>
+                  </div>
                 </Row>
               </CardHeader>
                   
