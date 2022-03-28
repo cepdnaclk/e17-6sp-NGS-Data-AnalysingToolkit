@@ -21,6 +21,7 @@ def register(request):
             messages.success(request, 'Your account has been successfully created')
             return HttpResponse("Sucess")
         else:
+            print(form)
             messages.warning(request,"Registration failed. Invalid information")
             return HttpResponse("Fail")
     else:
