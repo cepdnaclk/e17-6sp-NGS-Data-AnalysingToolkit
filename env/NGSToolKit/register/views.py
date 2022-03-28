@@ -19,11 +19,9 @@ def register(request):
             login(request, user)
             #Check whether the password are matching
             messages.success(request, 'Your account has been successfully created')
-            # return redirect('Login')
             return HttpResponse("Sucess")
         else:
             messages.warning(request,"Registration failed. Invalid information")
-            # return redirect('Signup')
             return HttpResponse("Fail")
     else:
         form = CreateUserForm()

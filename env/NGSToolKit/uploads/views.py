@@ -37,7 +37,7 @@ def csv_file(request):
             writer = csv.writer(file)
             for d in data:
                 writer.writerow(d)
-        data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,filename))
+        data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,filename)).head(10)
         html_data = data.to_html()
         html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
         send = {'html':html,  'name':filename}
