@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'uploads.apps.UploadsConfig',
+    'normalize.apps.NormalizeConfig',
     'rest_framework',
     'corsheaders',
     'register.apps.RegisterConfig',

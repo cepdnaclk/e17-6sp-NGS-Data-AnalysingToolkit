@@ -14,6 +14,7 @@ import {
   Col,
 } from "reactstrap";
 import React, { useEffect, useState } from "react";
+import authService from "../../services/auth";
 
 const Register = () => {
   const [user, setUser] = useState({});
@@ -23,7 +24,7 @@ const Register = () => {
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
     // setErrors(validate(user));
-    console.log(user);
+    // console.log(user)
   };
 
   const handleSubmit = (e) => {
@@ -35,22 +36,23 @@ const Register = () => {
   useEffect(() => {
     let errorx = {};
     if (Object.keys(error).length === 0 && submit) {
-      let { username, email, password } = user;
-      //  authServices.signup(name, email, address, phoneno, nic, password)
-      //   .then(res => {console.log(res);
-      //       if(res.data.email) {     //error
-
-      //           errorx.success ='User created Succssfully!, Please confirm your email to login';
-      //       }
-      //       else{
-      //           errorx.all = res.data;
-
-      //           //alert(res.headers);
-      //         }
-      //   setErrors(errorx);
-      //   })
-
-      //   .catch(error=>{console.log(error)});
+      let { username, email, password1, password2 } = user;
+      authService
+        .signup(username, email, password1, password2)
+        .then((res) => {
+          console.log(res);
+          //       if(res.data.email) {     //error
+          //           errorx.success ='User created Succssfully!, Please confirm your email to login';
+          //       }
+          //       else{
+          //           errorx.all = res.data;
+          //           //alert(res.headers);
+          //         }
+          //   setErrors(errorx);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, [error]);
 
@@ -75,8 +77,8 @@ const Register = () => {
       // if(!values.password )
       //     errors.password = 'Password is required.';
 
-      if (values.password.length < 6)
-        errors.password = "Password must be 6 characters long.";
+      if (values.password.length < 8)
+        errors.password = "Password must be 8 characters long.";
     }
 
     console.log(errors);
@@ -182,6 +184,29 @@ const Register = () => {
                   <Input
                     name="password"
                     placeholder="Password"
+                    type="password"
+                    autoComplete="new-password"
+                  />
+                </InputGroup>
+              </FormGroup>
+
+              <FormGroup>
+                <div className="text-muted font-italic">
+                  <small>
+                    <span className="text-danger font-weight-700">
+                      {error.password}
+                    </span>
+                  </small>
+                </div>
+                <InputGroup className="input-group-alternative">
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="ni ni-lock-circle-open" />
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    name="password2"
+                    placeholder="Enter the Password Again"
                     type="password"
                     autoComplete="new-password"
                   />

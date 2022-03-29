@@ -2,9 +2,9 @@ import Index from "./views/Index.js";
 import Profile from "./views/examples/Profile.js";
 import Register from "./views/examples/Register.js";
 import Login from "./views/examples/Login.js";
-import Tables from "./views/examples/Tables.js";
 import Visualize from "./views/examples/visualize.js"
 import UploadFile from "./views/examples/uploadfile";
+import FindBiomarker from "./views/examples/FindBiomarker";
 
 var routes = [
   {
@@ -29,19 +29,21 @@ var routes = [
     layout: "/admin",
   },
   {
+    path: "/findbiomarker",
+    name: "Find Biomarker",
+    icon: "ni ni-atom text-success  text-success font-weight-bold",
+    component: FindBiomarker,
+    state:{fileName:8},
+    layout: "/admin",
+  },
+  {
     path: "/user-profile",
     name: "User Profile",
     icon: "ni ni-single-02 text-success",
     component: Profile,
     layout: "/admin",
   },
-  {
- 
-    name: "Find Biomarkers",
-    icon: "ni ni-atom text-success",
-    component: Profile,
-    layout: "/admin",
-  },
+  
   {
     
     path: "/user-profile",
@@ -68,13 +70,6 @@ var routes = [
   //   name: "Tables",
   //   icon: "ni ni-bullet-list-67  text-success font-weight-bold",
   //   component: Tables,
-  //   layout: "/admin",
-  // },
-  // {
-  //   path: "/icons",
-  //   name: "Icons",
-  //   icon: "ni ni-planet text-success",
-  //   component: Icons,
   //   layout: "/admin",
   // },
   // {

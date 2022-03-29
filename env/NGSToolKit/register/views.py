@@ -14,10 +14,11 @@ from uploads.models import userFiles
 def register(request):
     if request.method =="POST":
         form = CreateUserForm(request.POST)
+        print(form)
         if form.is_valid():
             user = form.save()
+            # print(user)
             login(request, user)
-            #Check whether the password are matching
             messages.success(request, 'Your account has been successfully created')
             return HttpResponse("Sucess")
         else:

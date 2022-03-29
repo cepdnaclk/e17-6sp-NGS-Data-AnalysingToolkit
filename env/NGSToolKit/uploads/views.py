@@ -1,10 +1,7 @@
-from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.core.files.storage import FileSystemStorage
-from .forms import UploadFileForm
 from django.conf import settings
-from django.contrib import messages
 import pandas as pd
 import os
 import json
@@ -13,11 +10,10 @@ from django.views.decorators.csrf import csrf_exempt
 import numpy
 from .models import userFiles
 import csv
-# import sklearn 
 
 # Create your views here.
 def home(request):
-    return render(request, "home.html")
+    return HttpResponse( "home.html")
 
 @csrf_exempt
 def csv_file(request):
@@ -28,7 +24,6 @@ def csv_file(request):
         filename =  uploadedfile['file']
         userId = uploadedfile['userid']
         query = User.objects.get(id__exact = userId)
-        print(query)
         userfile = userFiles(title = filename, upload_by = query)
         userfile.save()
         data = uploadedfile['data']
@@ -70,28 +65,9 @@ def csv_file(request):
 #     else:
 #         # return render(request, "upload.html")
 #         return HttpResponse("GET")
-
     
-@csrf_exempt
-def normalizeData(request):
-        # Normalize the dataset
-        # find the mean of the evry column
-        if request.method == "POST":
-            form = request.POST
-            fileName = form["fileName"]
-            if fileName.endswith('.csv'):
-                dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
-            elif fileName.endswith('.xls'):
-                dataFrame = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))  
-            # mean variance for every column
-            meanValues = dataFrame.mean()
-            # (data - mean)/ variance 
-            dis = dataFrame.describe()
-            # print(dataFrame.head(10))
-            return HttpResponse(dataFrame.to_html())
 
-
-    #Plot the data 
+#Plot the data 
 @csrf_exempt
 def plotData(request):
     if request.method == "POST":

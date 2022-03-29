@@ -54,10 +54,14 @@ const Sidebar = (props) => {
   // creates the links that appear in the left menu / Sidebar
   const createLinks = (routes) => {
     return routes.map((prop, key) => {
+
+      var x = prop.layout + prop.path;
+
       return (
         <NavItem key={key}>
           <NavLink
-            to={prop.layout + prop.path}
+             to={{ pathname:x ,  state:{title:'from home page'}   }}
+            //  to={prop.layout + prop.path}
             tag={NavLinkRRD}
             onClick={closeCollapse}
             activeClassName="active"
