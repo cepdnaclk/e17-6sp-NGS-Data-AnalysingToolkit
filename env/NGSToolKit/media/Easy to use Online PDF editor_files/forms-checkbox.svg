@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="576px" height="576px" viewBox="192 -8 576 576" enable-background="new 192 -8 576 576" xml:space="preserve">
+<g>
+	<path stroke="#000000" stroke-width="18" stroke-miterlimit="10" d="M446.167,371.289c1.717,1.372,3.779,2.044,5.833,2.044
+		c2.576,0,5.143-1.063,6.981-3.136l149.333-168c3.426-3.845,3.08-9.753-0.774-13.169c-3.864-3.435-9.753-3.08-13.179,0.775
+		L450.917,351.176L364.5,282.044c-4.013-3.22-9.903-2.548-13.113,1.456c-3.22,4.032-2.567,9.902,1.456,13.123L446.167,371.289z"/>
+	<path stroke="#000000" stroke-width="16" stroke-miterlimit="10" d="M200,0v560h560V0H200z M741.333,541.333H218.667V18.667
+		h522.667V541.333z"/>
+</g>
+</svg>
