@@ -33,8 +33,11 @@ class AuthService {
       })
       .then((res) => {
         return res;
+ 
       });
   }
+ 
+  
 
   logout() {
     //localStorage.removeItem('isLoggedIn');
