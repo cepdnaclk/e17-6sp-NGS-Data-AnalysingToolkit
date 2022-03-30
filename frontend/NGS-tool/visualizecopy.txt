@@ -49,7 +49,6 @@ import parse from 'html-react-parser';
 import JsonToTable from 'react-json-to-table';
 import ReactHtmlParser from 'react-html-parser'
 import Normalization from "./Normalization";
-import ChooseFile from './ChooseFile';
 
 const Index = (props) => { 
   const [activeNav, setActiveNav] = useState(1);
@@ -63,7 +62,6 @@ const Index = (props) => {
   const [ADpoints, setAdPoints] = useState(0);
   const [controlPoints, setControlPoinnts] = useState(0);
   const [normSelect, setNormSelect] = useState(false);
-  const [tempFile, setTempFile] = useState('');
   
   let history = useHistory();
 
@@ -120,25 +118,6 @@ useEffect(() => {
     console.log(normSelect)
 
   }
-
-  const handleCallback = (childData) =>{
-
-    //from back need to provide file list ---------
-    //selected file come here(done)
-    //need to retreive data from that file -------
-    //send norm algo to the backend ----------- 
-    //get result data & boxplot 
-    if(childData=='submit'){
-      setFileName(tempFile)
-console.log(fileName)
-
-    }
-    
-    else 
-      setTempFile(childData)
-
-}
-
 
   
 
@@ -209,9 +188,8 @@ console.log(fileName)
                
               
         <Row className="mt-5">
-        {!normSelect?
-        <>
-        {fileName? 
+        {/* {openModal &&  */}
+        {fileName? null:
           <Col>
            {/* xl="4"> */}
             <Card className="shadow">
@@ -252,49 +230,104 @@ console.log(fileName)
                
             </Card>
           </Col>
-        :
+        }
+
+          {/* {openModal  ? 
+          
         <>
-                 
-          <Col className="mb-8 mb-xl-0" xl="8">
-            <Card className="shadow">
-              <CardHeader className="border-0">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h3 className="mb-0">ChooseFile</h3>
-                  </div>
-                  {/* <div className="col ">
-                    <Nav className="justify-content-end" pills>
-                    <Button
-                      color="success"
-                      onClick={normalize_data}
-                      size="sm"
-                    >
-                      Normalize the data
-                    </Button>
-                      
-                    </Nav>
-                  </div> */}
-              
-                </Row>
-              </CardHeader>
+               
+        <Col className="mb-8 mb-xl-0" xl="8">
+          <Card className="shadow">
+            <CardHeader className="border-0">
+              <Row className="align-items-center">
+                <div className="col">
+                  <h3 className="mb-0">{geneName}</h3>
+                </div>
             
-         <ChooseFile parentCallback={handleCallback} />
+              </Row>
+            </CardHeader>
+                
+            <div style={{alignItems:'right'}}>
+             <MDBCloseIcon style={{position:'absolute' , left:0, botton:0, top:5, top:5 }} onClick={closeHandle}/>
+             </div>
                 
                
-            </Card>
-          </Col>
-         
-           
-     
+       <ReactApexChart options={options} series={series} type="boxPlot" height={350} />
+              
+             
+          </Card>
+        </Col>
        
-           </>}
-           </>
+        <Col lg="6" xl="4">
+          <Row>
+                <Card className="card-stats mb-4 mb-xl-0">
+                  <Row>
+          <div className="col">
+            <Card className="shadow">
+                   <CardHeader className="border-0">
+                <h3 className="mb-0"> </h3>
+              </CardHeader>
+              <Table className="align-items-center table-flush" responsive>
+                <thead className="thead-light">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">AD</th>
+                    <th scope="col">Control</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>SAMPLES</td>
+                    <td>{ADpoints}</td>
+                    <td>{controlPoints}</td>
+                  </tr>
+                  <tr>
+                    <td>MIN</td>
+                    <td>{AD[0]}</td>
+                    <td>{control[0]}</td>
+                  </tr>
+                  <tr>
+                    <td>Q1</td>
+                    <td>{AD[1]}</td>
+                    <td>{control[1]}</td>
+                  </tr>
+                  <tr>
+                    <td>MEDIAN</td>
+                    <td>{AD[2]}</td>
+                    <td>{control[2]}</td>
+                  </tr>
+                  <tr>
+                    <td>Q3</td>
+                    <td>{AD[3]}</td>
+                    <td>{control[3]}</td>
+                  </tr>
+                  <tr>
+                    <td>MAX</td>
+                    <td>{AD[4]}</td>
+                    <td>{control[4]}</td>
+                  </tr>
+                   
+                </tbody>
+              </Table>
+               
+            </Card>
+          </div>
+        </Row>
+                </Card>
+ </Row>
 
-          :
+                
 
-          // {/* choose normalization technique ---------------------------------------- */}
 
-            
+              </Col>
+   
+     
+         </>
+          :null} */}
+
+          {/* choose normalization technique ---------------------------------------- */}
+
+              {normSelect? 
     
           <>
                  
@@ -338,7 +371,7 @@ console.log(fileName)
      
        
            </>
-            }
+            :null}
         </Row>
       </Container>
 

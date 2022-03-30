@@ -29,7 +29,7 @@ class AuthService{
 
     signup(username, email, password){
         console.log('register')
-        return axios.post(API_URL + '/register', {username, email, password})
+        return axios.post(API_URL + '/register/signup', {username, email, password})
         .then(res => {
             return res;
         })

@@ -13,7 +13,7 @@ import {
 // core components
  
 import Header from "../../components/Headers/Header.js";
-import ChooseFile from "./ChooseFile";
+import ChooseFile from "./BiomarkerChooseFile";
 import Normalization from './Normalization';
 
 const FindBiomarker = (props) => {

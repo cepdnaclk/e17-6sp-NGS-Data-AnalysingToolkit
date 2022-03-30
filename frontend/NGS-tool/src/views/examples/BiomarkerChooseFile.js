@@ -24,12 +24,12 @@ const ChooseFile = (props) => {
 
   const onTrigger = (event) => {
  
-    props.parentCallback(event.label);
+    // props.parentCallback(event.label);
   
 }
 
 const submit = (event) =>{
-  props.parentCallback('submit')
+  // props.parentCallback('submit')
 }
 
   const Countries = [
