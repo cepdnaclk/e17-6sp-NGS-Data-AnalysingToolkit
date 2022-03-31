@@ -7,6 +7,11 @@ from django.views.decorators.csrf import csrf_exempt
 from sklearn import preprocessing as ps
 from uploads.models import userFiles
 import json
+
+# import warnings filter
+from warnings import simplefilter
+# ignore all future warnings
+simplefilter(action='ignore', category=FutureWarning)
 # Create your views here.
 
 
@@ -20,14 +25,8 @@ def normalizeData(request):
             method = body['method']
             fileName = body['fileName']
             userId = body['userid']
-            print(method, fileName, userId)
-            #form = request.POST
-            #method = form["method"]
-            #fileName = form["fileName"]
-            #userId = form['userid']
             if fileName.endswith('.csv'):
                 dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
-                
             elif fileName.endswith('.xls'):
                 dataFrame = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))
             #Changing it to transpose matrix and Set the columns correctly 
@@ -37,7 +36,7 @@ def normalizeData(request):
             if method == "Min Max":
                 normalized_df = minMaxNormalize(transpose)
             elif method == "Standard Deviation":
-                normalized_df = standardNormalize(dataFrame.T.loc[:, dataFrame.T.columns != 'Unnamed: 0'] )
+                normalized_df = standardNormalize(transpose)
             else:
                 return HttpResponse("Wrong method")
             # Changing the narray data set to datafrme and seting columns and index correctly
@@ -45,7 +44,7 @@ def normalizeData(request):
             normalized_df.columns = transpose.columns
             normalized_df = normalized_df.set_index(transpose.index)
             # Save the normalized file in the media folder with "_normalized" in the end
-            new_fileName = fileName.split('.')[0]+"_normalized.csv"
+            new_fileName = fileName.split('.')[0]+method+"_normalized.csv"
             normalized_df.to_csv(os.path.join(settings.MEDIA_ROOT,new_fileName))
             # Save the file details in the Database
             user = User.objects.get(id__exact = userId)
