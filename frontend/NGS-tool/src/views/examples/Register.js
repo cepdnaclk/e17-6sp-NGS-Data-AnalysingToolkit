@@ -37,6 +37,7 @@ const Register = () => {
     let errorx = {};
     if (Object.keys(error).length === 0 && submit) {
       let { username, email, password1, password2 } = user;
+      console.log(user)
       authService
         .signup(username, email, password1, password2)
         .then((res) => {
@@ -59,7 +60,7 @@ const Register = () => {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.username || !values.email || !values.password)
+    if (!values.username || !values.email || !values.password1 || !values.password2)
       errors.all = "Fields cannot be empty!";
     else {
       // if(!values.username )
@@ -77,7 +78,7 @@ const Register = () => {
       // if(!values.password )
       //     errors.password = 'Password is required.';
 
-      if (values.password.length < 8)
+      if (values.password1.length < 8)
         errors.password = "Password must be 8 characters long.";
     }
 
@@ -182,7 +183,7 @@ const Register = () => {
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input
-                    name="password"
+                    name="password1"
                     placeholder="Password"
                     type="password"
                     autoComplete="new-password"
