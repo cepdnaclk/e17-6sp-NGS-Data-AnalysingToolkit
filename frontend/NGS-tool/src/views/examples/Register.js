@@ -34,6 +34,7 @@ const Register = () => {
   useEffect(() => {
     if (Object.keys(error).length === 0 && submit) {
       let { username, email, password1, password2 } = user;
+      console.log(user)
       authService
         .signup(username, email, password1, password2)
         .then((res) => {
@@ -48,7 +49,7 @@ const Register = () => {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    if (!values.username || !values.email || !values.password1)
+    if (!values.username || !values.email || !values.password1 || !values.password2)
       errors.all = "Fields cannot be empty!";
     else {
       if (values.username && values.username.length < 6)
@@ -106,7 +107,6 @@ const Register = () => {
                   </span>
                 </small>
               </div>
-
               <FormGroup>
                 <div className="text-muted font-italic">
                   <small>

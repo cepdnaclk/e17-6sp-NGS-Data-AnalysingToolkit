@@ -32,8 +32,9 @@ const Normalization = (props) => {
   ];
 
   const handleChange = (e)=> {
-    console.log(e.value)
-    setTech(e.value);
+    console.log(e.label)
+    setTech(e.label);
+    setFileName('GSE46579.csv') // comment this later
    
   }
 
@@ -44,7 +45,9 @@ const Normalization = (props) => {
     
     else{
       setError(false)
-      MlServices.normalization(fileName, tech)
+      var method = tech
+      
+      MlServices.normalization(fileName, method)
         .then(res => {console.log(res);
       
         })

@@ -6,6 +6,7 @@ import os
 from django.views.decorators.csrf import csrf_exempt
 from sklearn import preprocessing as ps
 from uploads.models import userFiles
+import json
 # Create your views here.
 
 
@@ -14,10 +15,16 @@ def normalizeData(request):
         # Normalize the dataset
         # find the mean of the evry column
         if request.method == "POST":
-            form = request.POST
-            method = form["method"]
-            fileName = form["fileName"]
-            userId = form['userid']
+            body= request.body.decode('utf-8')
+            body = json.loads(body)
+            method = body['method']
+            fileName = body['fileName']
+            userId = body['userid']
+            print(method, fileName, userId)
+            #form = request.POST
+            #method = form["method"]
+            #fileName = form["fileName"]
+            #userId = form['userid']
             if fileName.endswith('.csv'):
                 dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
                 
@@ -27,9 +34,9 @@ def normalizeData(request):
             transpose = dataFrame.T
             transpose.columns = transpose.iloc[0]
             transpose = transpose[1:]    
-            if method == "minMax":
+            if method == "Min Max":
                 normalized_df = minMaxNormalize(transpose)
-            elif method == "standard":
+            elif method == "Standard Deviation":
                 normalized_df = standardNormalize(dataFrame.T.loc[:, dataFrame.T.columns != 'Unnamed: 0'] )
             else:
                 return HttpResponse("Wrong method")
@@ -57,4 +64,5 @@ def standardNormalize(df):
     return standard_data
 
 def quantileNormalize(df):
-    ps.quantile_transform(df,random_state=0,)
+    # ps.quantile_transform(df,random_state=0,)
+    return 0

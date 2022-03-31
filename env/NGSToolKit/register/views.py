@@ -13,15 +13,19 @@ from uploads.models import userFiles
 @csrf_exempt
 def register(request):
     if request.method =="POST":
-        body = request.body.decode('utf-8')
+        body= request.body.decode('utf-8')
         body = json.loads(body)
+        print(body)
         form = CreateUserForm(body)
+        print(form.is_valid())
         if form.is_valid():
             user = form.save()
+            print(user)
             login(request, user)
             return HttpResponse("Sucess")
         else:
             return HttpResponse("Fail")
+            # what is the error 
     else:
         return HttpResponse("GET")
 
@@ -29,21 +33,31 @@ def register(request):
 @csrf_exempt
 def login_request(request):
     if request.method == "POST":
-        form = AuthenticationForm(request, data = request.POST)
+        body= request.body.decode('utf-8')
+        body = json.loads(body)
+        print(body)
+        form = AuthenticationForm(data=body)
+        print(form.is_valid())
         if form.is_valid():         #Check whether all the feild are correct
+            print('valid')
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username = username, password = password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now login as {username}.")
+                messages.info(request, f"You are now login.")
+                data = "You are now login as {username}."
             #if the username or password wrong
             else:
                 messages.error(request, "Invalid username or password.")
+                data = "You are now login as {username}."
         else:
             messages.error(request, "Invalid username or password.")
+            data = "Invalid username or password."
     form = AuthenticationForm()
-    return render(request, "login.html", context={"form": form})                   
+    #return render(request, "login.html", context={"form": form})
+    print(messages)
+    return HttpResponse(data)
 
 #Profile page
 @csrf_exempt
