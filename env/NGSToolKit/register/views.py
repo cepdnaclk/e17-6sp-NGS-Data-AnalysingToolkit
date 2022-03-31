@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import  AuthenticationForm
 from .forms import CreateUserForm
@@ -25,7 +25,7 @@ def register(request):
             user = form.save()
             print(user)
             login(request, user)
-            return HttpResponse("Sucess")
+            return HttpResponse("Success")
         else:
             return HttpResponse("Fail")
             # what is the error 
@@ -49,7 +49,8 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now login.")
-                data = "You are now login as {username}."
+                data = {'username':username, 'message':'success'}
+                
             #if the username or password wrong
             else:
                 messages.error(request, "Invalid username or password.")
@@ -60,7 +61,7 @@ def login_request(request):
     form = AuthenticationForm()
     #return render(request, "login.html", context={"form": form})
     print(messages)
-    return HttpResponse(data)
+    return JsonResponse(data)
 
 #Profile page
 @csrf_exempt
