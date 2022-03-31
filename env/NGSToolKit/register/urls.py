@@ -1,10 +1,12 @@
+
 from .views import login_request, register, login_request, profile
-from django.urls import path
+from django.urls import include, path
 
 
 urlpatterns = [
     path('signup', register, name='Signup'),
     path('login',login_request, name="Login"),
-    path("profile", profile, name="Profile" )
+    path("profile", profile, name="Profile" ),
+    
     
 ]
