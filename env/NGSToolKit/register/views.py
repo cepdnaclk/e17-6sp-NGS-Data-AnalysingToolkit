@@ -13,21 +13,16 @@ from uploads.models import userFiles
 @csrf_exempt
 def register(request):
     if request.method =="POST":
-        form = CreateUserForm(request.POST)
-        print(form)
+        body = request.body.decode('utf-8')
+        body = json.loads(body)
+        form = CreateUserForm(body)
         if form.is_valid():
             user = form.save()
-            # print(user)
             login(request, user)
-            messages.success(request, 'Your account has been successfully created')
             return HttpResponse("Sucess")
         else:
-            print(form)
-            messages.warning(request,"Registration failed. Invalid information")
             return HttpResponse("Fail")
     else:
-        form = CreateUserForm()
-        # return render(request, "register.html",{"form":form})
         return HttpResponse("GET")
 
 #Login Page

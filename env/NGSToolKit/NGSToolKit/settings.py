@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'uploads.apps.UploadsConfig',
     'normalize.apps.NormalizeConfig',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'register.apps.RegisterConfig',
     'crispy_forms',
