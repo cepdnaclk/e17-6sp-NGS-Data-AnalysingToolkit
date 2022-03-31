@@ -15,9 +15,12 @@ def register(request):
     if request.method =="POST":
         body= request.body.decode('utf-8')
         body = json.loads(body)
-        print(body)
         form = CreateUserForm(body)
-        print(form.is_valid())
+        email = body["email"]
+        if User.objects.filter(email = email).exists():
+            return HttpResponse("Email address already exist")
+        if User.objects.filter(username = body['username']).exists():
+            return HttpResponse("Username already exist")
         if form.is_valid():
             user = form.save()
             print(user)
