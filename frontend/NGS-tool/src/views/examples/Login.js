@@ -41,11 +41,12 @@ const Login = () => {
     useEffect(()=>{
         let errorx = {}
         if(Object.keys(error).length === 0 && submit){
-            // console.log(user);
-            let email = user.email;
+            //console.log(user);
+            let username = user.username;
             let password = user.password;
-            authService.login(email, password)
+            authService.login(username, password)
             .then(res => {console.log(res)
+              setSubmit(false)
                 //console.log(res);
 
     //         if(res.data.message)     //INVALID LOGIN
@@ -77,19 +78,19 @@ const Login = () => {
       const errors = {};
       // console.log(errors)
       const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-      if( !values.email ||  !values.password  ){
+      if( !values.username ||  !values.password  ){
                   errors.all ='has-danger';
                   errors.msg = 'Wrong Input! Fields cannot be empty.';
       }
   
      
-      else if(!regex.test(values.email)){
-          errors.email = 'has-danger'; 
-          errors.emsg = 'This is not a valid email format!';  
-          errors.all =' ';
-          errors.msg = '';
+      // else if(!regex.test(values.username)){
+      //     errors.email = 'has-danger'; 
+      //     errors.emsg = 'This is not a valid email format!';  
+      //     errors.all =' ';
+      //     errors.msg = '';
          
-      }
+      // }
       // else{
       //   errors = {};
       // }
@@ -137,7 +138,7 @@ const Login = () => {
 
 
                   
-              <FormGroup className="mb-3" action=''   className={error.email}>
+              <FormGroup className="mb-3" action=''   className={error.username}>
               <div className="text-muted font-italic"> <small>
                         <span className="text-danger font-weight-700">{error.emsg}</span>
                         </small>
@@ -150,10 +151,10 @@ const Login = () => {
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input 
-                  name='email'
-                    placeholder="Email"
-                    type="email"
-                    autoComplete="new-email"
+                  name='username'
+                    placeholder="Username"
+                    type="text"
+                    // autoComplete="new-email"
                   />
                 </InputGroup>
               </FormGroup >
