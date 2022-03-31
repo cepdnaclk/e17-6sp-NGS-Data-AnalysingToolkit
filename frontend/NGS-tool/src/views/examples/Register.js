@@ -23,8 +23,6 @@ const Register = () => {
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    // setErrors(validate(user));
-    // console.log(user)
   };
 
   const handleSubmit = (e) => {
@@ -34,7 +32,6 @@ const Register = () => {
   };
 
   useEffect(() => {
-    let errorx = {};
     if (Object.keys(error).length === 0 && submit) {
       let { username, email, password1, password2 } = user;
       console.log(user)
@@ -42,14 +39,6 @@ const Register = () => {
         .signup(username, email, password1, password2)
         .then((res) => {
           console.log(res);
-          //       if(res.data.email) {     //error
-          //           errorx.success ='User created Succssfully!, Please confirm your email to login';
-          //       }
-          //       else{
-          //           errorx.all = res.data;
-          //           //alert(res.headers);
-          //         }
-          //   setErrors(errorx);
         })
         .catch((error) => {
           console.log(error);
@@ -63,28 +52,20 @@ const Register = () => {
     if (!values.username || !values.email || !values.password1 || !values.password2)
       errors.all = "Fields cannot be empty!";
     else {
-      // if(!values.username )
-      //             errors.all = 'Name is required';
-
       if (values.username && values.username.length < 6)
         errors.username = "Name must be 6 characters long.";
-
-      // if(!values.email )
-      //             errors.email = 'Email is required.';
-
       if (!regex.test(values.email && values.email))
         errors.email = "This is not a valid email format!";
-
-      // if(!values.password )
-      //     errors.password = 'Password is required.';
-
       if (values.password1.length < 8)
-        errors.password = "Password must be 8 characters long.";
+        errors.password1 = "Password must be 8 characters long.";
+      if (values.password2 != values.password1)
+        errors.password2 = "Password does not match";
     }
 
     console.log(errors);
     return errors;
   };
+
   return (
     <>
       <Col lg="6" md="8">
@@ -126,7 +107,6 @@ const Register = () => {
                   </span>
                 </small>
               </div>
-
               <FormGroup>
                 <div className="text-muted font-italic">
                   <small>
@@ -168,11 +148,12 @@ const Register = () => {
                 </InputGroup>
               </FormGroup>
 
+              {/* Password1 */}
               <FormGroup>
                 <div className="text-muted font-italic">
                   <small>
                     <span className="text-danger font-weight-700">
-                      {error.password}
+                      {error.password1}
                     </span>
                   </small>
                 </div>
@@ -191,11 +172,12 @@ const Register = () => {
                 </InputGroup>
               </FormGroup>
 
+              {/* Password2  */}
               <FormGroup>
                 <div className="text-muted font-italic">
                   <small>
                     <span className="text-danger font-weight-700">
-                      {error.password}
+                      {error.password2}
                     </span>
                   </small>
                 </div>
@@ -213,13 +195,6 @@ const Register = () => {
                   />
                 </InputGroup>
               </FormGroup>
-
-              <div className="text-muted font-italic">
-                {/* <small>
-                  password strength:{" "}
-                  <span className="text-success font-weight-700">strong</span>
-                </small> */}
-              </div>
               <Row className="my-4">
                 <Col xs="12">
                   <div className="custom-control custom-control-alternative custom-checkbox">

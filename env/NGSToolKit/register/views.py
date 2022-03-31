@@ -16,24 +16,17 @@ def register(request):
         body= request.body.decode('utf-8')
         body = json.loads(body)
         print(body)
-        
         form = CreateUserForm(body)
         print(form.is_valid())
         if form.is_valid():
             user = form.save()
             print(user)
             login(request, user)
-            messages.success(request, 'Your account has been successfully created')
             return HttpResponse("Sucess")
         else:
-            print(form)
-            messages.warning(request,"Registration failed. Invalid information")
             return HttpResponse("Fail")
             # what is the error 
     else:
-        form = CreateUserForm()
-        # return render(request, "register.html",{"form":form})
-        
         return HttpResponse("GET")
 
 #Login Page

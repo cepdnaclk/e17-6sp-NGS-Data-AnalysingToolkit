@@ -1,17 +1,12 @@
-from pyexpat import model
 from django.contrib.auth.models import User
-from django.http import HttpResponse, JsonResponse
-from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
 from django.conf import settings
 import pandas as pd
 import os
-import json
-from matplotlib import pyplot as plt
 from django.views.decorators.csrf import csrf_exempt
-import numpy
-import csv
 from sklearn import preprocessing as ps
 from uploads.models import userFiles
+import json
 # Create your views here.
 
 
@@ -67,7 +62,7 @@ def standardNormalize(df):
     standard = ps.StandardScaler()
     standard_data = standard.fit_transform(df)
     return standard_data
-    
+
 def quantileNormalize(df):
-    ps.quantile_transform()
-    
+    # ps.quantile_transform(df,random_state=0,)
+    return 0

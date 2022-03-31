@@ -6,6 +6,10 @@ const API_URL = "http://127.0.0.1:8000";
 class AuthService {
   login(username, password) {
     console.log("login");
+<<<<<<< HEAD
+    return axios.post(API_URL + "/login", { email, password }).then((res) => {
+      return res;
+=======
     return axios.post(API_URL + "/register/login", { username, password }).then((res) => {
       // const {access_token, refresh_token, profile} = res.data;
       // Cookies.set('access_token', access_token);
@@ -19,6 +23,7 @@ class AuthService {
       // Cookies.set( 'roles',arr);
       console.log(res.data)
       return res; 
+>>>>>>> 1ace2aceedf8b411b8135a111037df6277be0136
     });
   }
 
@@ -33,11 +38,8 @@ class AuthService {
       })
       .then((res) => {
         return res;
- 
       });
   }
- 
-  
 
   logout() {
     //localStorage.removeItem('isLoggedIn');
