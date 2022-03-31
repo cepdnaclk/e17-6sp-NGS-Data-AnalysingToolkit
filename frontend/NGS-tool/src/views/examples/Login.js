@@ -13,8 +13,8 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import React, {useState, useEffect, useContext} from 'react';
-import { useHistory} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import authService from '../../services/auth'; 
 
 const Login = () => {
@@ -47,6 +47,14 @@ const Login = () => {
             authService.login(username, password)
             .then(res => {console.log(res)
               setSubmit(false)
+              if(res.data.message === 'success')
+              {
+                localStorage.setItem('loggedIn', true)
+                localStorage.setItem('username', res.data.username )
+
+                history.push('/admin/index')
+                window.location.reload(false);
+              }
                 //console.log(res);
 
     //         if(res.data.message)     //INVALID LOGIN

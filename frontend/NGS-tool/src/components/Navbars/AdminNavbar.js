@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-// reactstrap components
+
+import { useEffect, useState } from "react";
+
 import {
   DropdownMenu,
   DropdownItem,
@@ -17,7 +19,18 @@ import {
   Media,
 } from "reactstrap";
 
+
+
 const AdminNavbar = (props) => {
+
+    const [username, setUsername] =  useState('')
+
+  useEffect(() => {
+    let username = localStorage.getItem('username')
+    if(username)
+      setUsername(username)
+  }, [])
+
   return (
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
@@ -55,7 +68,7 @@ const AdminNavbar = (props) => {
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
                     <span className="mb-0 text-sm font-weight-bold">
-                      User
+                      {username}
                     </span>
                   </Media>
                 </Media>

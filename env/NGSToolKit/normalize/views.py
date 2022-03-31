@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 import pandas as pd
 import os
@@ -50,7 +50,11 @@ def normalizeData(request):
             user = User.objects.get(id__exact = userId)
             userfile = userFiles(title = new_fileName, upload_by = user)
             userfile.save()
-            return HttpResponse(normalized_df.head().to_json())
+            html_data = normalized_df.head().to_html()
+            html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
+            send = {'html':html,  'name':new_fileName}
+            return JsonResponse(send)
+            #return HttpResponse(normalized_df.head().to_json())
         
 def minMaxNormalize(df):
     min_max = ps.MinMaxScaler()

@@ -64,6 +64,7 @@ const Index = (props) => {
   const [controlPoints, setControlPoinnts] = useState(0);
   const [normSelect, setNormSelect] = useState(false);
   const [tempFile, setTempFile] = useState('');
+  const [normalized, setNormalized] = useState(false)
   
   let history = useHistory();
 
@@ -204,11 +205,10 @@ console.log(fileName)
       {/* Page content */}
 
       <Container className="mt--8" fluid>
-       
-       
-               
-              
         <Row className="mt-5">
+
+        {!normalized?
+        <>
         {!normSelect?
         <>
         {fileName? 
@@ -234,22 +234,10 @@ console.log(fileName)
                   </div>
                 </Row>
               </CardHeader>
-                  
-
-                <Table style={{ width: '100%',
-  height:'100%'}} className="align-items-center table-flush table-hover" responsive onClick={e => handleClick(e)}>
+                <Table style={{ width: '100%', height:'100%'}} className="align-items-center table-flush table-hover" responsive onClick={e => handleClick(e)}>
                 
                 {ReactHtmlParser(tableData)}
-               
-      
                 </Table>
-                
-
-
- 
-
- 
-               
             </Card>
           </Col>
         :
@@ -339,6 +327,12 @@ console.log(fileName)
        
            </>
             }
+
+            </>
+            :
+            null 
+            // normalized data should come here
+          }
         </Row>
       </Container>
 
