@@ -45,7 +45,8 @@ def login_request(request):
             user = authenticate(username = username, password = password)
             if user is not None:
                 login(request, user)
-                data = {'username':username, 'message':'success'}
+                userid=User.objects.get(username=username).pk
+                data = {'username':username, 'message':'success', "userid":userid}
                 return JsonResponse(data, status=202)
             #if the username or password wrong
             else:

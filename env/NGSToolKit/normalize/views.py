@@ -47,7 +47,7 @@ def normalizeData(request):
             # Save the normalized file in the media folder with "_normalized" in the end
             new_fileName = fileName.split('.')[0]+method+"_normalized.csv"
             normalized_df.to_csv(os.path.join(settings.MEDIA_ROOT,new_fileName))
-            # Save the file details in the Database
+            # Save the file details in the Databas e
             user = User.objects.get(id__exact = userId)
             userfile = userFiles(title = new_fileName, upload_by = user)
             userfile.save()
@@ -55,7 +55,7 @@ def normalizeData(request):
             html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
             send = {'html':html,  'name':new_fileName}
             return JsonResponse(send)
-            #return HttpResponse(normalized_df.head().to_json())
+            # return HttpResponse(normalized_df.head().to_json())
         
 def minMaxNormalize(df):
     min_max = ps.MinMaxScaler()

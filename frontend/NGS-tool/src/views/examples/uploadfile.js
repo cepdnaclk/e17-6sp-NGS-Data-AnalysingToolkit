@@ -21,8 +21,8 @@ import {
     Table,
     Container,
     Row,
-    Col,} from "reactstrap";
-
+    Col,
+} from "reactstrap";
 
 function UploadFile() {
     const [files, setFiles] = useState([]);
@@ -31,80 +31,33 @@ function UploadFile() {
 
     let history = useHistory();
     let formData = new FormData();
+    
     const uploadHandler = async (event) => {
         const file = event.target.files[0];
         console.log(file)
-        // if (!file) return;
-        //file.isUploading = true;
         setFiles([...files, file])
         // form data -------------------------------------
-        formData.append(
-            'newfile', event.target.files[0],
-        )
-        // await FileUpload.upload(formData).then(res => {
-        //     console.log(res.data);
-        // })
-
-        // let reader = new FileReader();
-        // reader.readAsText(file);
-        // reader.onload = (e) => {
-        //     file.isUploading = false;
-        //     setFiles([...files, file])
-        //     // setUpload(false)
-        // }
-
-
-
-
-        // current -------------------------------------
+        formData.append('newfile', event.target.files[0],)
         PaPa.parse(file, {
-            // header: true,
-            // dynamicTyping: true,
-            // skipEmptyLines: true,
             complete: function (results) {
-                
                 const Data = { file: file.name, data: results.data, userid: 1 }
                 FileUpload.upload(Data).then(res => {
                     var dd = res.data
-                    //dd=  JSON.parse(dd)
                     console.log(typeof dd);
                     setData(res.data.html);
-                    // var dd =(res.data).split('[')
-                    // dd = dd[1].split(']')
-                    // dd  = dd.split[',']
-                    // console.log(dd)
                     history.push({pathname:'/admin/visualize', state:{data:res.data.html, name:res.data.name}});
                 })
-
             }
         })
-
-
     }
-
     const deleteFile = (filename) => {
         setFiles(files.filter(file => file.name !== filename))
     }
-
-    // """
-    // data = uploadedfile['data']
-    // data = data.split("\r\n")
-    // data_list = []
-
-    // for i in data:
-    //     data_list.append(i.split(','))
-    // """
-
-
     return (
         <>
             <Header />
-
-
                 <Container className="mt--7" fluid>
-
                     <Row className="mt-5">
-    
                         <Col>
                             {/* xl="4"> */}
                             <Card className="shadow">
@@ -113,9 +66,9 @@ function UploadFile() {
                             <div className="col">
             <h3 className="mb-0">Upload File</h3>
                 </div>
-              </Row>
+            </Row>
             </CardHeader>
-          <Card className="shadow align-items-center">
+        <Card className="shadow align-items-center">
             <StyledButton style={{  marginBottom : 25,   marginTop : 25}}>
                 {/* <div className='title'>Upload File</div> */}
                 <div className='App' >
@@ -188,8 +141,8 @@ const StyledButton= styled.div`
     align-items: center;
     border: 3px dashed #cbd5e0;
     background-color: #edf2f7;
-     width: 380px;
-     height: 210px;
+    width: 380px;
+    height: 210px;
 
     .file-inputs {
         position: relative;
@@ -285,14 +238,9 @@ li {
     .actions {
         justify-self: flex-end;
         cursor: pointer;
-
         .fa-spinner {
             font-size: 1.2em;
         }
     },
-
-  
 }
 `;
- 
- 
