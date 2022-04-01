@@ -20,8 +20,7 @@ def register(request):
         if User.objects.filter(username = body['username']).exists():
             return HttpResponse("Username already exist",status = 406)
         if User.objects.filter(email = email).exists():
-            return HttpResponse("Email address already exist",status =200 )
-        
+            return HttpResponse("Email address already exist",status =406 )
         if form.is_valid():
             user = form.save()
             login(request, user)

@@ -37,18 +37,26 @@ function UploadFile() {
         console.log(file)
         setFiles([...files, file])
         // form data -------------------------------------
-        formData.append('newfile', event.target.files[0],)
-        PaPa.parse(file, {
-            complete: function (results) {
-                const Data = { file: file.name, data: results.data, userid: 1 }
-                FileUpload.upload(Data).then(res => {
-                    var dd = res.data
-                    console.log(typeof dd);
-                    setData(res.data.html);
-                    history.push({pathname:'/admin/visualize', state:{data:res.data.html, name:res.data.name}});
-                })
-            }
+        formData.append('Document', event.target.files[0])
+        formData.append('userid',1 )
+        FileUpload.upload(formData).then(res => {
+            var dd = res.data
+            console.log(typeof dd);
+            setData(res.data.html);
+            history.push({pathname:'/admin/visualize', state:{data:res.data.html, name:res.data.name}});
         })
+
+        // PaPa.parse(file, {
+        //     complete: function (results) {
+        //         const Data = { file: file.name, data: results.data, userid: 1 }
+        //         FileUpload.upload(Data).then(res => {
+        //             var dd = res.data
+        //             console.log(typeof dd);
+        //             setData(res.data.html);
+        //             history.push({pathname:'/admin/visualize', state:{data:res.data.html, name:res.data.name}});
+        //         })
+        //     }
+        // })
     }
     const deleteFile = (filename) => {
         setFiles(files.filter(file => file.name !== filename))
@@ -75,7 +83,7 @@ function UploadFile() {
                     <>
                         <div className="file-card">
                             <div className="file-inputs">
-                                <input type="file" accept='.csv'
+                                <input type="file" accept='.csv,.xls,.xlsx'
                                     onChange={uploadHandler} />
                                 <button type='submit'>
                                     <i>
@@ -85,7 +93,7 @@ function UploadFile() {
                                 </button>
                             </div>
                             <p className="main">Supported files</p>
-                            <p className="info">CSV</p>
+                            <p className="info">CSV, Xls</p>
                             <>
                                 <ul className="file-list">
                                     {
@@ -121,6 +129,8 @@ function UploadFile() {
         </>
     )
 }
+
+
 
 export default UploadFile;
 
