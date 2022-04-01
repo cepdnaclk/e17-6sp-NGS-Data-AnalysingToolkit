@@ -50,17 +50,14 @@ const Register = () => {
           console.log(res);
           if(res.data === 'Success'){
             setSuccess('User created Succssfully!, Please login')
-
             setTimeout(() => {
               console.log('timeout');
-              
               history.push('/auth/login')
           }, 4000);
-           
           }
           else if(res.data === 'Fail')
             setStatus('Your password can’t be entirely numeric.')
-          else
+          else if(res.status >=400)
             setStatus(res.data)
         })
         .catch((error) => {

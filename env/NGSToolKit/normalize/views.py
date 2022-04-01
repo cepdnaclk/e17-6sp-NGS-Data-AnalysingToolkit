@@ -41,8 +41,9 @@ def normalizeData(request):
                 return HttpResponse("Wrong method")
             # Changing the narray data set to datafrme and seting columns and index correctly
             normalized_df = pd.DataFrame(normalized_df)
-            normalized_df.columns = transpose.columns
-            normalized_df = normalized_df.set_index(transpose.index)
+            normalized_df = normalized_df.T
+            normalized_df.columns = dataFrame.columns[1:]
+            normalized_df = normalized_df.set_index(transpose.columns)
             # Save the normalized file in the media folder with "_normalized" in the end
             new_fileName = fileName.split('.')[0]+method+"_normalized.csv"
             normalized_df.to_csv(os.path.join(settings.MEDIA_ROOT,new_fileName))

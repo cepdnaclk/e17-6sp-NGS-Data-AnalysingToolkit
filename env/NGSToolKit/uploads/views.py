@@ -65,7 +65,7 @@ def csv_file(request):
 #     else:
 #         # return render(request, "upload.html")
 #         return HttpResponse("GET")
-    
+
 
 #Plot the data 
 @csrf_exempt
