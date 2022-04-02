@@ -20,8 +20,8 @@ import Normalization from './Normalization';
 
 const FindBiomarker = (props) => {
  
-  const [fileName, setFileName] = useState();
-  const [newFile, setNewFile] = useState(false);
+  const [fileName, setFileName] = useState('');
+  const [tempFile, setTempFile] = useState('');
   const [status, setStatus] = useState(0);
 
   useEffect(() => {
@@ -43,14 +43,15 @@ const steps = ['Choose File', 'Normalization', 'Feature Selection'];
 const handleCallback = (childData) =>{
 
  console.log(childData)
-//   if(childData=='submit'){
-//     setFileName(tempFile)
-// console.log(fileName)
+  if(childData=='submit'){
+    console.log(tempFile)
 
-//   }
+    setFileName(tempFile)
+    console.log(fileName)
+  }
   
-//   else 
-//     setTempFile(childData)
+  else 
+    setTempFile(childData)
 
 }
 
