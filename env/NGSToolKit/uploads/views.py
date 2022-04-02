@@ -60,12 +60,13 @@ def plotData(request):
             elif col.startswith("control"):
                 control_list.append(col)
         # Creating List of AD values
-        # dataFrame = dataFrame.set_index(dataFrame["unamed: 0"])
+        dataFrame = dataFrame.set_index(dataFrame["genes"])
+        
         Ad_val = dataFrame[Ad_list].loc[geneName].values.tolist()
         # Creating List of control val
         control_val = dataFrame[control_list].loc[geneName].values.tolist() 
         # Creating list of admin ad max and 1,2,3 quantile
-        Ad_props = [min(Ad_val),numpy.quantile(Ad_val,0.25), numpy.quantile(Ad_val,0.5), numpy.quantile(Ad_val,0.75),max(Ad_val)]
-        Control_props = [min(control_val),numpy.quantile(control_val,0.25), numpy.quantile(control_val,0.5), numpy.quantile(control_val,0.75),max(control_val)]
+        Ad_props = [round(min(Ad_val),4),round(numpy.quantile(Ad_val,0.25),4), round(numpy.quantile(Ad_val,0.5),4), round(numpy.quantile(Ad_val,0.75),4),round(max(Ad_val),4)]
+        Control_props = [round(min(control_val),4),round(numpy.quantile(control_val,0.25),4), round(numpy.quantile(control_val,0.5),4), round(numpy.quantile(control_val,0.75),4),round(max(control_val),4)]
         vals = {"ad":Ad_val, "control":control_val, "Ad_props": Ad_props, "Control_props":Control_props}
         return HttpResponse(json.dumps(vals))

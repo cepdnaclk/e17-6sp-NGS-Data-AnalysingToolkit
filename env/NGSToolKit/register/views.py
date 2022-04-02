@@ -59,8 +59,8 @@ def login_request(request):
 #Profile page
 @csrf_exempt
 def profile(request):
-    if request.method == "GET":
-        userId = request.GET['userid']
+    if request.method == "POST":
+        userId = request.POST['userid']
         userfiles = userFiles.objects.filter(id=userId)
         fileLis = []
         print(userfiles)
