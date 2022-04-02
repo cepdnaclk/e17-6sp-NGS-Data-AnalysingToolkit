@@ -8,10 +8,12 @@ import {
   Col,
   UncontrolledTooltip,
   Nav,
-  Button,
+  Button, 
 } from "reactstrap";
 // core components
- 
+
+import { Timeline, TimelineEvent } from "react-event-timeline";
+
 import Header from "../../components/Headers/Header.js";
 import ChooseFile from "./BiomarkerChooseFile";
 import Normalization from './Normalization';
@@ -71,23 +73,46 @@ const steps = ['Choose File', 'Normalization', 'Feature Selection'];
         </Card>
          </Col>
 
-          {/* <Col lg="6" xl="4">
+           <Col lg="9" xl="4">
           <Row>
-                <Card className="card-stats mb-4 mb-xl-0">
+                <Card className="card-stats mb-5 mb-xl-7">
                   <Row>
           <div className="col">
             <Card className="shadow">
                    <CardHeader className="border-0">
-                <h3 className="mb-0"> </h3>
+                <h3 className="mb-0"> Find Biomarker</h3>
               </CardHeader>
              
-               
+              <Timeline color="success">
+
+              <TimelineEvent 
+        title="Choose File"
+        icon={<i className="ni ni-cloud-upload-96   "> </i>}
+      >
+      <></>
+      </TimelineEvent>
+      
+      <TimelineEvent
+        title="Normalization"
+        icon={<i className="ni ni-cloud-upload-96   "> </i>}
+      >
+      <></>
+      </TimelineEvent>
+      
+      <TimelineEvent
+        title="Feature Selection"
+        icon={<i className="ni ni-cloud-upload-96   "> </i>}
+      >
+      <></>
+      </TimelineEvent>
+      
+    </Timeline>
             </Card>
           </div>
         </Row>
                 </Card>
  </Row>
-              </Col> */}
+              </Col> 
         </Row>
       </Container>
     </>
