@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 import pandas as pd
@@ -43,7 +44,7 @@ def normalizeData(request):
             normalized_df = pd.DataFrame(normalized_df)
             normalized_df = normalized_df.T
             normalized_df.columns = dataFrame.columns[1:]
-            normalized_df = normalized_df.set_index(transpose.columns)
+            normalized_df.insert(0,"genes", transpose.columns)
             # Save the normalized file in the media folder with "_normalized" in the end
             new_fileName = fileName.split('.')[0]+method+"_normalized.csv"
             normalized_df.to_csv(os.path.join(settings.MEDIA_ROOT,new_fileName))
@@ -51,12 +52,10 @@ def normalizeData(request):
             user = User.objects.get(id__exact = userId)
             userfile = userFiles(title = new_fileName, upload_by = user)
             userfile.save()
-            html_data = normalized_df.head().to_html()
+            html_data = normalized_df.head(10).to_html()
             html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
             send = {'html':html,  'name':new_fileName, 'method':method}
-            print(html)
             return JsonResponse(send)
-            # return HttpResponse(normalized_df.head().to_json())
         
 def minMaxNormalize(df):
     min_max = ps.MinMaxScaler()
