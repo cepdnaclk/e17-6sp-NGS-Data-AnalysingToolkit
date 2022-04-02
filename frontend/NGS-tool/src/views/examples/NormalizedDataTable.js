@@ -78,6 +78,7 @@ useEffect(() => {
 //   setFileName(props.history.location.state.name)
   console.log(props.data);
   setNormalizedData(props.data)
+ 
 
 //   setTableData(c);
   
@@ -95,7 +96,7 @@ useEffect(() => {
     console.log(e.target.innerText)
     setGeneName(e.target.innerText)
 
-    BoxPlot.boxPlot(gene, fileName).then(res => {
+    BoxPlot.boxPlot(gene, normalizedData.name).then(res => {
       console.log(res.data);
     setAD (res.data.Ad_props); //calc
     setControl(res.data.Control_props) 

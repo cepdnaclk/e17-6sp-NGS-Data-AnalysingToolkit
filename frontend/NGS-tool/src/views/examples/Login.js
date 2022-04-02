@@ -51,6 +51,8 @@ const Login = () => {
               {
                 localStorage.setItem('loggedIn', true)
                 localStorage.setItem('username', res.data.username )
+                localStorage.setItem('userid', res.data.userid )
+
                 history.push('/admin/index')
                 window.location.reload(false);
               }
