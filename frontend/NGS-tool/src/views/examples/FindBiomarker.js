@@ -15,7 +15,7 @@ import {
 import { Timeline, TimelineEvent } from "react-event-timeline";
 
 import Header from "../../components/Headers/Header.js";
-import ChooseFile from "./BiomarkerChooseFile";
+import ChooseFile from "./ChooseFile";
 import Normalization from './Normalization';
 
 const FindBiomarker = (props) => {
@@ -39,6 +39,21 @@ const FindBiomarker = (props) => {
   
 const steps = ['Choose File', 'Normalization', 'Feature Selection'];
   
+
+const handleCallback = (childData) =>{
+
+ console.log(childData)
+//   if(childData=='submit'){
+//     setFileName(tempFile)
+// console.log(fileName)
+
+//   }
+  
+//   else 
+//     setTempFile(childData)
+
+}
+
 
   return (
     <>
@@ -65,7 +80,9 @@ const steps = ['Choose File', 'Normalization', 'Feature Selection'];
                     </Nav>
               </CardHeader>
           {status==0?
-        <ChooseFile  fileName={fileName} key={fileName} />:null}
+        // <ChooseFile  fileName={fileName} key={fileName} />
+        <ChooseFile parentCallback={handleCallback} />
+        :null}
 
           {status==1?
         <Normalization   />:null}

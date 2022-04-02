@@ -6,9 +6,14 @@ const API_URL = "http://127.0.0.1:8000";
 class User {
   files() {
     console.log("get file names");
-    return axios.get(API_URL + "/register/profile", {  }).then((res) => {
+    const userid = localStorage.getItem('userid')
+    return axios.get(API_URL + "/register/profile", { params: {
+		userid
+	}
+ }).then((res) => {
       return res;
-    });
+      
+    })
   }
 
  

@@ -49,6 +49,7 @@ def plotData(request):
         body = json.loads(body)
         fileName = body["fileName"]
         geneName = body["name"]
+        print(fileName)
         if fileName.endswith('.csv'):
             dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
         elif fileName.endswith('.xls'):
