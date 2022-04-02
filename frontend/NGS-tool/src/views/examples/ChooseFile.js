@@ -7,8 +7,8 @@ Button
 } from "reactstrap";
 // core components
 import Select from 'react-select';
- 
-  
+
+import User from '../../services/user';  
 
 const ChooseFile = (props) => {
    
@@ -16,9 +16,18 @@ const ChooseFile = (props) => {
  
 
   useEffect(() => {
-    
-    if( props.fileName)
+    console.log('hello')
+    if( props.fileName){
       setFileName(props.fileName)
+      console.log(fileName)
+    }
+
+    else{
+      User.files().then(res => {
+        console.log(res.data);
+     
+    }).catch((err)=>console.log(err));
+    }
  
   }, [] )
 
