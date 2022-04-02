@@ -1,19 +1,10 @@
 import { useState , useEffect} from "react";
-// node.js library that concatenates classes (strings)
 import {useHistory} from 'react-router-dom';
-// javascipt plugin for creating charts
 import Chart from "chart.js";
-// react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
-import {MDBBtn} from 'mdb-react-ui-kit'
-import {CCloseButton} from '@coreui/react';
 import {MDBCloseIcon} from 'mdbreact';
-import ScrollBars from 'react-scrollbar';
-import { StrictMode } from "react";
 import BoxPlot from '../../services/boxplot';  
 
-//import Table from "react-bootstrap/Table"
-// import { MDBSmoothScroll } from "mdbreact";
+import ReactTooltip from "react-tooltip";
 
 // reactstrap components
 import {
@@ -36,19 +27,12 @@ import {
 import { 
   chartOptions,
   parseOptions,
-  chartExample1,
-  chartExample2,
+  
 } from "../../variables/charts.js";
 
-//import Modal from 'react-modal';
-import styled from 'styled-components';
-import Header from "../../components/Headers/Header.js";
-// import ApexChart from 'components/modal/barplotModal.js's
 import ReactApexChart from 'react-apexcharts';
-import parse from 'html-react-parser';
-import JsonToTable from 'react-json-to-table';
 import ReactHtmlParser from 'react-html-parser'
-import Normalization from "./Normalization";
+
 
 const Index = (props) => { 
   
@@ -111,8 +95,7 @@ useEffect(() => {
   }
 
   const closeHandle = () =>{
-    // setModalOpen(false)
-    setNormSelect(false)
+    setModalOpen(false)
   }
 
  
@@ -195,12 +178,17 @@ useEffect(() => {
               </CardHeader>
                   
 
-            <Table style={{ width: '100%',height:'100%'}} className="align-items-center table-flush table-hover" responsive onClick={e => handleClick(e)}>
-                
-                {ReactHtmlParser(normalizedData.html)}
-               
+            <Table  style={{ width: '100%',height:'100%'}} 
+                    className="align-items-center table-flush table-hover table-pointer " 
+                    responsive onClick={e => handleClick(e)}
+                    data-tip="Click on the Gene name " >
+              
+                {ReactHtmlParser(normalizedData.html)}            
       
                 </Table>
+
+              <ReactTooltip place="top" type="success" effect="solid"/>
+
                 
 
 
