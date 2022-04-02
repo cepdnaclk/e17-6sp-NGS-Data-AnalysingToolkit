@@ -50,6 +50,7 @@ import JsonToTable from 'react-json-to-table';
 import ReactHtmlParser from 'react-html-parser'
 import Normalization from "./Normalization";
 import ChooseFile from './ChooseFile';
+import NormalizedDataTable from './NormalizedDataTable';
 
 const Index = (props) => { 
   const [activeNav, setActiveNav] = useState(1);
@@ -65,6 +66,7 @@ const Index = (props) => {
   const [normSelect, setNormSelect] = useState(false);
   const [tempFile, setTempFile] = useState('');
   const [normalized, setNormalized] = useState(false)
+  const [normalizedDta, setNormalizedData] = useState({})
   
   let history = useHistory();
 
@@ -138,6 +140,14 @@ console.log(fileName)
     else 
       setTempFile(childData)
 
+}
+
+const get_normalized_data = (childData) =>{
+
+
+  setNormalizedData(childData);
+  setNormalized(true)
+  
 }
 
 
@@ -316,7 +326,7 @@ console.log(fileName)
                </div>
                   
                   
-         <Normalization  fileName={fileName} key={fileName}  />
+         <Normalization  fileName={fileName} key={fileName}  parentCallback={get_normalized_data}/>
                 
                
             </Card>
@@ -330,8 +340,9 @@ console.log(fileName)
 
             </>
             :
-            null 
+            
             // normalized data should come here
+            <NormalizedDataTable data = {normalizedDta}/>
           }
         </Row>
       </Container>

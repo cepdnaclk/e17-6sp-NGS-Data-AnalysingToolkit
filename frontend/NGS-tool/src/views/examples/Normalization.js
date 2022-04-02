@@ -46,6 +46,7 @@ const Normalization = (props) => {
       
       MlServices.normalization(fileName, method)
         .then(res => {console.log(res);
+          props.parentCallback(res.data);
       
         })
             

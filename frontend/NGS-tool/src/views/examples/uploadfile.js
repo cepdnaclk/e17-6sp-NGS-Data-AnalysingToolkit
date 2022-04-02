@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faFileAlt, faSpinner, faTrash } from '@fortawesome/free-solid-svg-icons'
 import {Redirect, useHistory} from 'react-router-dom';
+import * as XLSX from "xlsx";
 
 import FileUpload from '../../services/fileupload';  
 import Header from "../../components/Headers/Header.js";
@@ -53,26 +54,18 @@ function UploadFile() {
         //     // setUpload(false)
         // }
 
-
-
-
         // current -------------------------------------
         PaPa.parse(file, {
             // header: true,
             // dynamicTyping: true,
             // skipEmptyLines: true,
             complete: function (results) {
-                
+                //console.log(results.data)
                 const Data = { file: file.name, data: results.data, userid: 1 }
                 FileUpload.upload(Data).then(res => {
                     var dd = res.data
-                    //dd=  JSON.parse(dd)
                     console.log(typeof dd);
                     setData(res.data.html);
-                    // var dd =(res.data).split('[')
-                    // dd = dd[1].split(']')
-                    // dd  = dd.split[',']
-                    // console.log(dd)
                     history.push({pathname:'/admin/visualize', state:{data:res.data.html, name:res.data.name}});
                 })
 
@@ -122,7 +115,7 @@ function UploadFile() {
                     <>
                         <div className="file-card">
                             <div className="file-inputs">
-                                <input type="file" accept='.csv'
+                                <input type="file" accept='.csv, .xls'
                                     onChange={uploadHandler} />
                                 <button type='submit'>
                                     <i>
@@ -132,7 +125,7 @@ function UploadFile() {
                                 </button>
                             </div>
                             <p className="main">Supported files</p>
-                            <p className="info">CSV</p>
+                            <p className="info">CSV, XLS</p>
                             <>
                                 <ul className="file-list">
                                     {

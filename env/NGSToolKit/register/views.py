@@ -25,7 +25,7 @@ def register(request):
             user = form.save()
             print(user)
             login(request, user)
-            return HttpResponse("Success")
+            return JsonResponse({'data':"Success"})
         else:
             return HttpResponse("Fail")
             # what is the error 
