@@ -39,8 +39,11 @@ const Normalization = (props) => {
       setError(false)
       var method = tech
       MlServices.normalization(fileName, method)
-        .then(res => {
-          console.log(res);
+
+        .then(res => {console.log(res);
+          props.parentCallback(res.data);
+      
+
         })
         .catch(error=>{console.log(error)});
   }
