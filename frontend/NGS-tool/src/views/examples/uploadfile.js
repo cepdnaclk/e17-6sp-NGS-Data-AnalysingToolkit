@@ -45,18 +45,6 @@ function UploadFile() {
             setData(res.data.html);
             history.push({pathname:'/admin/visualize', state:{data:res.data.html, name:res.data.name}});
         })
-
-        // PaPa.parse(file, {
-        //     complete: function (results) {
-        //         const Data = { file: file.name, data: results.data, userid: 1 }
-        //         FileUpload.upload(Data).then(res => {
-        //             var dd = res.data
-        //             console.log(typeof dd);
-        //             setData(res.data.html);
-        //             history.push({pathname:'/admin/visualize', state:{data:res.data.html, name:res.data.name}});
-        //         })
-        //     }
-        // })
     }
     const deleteFile = (filename) => {
         setFiles(files.filter(file => file.name !== filename))

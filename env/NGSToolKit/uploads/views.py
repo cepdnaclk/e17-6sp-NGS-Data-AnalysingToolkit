@@ -53,7 +53,6 @@ def plotData(request):
             dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
         elif fileName.endswith('.xls'):
             dataFrame = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))  
-        dataFrame.set_index("Unnamed: 0", inplace = True)
         columns = dataFrame.columns
         Ad_list = []
         control_list = []

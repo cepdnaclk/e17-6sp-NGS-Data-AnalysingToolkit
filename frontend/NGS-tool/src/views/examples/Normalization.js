@@ -14,12 +14,12 @@ const Normalization = (props) => {
   const [fileName, setFileName] = useState();
   const [tech, setTech] = useState();
   const [error, setError] = useState(false); 
+  
   useEffect(() => {
     console.log('norm')
     if( props.fileName)
       setFileName(props.fileName)
   }, [] )
-
 
   const NormTech = [
     { label: "Min Max", value: 1 },
