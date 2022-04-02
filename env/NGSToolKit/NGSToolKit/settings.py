@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'register.apps.RegisterConfig',
-    'crispy_forms',
 ]
 
 MIDDLEWARE = [

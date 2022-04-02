@@ -65,27 +65,22 @@ const Index = (props) => {
   const [controlPoints, setControlPoinnts] = useState(0);
   const [normSelect, setNormSelect] = useState(false);
   const [tempFile, setTempFile] = useState('');
+
   const [normalized, setNormalized] = useState(false)
   const [normalizedDta, setNormalizedData] = useState({})
-  
-  let history = useHistory();
 
+  let history = useHistory();
 
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
 
 useEffect(() => {
-
-   
   var l = JSON.stringify(props.history.location.state)
   const c = props.history.location.state.data ;
   setFileName(props.history.location.state.name)
   console.log(c);
-
   setTableData(c);
-  
-   
 }, [] )
   const toggleNavs = (e, index) => {
     e.preventDefault();
@@ -107,9 +102,6 @@ useEffect(() => {
     console.log(res.data.ad.length)
     setModalOpen(true)
   }).catch((err)=>console.log(err));
-
-    
-    
   }
 
   const closeHandle = () =>{
@@ -142,6 +134,7 @@ console.log(fileName)
 
 }
 
+
 const get_normalized_data = (childData) =>{
 
 
@@ -155,6 +148,7 @@ const get_normalized_data = (childData) =>{
 
   // const  AD = [54, 66, 69, 75, 88, 90];
   // const control = [54, 59, 66, 71, 88];
+
   const  series= [
     {
       type: 'boxPlot', 
@@ -203,12 +197,7 @@ const get_normalized_data = (childData) =>{
         },
       }  
     },
-     
   }
-
-   
-
-  
   return (
     <>
       <Header />
@@ -252,7 +241,6 @@ const get_normalized_data = (childData) =>{
           </Col>
         :
         <>
-                 
           <Col className="mb-8 mb-xl-0" xl="8">
             <Card className="shadow">
               <CardHeader className="border-0">
@@ -275,27 +263,14 @@ const get_normalized_data = (childData) =>{
               
                 </Row>
               </CardHeader>
-            
-         <ChooseFile parentCallback={handleCallback} />
-                
-               
+        <ChooseFile parentCallback={handleCallback} />
             </Card>
           </Col>
-         
-           
-     
-       
-           </>}
-           </>
-
+</>}
+</>
           :
-
           // {/* choose normalization technique ---------------------------------------- */}
-
-            
-    
           <>
-                 
           <Col className="mb-8 mb-xl-0" xl="8">
             <Card className="shadow">
               <CardHeader className="border-0">
@@ -312,32 +287,24 @@ const get_normalized_data = (childData) =>{
                     >
                       Normalize the data
                     </Button>
-                      
                     </Nav>
                   </div> */}
-              
                 </Row>
               </CardHeader>
-            
-                
               <div style={{alignItems:'right'}} 
               >
+
                <MDBCloseIcon style={{position:'absolute' , left:0, botton:0, top:5, top:5 }} onClick={closeHandle}/>
                </div>
                   
                   
          <Normalization  fileName={fileName} key={fileName}  parentCallback={get_normalized_data}/>
                 
-               
+
             </Card>
           </Col>
-         
-           
-     
-       
-           </>
+          </>
             }
-
             </>
             :
             
@@ -346,8 +313,6 @@ const get_normalized_data = (childData) =>{
           }
         </Row>
       </Container>
-
-       
     </>
   );
 

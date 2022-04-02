@@ -51,7 +51,6 @@ const Login = () => {
               {
                 localStorage.setItem('loggedIn', true)
                 localStorage.setItem('username', res.data.username )
-
                 history.push('/admin/index')
                 window.location.reload(false);
               }
@@ -73,7 +72,6 @@ const Login = () => {
     //         console.log(state, 'loggin');
     //        // <Redirect to='/'/>;
     //        history.push('/home');
-           
     //         } 
     // setErrors(errorx); 
             })
