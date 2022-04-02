@@ -60,7 +60,7 @@ const Sidebar = (props) => {
       return (
         <NavItem key={key}>
           <NavLink
-             to={{ pathname:x ,  state:{title:'from home page'}   }}
+            to={{ pathname:x ,  state:{title:'from home page'}   }}
             //  to={prop.layout + prop.path}
             tag={NavLinkRRD}
             onClick={closeCollapse}

@@ -5,67 +5,40 @@ from django.conf import settings
 import pandas as pd
 import os
 import json
-from matplotlib import pyplot as plt
 from django.views.decorators.csrf import csrf_exempt
 import numpy
 from .models import userFiles
 import csv
 
 # Create your views here.
-def home(request):
-    return HttpResponse( "home.html")
 
 @csrf_exempt
 def csv_file(request):
     if request.method =="POST":
-        body= request.body.decode('utf-8')
-        body = json.loads(body)
-        uploadedfile = body['formData']
-        filename =  uploadedfile['file']
-        userId = uploadedfile['userid']
-        query = User.objects.get(id__exact = userId)
-        userfile = userFiles(title = filename, upload_by = query)
-        userfile.save()
-        data = uploadedfile['data']
-        name = os.path.join(settings.MEDIA_ROOT,filename)
-        with open(name , 'w', newline='') as file:
-            writer = csv.writer(file)
-            for d in data:
-                writer.writerow(d)
-        data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,filename)).head(10)
-        html_data = data.to_html()
-        html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
-        send = {'html':html,  'name':filename}
-        return JsonResponse(send)
+        uploadedfile = request.FILES['Document']
+        userId = request.POST['userid']
+        fileName = uploadedfile.name
+        if fileName.endswith('.csv') | fileName.endswith('.xls'):   #check the file format are correct
+            fs = FileSystemStorage()    #Creating an object
+            fs.save(fileName, uploadedfile)
+            query = User.objects.get(id__exact = userId)
+            userfile = userFiles(title = fileName, upload_by = query)
+            userfile.save()
+            if fileName.endswith('.csv'):
+                data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
+            elif fileName.endswith('.xls'):
+                data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))   
+            html_data = data.to_html()
+            html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
+            send = {'html':html,  'name':fileName}
+            return JsonResponse(send)
+        else:
+            return HttpResponse("Incorrect file format")
+    # GET
+    else:
+        # return render(request, "upload.html")
+        return HttpResponse("GET")
 
-
-# @csrf_exempt
-# def csv_file(request):
-#     if request.method =="POST":
-#         body_decode = request.body.decode('utf-8')
-#         uploadedfile = request.FILES['Document']
-#         fileName = uploadedfile.name
-#         if fileName.endswith('.csv') | fileName.endswith('.xls'):   #check the file format are correct
-#             fs = FileSystemStorage()    #Creating an object
-#             fs.save(fileName, uploadedfile)
-#             userfile = userFiles(title = fileName)
-#             userfile.save()
-#             if fileName.endswith('.csv'):
-#                 data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
-#             elif fileName.endswith('.xls'):
-#                 data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))   
-#                 # return redirect('Upload')
-#             json_data = data.to_json()
-#             # return render(request,'visualize.html',{'data':html_data})
-#             return HttpResponse(json_data)
-#         else:
-#                 messages.warning(request,"Incorrect file format")
-#                 return HttpResponse("Incorrect file format")
-#     # GET
-#     else:
-#         # return render(request, "upload.html")
-#         return HttpResponse("GET")
-    
 
 #Plot the data 
 @csrf_exempt
@@ -80,9 +53,7 @@ def plotData(request):
             dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
         elif fileName.endswith('.xls'):
             dataFrame = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))  
-        dataFrame.set_index("Unnamed: 0", inplace = True)
         columns = dataFrame.columns
-        # print(columns)
         Ad_list = []
         control_list = []
         for col in columns:
