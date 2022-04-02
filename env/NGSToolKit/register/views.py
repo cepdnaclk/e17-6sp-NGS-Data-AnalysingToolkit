@@ -24,7 +24,9 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+
             return HttpResponse("Success", status=202)
+
         else:
             return HttpResponse("Invalid request", status=406)
             # what is the error 

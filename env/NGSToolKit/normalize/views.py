@@ -53,7 +53,8 @@ def normalizeData(request):
             userfile.save()
             html_data = normalized_df.head().to_html()
             html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
-            send = {'html':html,  'name':new_fileName}
+            send = {'html':html,  'name':new_fileName, 'method':method}
+            print(html)
             return JsonResponse(send)
             # return HttpResponse(normalized_df.head().to_json())
         

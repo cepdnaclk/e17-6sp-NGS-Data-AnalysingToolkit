@@ -50,6 +50,7 @@ import JsonToTable from 'react-json-to-table';
 import ReactHtmlParser from 'react-html-parser'
 import Normalization from "./Normalization";
 import ChooseFile from './ChooseFile';
+import NormalizedDataTable from './NormalizedDataTable';
 
 const Index = (props) => { 
   const [activeNav, setActiveNav] = useState(1);
@@ -64,7 +65,10 @@ const Index = (props) => {
   const [controlPoints, setControlPoinnts] = useState(0);
   const [normSelect, setNormSelect] = useState(false);
   const [tempFile, setTempFile] = useState('');
-  const [normalized, setNormalized] = useState(false)  
+
+  const [normalized, setNormalized] = useState(false)
+  const [normalizedDta, setNormalizedData] = useState({})
+
   let history = useHistory();
 
   if (window.Chart) {
@@ -128,6 +132,21 @@ console.log(fileName)
       setTempFile(childData)
 
 }
+
+
+const get_normalized_data = (childData) =>{
+
+
+  setNormalizedData(childData);
+  setNormalized(true)
+  
+}
+
+
+  
+
+  // const  AD = [54, 66, 69, 75, 88, 90];
+  // const control = [54, 59, 66, 71, 88];
 
   const  series= [
     {
@@ -273,17 +292,23 @@ console.log(fileName)
               </CardHeader>
               <div style={{alignItems:'right'}} 
               >
-              <MDBCloseIcon style={{position:'absolute' , left:0, botton:0, top:5, top:5 }} onClick={closeHandle}/>
-              </div>
-        <Normalization  fileName={fileName} key={fileName}  />
+
+               <MDBCloseIcon style={{position:'absolute' , left:0, botton:0, top:5, top:5 }} onClick={closeHandle}/>
+               </div>
+                  
+                  
+         <Normalization  fileName={fileName} key={fileName}  parentCallback={get_normalized_data}/>
+                
+
             </Card>
           </Col>
           </>
             }
             </>
             :
-            null 
+            
             // normalized data should come here
+            <NormalizedDataTable data = {normalizedDta}/>
           }
         </Row>
       </Container>
