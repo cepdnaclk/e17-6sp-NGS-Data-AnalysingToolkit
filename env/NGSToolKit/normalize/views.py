@@ -51,12 +51,10 @@ def normalizeData(request):
             user = User.objects.get(id__exact = userId)
             userfile = userFiles(title = new_fileName, upload_by = user)
             userfile.save()
-            html_data = normalized_df.head().to_html()
+            html_data = normalized_df.head(10).to_html()
             html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
             send = {'html':html,  'name':new_fileName, 'method':method}
-            print(html)
             return JsonResponse(send)
-            # return HttpResponse(normalized_df.head().to_json())
         
 def minMaxNormalize(df):
     min_max = ps.MinMaxScaler()

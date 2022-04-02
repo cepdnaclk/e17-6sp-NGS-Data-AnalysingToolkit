@@ -4,12 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faFileAlt, faSpinner, faTrash } from '@fortawesome/free-solid-svg-icons'
 import {Redirect, useHistory} from 'react-router-dom';
-import * as XLSX from "xlsx";
 
 import FileUpload from '../../services/fileupload';  
 import Header from "../../components/Headers/Header.js";
 import { Button, FormGroup, Form } from 'react-bootstrap';
-import PaPa from 'papaparse';   
 import styled from 'styled-components';
 import { 
     Card, 
@@ -46,7 +44,6 @@ function UploadFile() {
             console.log(typeof dd);
             setData(res.data.html);
             history.push({pathname:'/admin/visualize', state:{data:res.data.html, name:res.data.name}});
-
         })
     }
     const deleteFile = (filename) => {
@@ -74,9 +71,7 @@ function UploadFile() {
                     <>
                         <div className="file-card">
                             <div className="file-inputs">
-
-                                <input type="file" accept='.csv,.xls,.xlsx'
-
+                                <input type="file" accept='.csv,.xls'
                                     onChange={uploadHandler} />
                                 <button type='submit'>
                                     <i>
@@ -86,9 +81,7 @@ function UploadFile() {
                                 </button>
                             </div>
                             <p className="main">Supported files</p>
-
                             <p className="info">CSV, XLS</p>
-
                             <>
                                 <ul className="file-list">
                                     {

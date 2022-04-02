@@ -65,12 +65,9 @@ const Index = (props) => {
   const [controlPoints, setControlPoinnts] = useState(0);
   const [normSelect, setNormSelect] = useState(false);
   const [tempFile, setTempFile] = useState('');
-
   const [normalized, setNormalized] = useState(false)
-  const [normalizedDta, setNormalizedData] = useState({})
-
+  const [normalizedData, setNormalizedData] = useState({})
   let history = useHistory();
-
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
@@ -81,7 +78,7 @@ useEffect(() => {
   setFileName(props.history.location.state.name)
   console.log(c);
   setTableData(c);
-}, [] )
+}, [])
   const toggleNavs = (e, index) => {
     e.preventDefault();
     setActiveNav(index);
@@ -92,31 +89,23 @@ useEffect(() => {
     let gene = e.target.innerText;
     console.log( typeof e.target.innerText);
     setGeneName(e.target.innerText)
-
-    BoxPlot.boxPlot(gene, fileName).then(res => {
-      console.log(res.data);
+    // console.log(normalizedData)
+    BoxPlot.boxPlot(gene, normalizedData.name).then(res => {
     setAD (res.data.Ad_props); //calc
     setControl(res.data.Control_props) 
     setAdPoints(res.data.ad.length)//points
     setControlPoinnts(res.data.control.length)
-    console.log(res.data.ad.length)
     setModalOpen(true)
   }).catch((err)=>console.log(err));
   }
   const closeHandle = () =>{
-    // setModalOpen(false)
     setNormSelect(false)
   }
 
-  const Choose_norm_tech = ()=>{
-    console.log('hhh')
+  const Choose_norm_tech = () => {
     setNormSelect(true);
-    console.log(normSelect)
-
   }
-
   const handleCallback = (childData) =>{
-
     //from back need to provide file list ---------
     //selected file come here(done)
     //need to retreive data from that file -------
@@ -124,30 +113,16 @@ useEffect(() => {
     //get result data & boxplot 
     if(childData=='submit'){
       setFileName(tempFile)
-console.log(fileName)
-
+      console.log("File name is: ",fileName)
     }
-    
     else 
       setTempFile(childData)
-
 }
-
 
 const get_normalized_data = (childData) =>{
-
-
   setNormalizedData(childData);
-  setNormalized(true)
-  
+  setNormalized(true) 
 }
-
-
-  
-
-  // const  AD = [54, 66, 69, 75, 88, 90];
-  // const control = [54, 59, 66, 71, 88];
-
   const  series= [
     {
       type: 'boxPlot', 
@@ -201,10 +176,8 @@ const get_normalized_data = (childData) =>{
     <>
       <Header />
       {/* Page content */}
-
       <Container className="mt--8" fluid>
         <Row className="mt-5">
-
         {!normalized?
         <>
         {!normSelect?
@@ -292,12 +265,9 @@ const get_normalized_data = (childData) =>{
               </CardHeader>
               <div style={{alignItems:'right'}} 
               >
-
-               <MDBCloseIcon style={{position:'absolute' , left:0, botton:0, top:5, top:5 }} onClick={closeHandle}/>
-               </div>
-                  
-                  
-         <Normalization  fileName={fileName} key={fileName}  parentCallback={get_normalized_data}/>
+              <MDBCloseIcon style={{position:'absolute' , left:0, botton:0, top:5, top:5 }} onClick={closeHandle}/>
+              </div>        
+        <Normalization  fileName={fileName} key={fileName}  parentCallback={get_normalized_data}/>
                 
 
             </Card>
@@ -308,7 +278,7 @@ const get_normalized_data = (childData) =>{
             :
             
             // normalized data should come here
-            <NormalizedDataTable data = {normalizedDta}/>
+            <NormalizedDataTable data = {normalizedData}/>
           }
         </Row>
       </Container>

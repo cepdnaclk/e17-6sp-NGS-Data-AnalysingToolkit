@@ -37,7 +37,6 @@ def csv_file(request):
         # return render(request, "upload.html")
         return HttpResponse("GET")
 
-
 #Plot the data 
 @csrf_exempt
 def plotData(request):
@@ -47,6 +46,7 @@ def plotData(request):
         body = json.loads(body)
         fileName = body["fileName"]
         geneName = body["name"]
+        print("plotdata",geneName, fileName)
         if fileName.endswith('.csv'):
             dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
         elif fileName.endswith('.xls'):
@@ -54,13 +54,17 @@ def plotData(request):
         columns = dataFrame.columns
         Ad_list = []
         control_list = []
+        # Sperating the columns
         for col in columns:
             if col.startswith("AD"):
                 Ad_list.append(col)
             elif col.startswith("control"):
                 control_list.append(col)
+        # Creating List of AD values
         Ad_val = dataFrame[Ad_list].loc[geneName].values.tolist()
+        # Creating List of control val
         control_val = dataFrame[control_list].loc[geneName].values.tolist() 
+        # Creating list of admin ad max and 1,2,3 quantile
         Ad_props = [min(Ad_val),numpy.quantile(Ad_val,0.25), numpy.quantile(Ad_val,0.5), numpy.quantile(Ad_val,0.75),max(Ad_val)]
         Control_props = [min(control_val),numpy.quantile(control_val,0.25), numpy.quantile(control_val,0.5), numpy.quantile(control_val,0.75),max(control_val)]
         vals = {"ad":Ad_val, "control":control_val, "Ad_props": Ad_props, "Control_props":Control_props}

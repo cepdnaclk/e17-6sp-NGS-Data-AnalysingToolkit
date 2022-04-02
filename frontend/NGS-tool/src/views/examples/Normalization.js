@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
- 
 import {
 CardBody,
 Nav,
@@ -9,16 +8,16 @@ Button
 import Select from 'react-select';
 import MlServices from '../../services/MlModel';
 
-
 const Normalization = (props) => {
   const [fileName, setFileName] = useState();
   const [tech, setTech] = useState();
   const [error, setError] = useState(false); 
-  
+
   useEffect(() => {
     console.log('norm')
     if( props.fileName)
       setFileName(props.fileName)
+    
   }, [] )
 
   const NormTech = [
@@ -31,7 +30,7 @@ const Normalization = (props) => {
     setTech(e.label);
   }
 
-  const Choose_norm_tech = (value) => {
+  const Choose_norm_tech = (value) => { //Select the file method and send to normalization
     console.log(tech)
     if(!tech)
       setError(true)
@@ -39,11 +38,8 @@ const Normalization = (props) => {
       setError(false)
       var method = tech
       MlServices.normalization(fileName, method)
-
         .then(res => {console.log(res);
           props.parentCallback(res.data);
-      
-
         })
         .catch(error=>{console.log(error)});
   }
@@ -79,7 +75,5 @@ const Normalization = (props) => {
     </>
   );
 };
-
-
 
 export default Normalization;
