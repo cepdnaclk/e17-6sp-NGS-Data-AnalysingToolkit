@@ -52,6 +52,9 @@ def normalizeData(request):
             user = User.objects.get(id__exact = userId)
             userfile = userFiles(title = new_fileName, upload_by = user)
             userfile.save()
+
+            normalized_df = normalized_df.set_index("genes").rename_axis(None)
+            
             html_data = normalized_df.head(10).to_html()
             html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
             send = {'html':html,  'name':new_fileName, 'method':method}

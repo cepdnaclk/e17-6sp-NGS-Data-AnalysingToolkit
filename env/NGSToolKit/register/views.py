@@ -59,12 +59,12 @@ def login_request(request):
 #Profile page
 @csrf_exempt
 def profile(request):
-    if request.method == "POST":
-        userId = request.POST['userid']
+    if request.method == "GET":
+        userId = request.GET['userid']
         userfiles = userFiles.objects.filter(id=userId)
         fileLis = []
         print(userfiles)
-        for file in userFiles:
+        for file in userfiles:
             fileLis.append(file.title)
         print(fileLis)
         return HttpResponse(fileLis)
