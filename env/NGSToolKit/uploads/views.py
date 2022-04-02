@@ -46,7 +46,6 @@ def plotData(request):
         body = json.loads(body)
         fileName = body["fileName"]
         geneName = body["name"]
-        print("plotdata",geneName, fileName)
         if fileName.endswith('.csv'):
             dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
         elif fileName.endswith('.xls'):
@@ -61,6 +60,7 @@ def plotData(request):
             elif col.startswith("control"):
                 control_list.append(col)
         # Creating List of AD values
+        # dataFrame = dataFrame.set_index(dataFrame["unamed: 0"])
         Ad_val = dataFrame[Ad_list].loc[geneName].values.tolist()
         # Creating List of control val
         control_val = dataFrame[control_list].loc[geneName].values.tolist() 
