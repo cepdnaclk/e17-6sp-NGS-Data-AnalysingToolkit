@@ -8,10 +8,8 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 import numpy
 from .models import userFiles
-import csv
 
 # Create your views here.
-
 @csrf_exempt
 def csv_file(request):
     if request.method =="POST":
@@ -25,9 +23,9 @@ def csv_file(request):
             userfile = userFiles(title = fileName, upload_by = query)
             userfile.save()
             if fileName.endswith('.csv'):
-                data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
+                data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName)).head(10)
             elif fileName.endswith('.xls'):
-                data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))   
+                data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName)).head(10)   
             html_data = data.to_html()
             html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
             send = {'html':html,  'name':fileName}

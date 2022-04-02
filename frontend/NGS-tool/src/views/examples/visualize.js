@@ -99,7 +99,6 @@ useEffect(() => {
     setModalOpen(true)
   }).catch((err)=>console.log(err));
   }
-
   const closeHandle = () =>{
     // setModalOpen(false)
     setNormSelect(false)
