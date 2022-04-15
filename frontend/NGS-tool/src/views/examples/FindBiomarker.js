@@ -17,17 +17,22 @@ import { Timeline, TimelineEvent } from "react-event-timeline";
 import Header from "../../components/Headers/Header.js";
 import ChooseFile from "./ChooseFile";
 import Normalization from './Normalization';
+import NormalizedDataTable from './NormalizedDataTable';
+
 
 const FindBiomarker = (props) => {
  
   const [fileName, setFileName] = useState('');
   const [tempFile, setTempFile] = useState('');
   const [status, setStatus] = useState(0);
+  const [normalizedData, setNormalizedData] = useState({})
+  const [normalized, setNormalized] = useState(false)
+
 
   useEffect(() => {
-  console.log(props)
-    if(props.location.state.fileName)
-    setFileName(props.location.state.fileName)
+  // console.log(props)
+  //   if(props.location.state.fileName)
+  //   setFileName(props.location.state.fileName)
        
      
   }, [] );
@@ -37,10 +42,12 @@ const FindBiomarker = (props) => {
        setStatus(status+1)
   }
   
-const steps = ['Choose File', 'Normalization', 'Feature Selection'];
+const steps = ['Step - 1: Choose File', 'Step - 2: Normalization', 'Step - 3: P-Value', 'Step - 4: Feature Selection'];
   
 
 const handleCallback = (childData) =>{
+  setFileName(childData)
+  console.log(fileName)
 
  console.log(childData)
   if(childData=='submit'){
@@ -55,15 +62,20 @@ const handleCallback = (childData) =>{
 
 }
 
+const get_normalized_data = (childData) =>{
+  setNormalizedData(childData);
+  setNormalized(true) 
+  console.log(childData)
+}
 
   return (
     <>
       <Header />
       {/* Page content */}
-      <Container className="mt--7" fluid>
+      <Container className="mt--8" fluid>
         {/* Table */}
         <Row>
-        <Col className="mb-8 mb-xl-0" xl="8">
+        <Col className="mb-8 mb-xl-0" xl="10">
         <Card className="shadow ">
               <CardHeader className="bg-transparent">
               
@@ -86,12 +98,23 @@ const handleCallback = (childData) =>{
         :null}
 
           {status==1?
-        <Normalization   />:null}
+          
+          <>
+          {console.log(normalized)}
+          {normalized?
+        <NormalizedDataTable data = {normalizedData}/>
+        :
+        <Normalization   fileName={fileName} key={fileName} parentCallback={get_normalized_data}/>
+
+        }
+      </>
+        
+        :null}
 
         </Card>
          </Col>
 
-           <Col lg="9" xl="4">
+           <Col lg="9" xl="2">
           <Row>
                 <Card className="card-stats mb-5 mb-xl-7">
                   <Row>
