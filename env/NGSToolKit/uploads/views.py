@@ -16,6 +16,8 @@ def csv_file(request):
         uploadedfile = request.FILES['Document']
         userId = request.POST['userid']
         fileName = uploadedfile.name
+        features = 0
+        samples = 0 
         if fileName.endswith('.csv') | fileName.endswith('.xls'):   #check the file format are correct
             fs = FileSystemStorage()    #Creating an object
             fs.save(fileName, uploadedfile)
@@ -23,13 +25,21 @@ def csv_file(request):
             userfile = userFiles(title = fileName, upload_by = query)
             userfile.save()
             if fileName.endswith('.csv'):
-                data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName)).head(10)
+                data = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
+                features = data.shape[0]-1
+                samples = data.shape[1]-1
+                print(data.min(axis=1))
+                data = data.head(10)
             elif fileName.endswith('.xls'):
-                data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName)).head(10)   
+                data = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))
+                features = data.shape[0]-1
+                samples = data.shape[1]-1
+                data = data.head(10)
             html_data = data.to_html()
             html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
-            send = {'html':html,  'name':fileName}
+            send = {'html':html,  'name':fileName, 'samples': samples, 'features':features, }
             return JsonResponse(send)
+            
         else:
             return HttpResponse("Incorrect file format")
     # GET
