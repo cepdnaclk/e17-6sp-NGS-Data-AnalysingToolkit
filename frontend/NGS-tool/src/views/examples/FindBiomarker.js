@@ -1,142 +1,142 @@
-import { useState, useEffect } from "react"; 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Container,
-  Row,
-  Col,
-  UncontrolledTooltip,
-  Nav,
-  Button, 
-} from "reactstrap";
-// core components
+// import { useState, useEffect } from "react"; 
+// import {
+//   Card,
+//   CardHeader,
+//   CardBody,
+//   Container,
+//   Row,
+//   Col,
+//   UncontrolledTooltip,
+//   Nav,
+//   Button, 
+// } from "reactstrap";
+// // core components
 
-import { Timeline, TimelineEvent } from "react-event-timeline";
+// import { Timeline, TimelineEvent } from "react-event-timeline";
 
-import Header from "../../components/Headers/Header.js";
-import ChooseFile from "./ChooseFile";
-import Normalization from './Normalization';
+// import Header from "../../components/Headers/Header.js";
+// import ChooseFile from "./ChooseFile";
+// import Normalization from './Normalization';
 
-const FindBiomarker = (props) => {
+// const FindBiomarker = (props) => {
  
-  const [fileName, setFileName] = useState('');
-  const [tempFile, setTempFile] = useState('');
-  const [status, setStatus] = useState(0);
+//   const [fileName, setFileName] = useState('');
+//   const [tempFile, setTempFile] = useState('');
+//   const [status, setStatus] = useState(0);
 
-  useEffect(() => {
-  console.log(props)
-    if(props.location.state.fileName)
-    setFileName(props.location.state.fileName)
+//   useEffect(() => {
+//   console.log(props)
+//     if(props.location.state.fileName)
+//     setFileName(props.location.state.fileName)
        
      
-  }, [] );
+//   }, [] );
 
 
-  const status_change = () => {
-       setStatus(status+1)
-  }
+//   const status_change = () => {
+//        setStatus(status+1)
+//   }
   
-const steps = ['Choose File', 'Normalization', 'Feature Selection'];
+// const steps = ['Choose File', 'Normalization', 'Feature Selection'];
   
 
-const handleCallback = (childData) =>{
+// const handleCallback = (childData) =>{
 
- console.log(childData)
-  if(childData=='submit'){
-    console.log(tempFile)
+//  console.log(childData)
+//   if(childData=='submit'){
+//     console.log(tempFile)
 
-    setFileName(tempFile)
-    console.log(fileName)
-  }
+//     setFileName(tempFile)
+//     console.log(fileName)
+//   }
   
-  else 
-    setTempFile(childData)
+//   else 
+//     setTempFile(childData)
 
-}
+// }
 
 
-  return (
-    <>
-      <Header />
-      {/* Page content */}
-      <Container className="mt--7" fluid>
-        {/* Table */}
-        <Row>
-        <Col className="mb-8 mb-xl-0" xl="8">
-        <Card className="shadow ">
-              <CardHeader className="bg-transparent">
+//   return (
+//     <>
+//       <Header />
+//       {/* Page content */}
+//       <Container className="mt--7" fluid>
+//         {/* Table */}
+//         <Row>
+//         <Col className="mb-8 mb-xl-0" xl="8">
+//         <Card className="shadow ">
+//               <CardHeader className="bg-transparent">
               
-                <h3 className="mb-0">{ steps[status]}</h3>
-                <Nav className="justify-content-end" pills>
-                    <Button
-                      color="success"
-                      onClick={status_change}
-                      size="sm"
-                    >
-                      {steps[status+1]}  <i className="ni ni-bold-right" />
+//                 <h3 className="mb-0">{ steps[status]}</h3>
+//                 <Nav className="justify-content-end" pills>
+//                     <Button
+//                       color="success"
+//                       onClick={status_change}
+//                       size="sm"
+//                     >
+//                       {steps[status+1]}  <i className="ni ni-bold-right" />
                 
-                    </Button>
+//                     </Button>
                       
-                    </Nav>
-              </CardHeader>
-          {status==0?
-        // <ChooseFile  fileName={fileName} key={fileName} />
-        <ChooseFile parentCallback={handleCallback} />
-        :null}
+//                     </Nav>
+//               </CardHeader>
+//           {status==0?
+//         // <ChooseFile  fileName={fileName} key={fileName} />
+//         <ChooseFile parentCallback={handleCallback} />
+//         :null}
 
-          {status==1?
-        <Normalization   />:null}
+//           {status==1?
+//         <Normalization   />:null}
 
-        </Card>
-         </Col>
+//         </Card>
+//          </Col>
 
-           <Col lg="9" xl="4">
-          <Row>
-                <Card className="card-stats mb-5 mb-xl-7">
-                  <Row>
-          <div className="col">
-            <Card className="shadow">
-                   <CardHeader className="border-0">
-                <h3 className="mb-0"> Find Biomarker</h3>
-              </CardHeader>
+//            <Col lg="9" xl="4">
+//           <Row>
+//                 <Card className="card-stats mb-5 mb-xl-7">
+//                   <Row>
+//           <div className="col">
+//             <Card className="shadow">
+//                    <CardHeader className="border-0">
+//                 <h3 className="mb-0"> Find Biomarker</h3>
+//               </CardHeader>
              
-              <Timeline color="success">
+//               <Timeline color="success">
 
-              <TimelineEvent 
-        title="Choose File"
-        icon={<i className="ni ni-cloud-upload-96   "> </i>}
-      >
-      <></>
-      </TimelineEvent>
+//               <TimelineEvent 
+//         title="Choose File"
+//         icon={<i className="ni ni-cloud-upload-96   "> </i>}
+//       >
+//       <></>
+//       </TimelineEvent>
       
-      <TimelineEvent
-        title="Normalization"
-        icon={<i className="ni ni-cloud-upload-96   "> </i>}
-      >
-      <></>
-      </TimelineEvent>
+//       <TimelineEvent
+//         title="Normalization"
+//         icon={<i className="ni ni-cloud-upload-96   "> </i>}
+//       >
+//       <></>
+//       </TimelineEvent>
       
-      <TimelineEvent
-        title="Feature Selection"
-        icon={<i className="ni ni-cloud-upload-96   "> </i>}
-      >
-      <></>
-      </TimelineEvent>
+//       <TimelineEvent
+//         title="Feature Selection"
+//         icon={<i className="ni ni-cloud-upload-96   "> </i>}
+//       >
+//       <></>
+//       </TimelineEvent>
       
-    </Timeline>
-            </Card>
-          </div>
-        </Row>
-                </Card>
- </Row>
-              </Col> 
-        </Row>
-      </Container>
-    </>
-  );
-};
+//     </Timeline>
+//             </Card>
+//           </div>
+//         </Row>
+//                 </Card>
+//  </Row>
+//               </Col> 
+//         </Row>
+//       </Container>
+//     </>
+//   );
+// };
 
 
 
-export default FindBiomarker;
+// export default FindBiomarker;
