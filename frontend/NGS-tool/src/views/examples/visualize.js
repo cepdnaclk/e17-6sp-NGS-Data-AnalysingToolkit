@@ -67,6 +67,8 @@ const Index = (props) => {
   const [tempFile, setTempFile] = useState('');
   const [normalized, setNormalized] = useState(false)
   const [normalizedData, setNormalizedData] = useState({})
+  const [features, setFeatures] = useState(0);
+  const [samples, setSamples] = useState(0);
   let history = useHistory();
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
@@ -75,9 +77,13 @@ const Index = (props) => {
 useEffect(() => {
   var l = JSON.stringify(props.history.location.state)
   const c = props.history.location.state.data ;
+  setSamples(props.history.location.state.samples)
+  setFeatures(props.history.location.state.features)
   setFileName(props.history.location.state.name)
   console.log(c);
   setTableData(c);
+  console.log(features)
+  console.log(samples)
 }, [])
   const toggleNavs = (e, index) => {
     e.preventDefault();
@@ -205,7 +211,26 @@ const get_normalized_data = (childData) =>{
                   </div>
                 </Row>
               </CardHeader>
-                <Table style={{ width: '100%', height:'100%'}} className="align-items-center table-flush table-hover" responsive onClick={e => handleClick(e)}>
+              <CardBody>
+              <Table className="align-items-center table-flush" responsive>
+                <thead className="thead-light">
+                  <tr>
+                    <th scope="col">FEATURES</th>
+                    <th scope="col">SAMPLES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{samples}</td>
+                    <td>{features}</td>          
+                  </tr>
+                 
+                   
+                </tbody>
+              </Table>
+              </CardBody>
+
+                <Table style={{ width: '100%', height:'100%'}} className="align-items-center table-flush table-hover thead-light" responsive onClick={e => handleClick(e)}>
                 
                 {ReactHtmlParser(tableData)}
                 </Table>

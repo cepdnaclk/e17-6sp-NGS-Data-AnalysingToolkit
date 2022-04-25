@@ -43,7 +43,8 @@ function UploadFile() {
             var dd = res.data
             console.log(typeof dd);
             setData(res.data.html);
-            history.push({pathname:'/admin/visualize', state:{data:res.data.html, name:res.data.name}});
+            history.push({pathname:'/admin/visualize', 
+            state:{data:res.data.html, name:res.data.name, features:res.data.features, samples:res.data.samples}});
         })
     }
     const deleteFile = (filename) => {
