@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'register.apps.RegisterConfig',
+    "pval.apps.PvalConfig",
 ]
 
 MIDDLEWARE = [
