@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include('uploads.urls')),
     path('register/', include('register.urls')),
     path('normalize/', include('normalize.urls')),
+    path('pval/',include('pvalue.urls') ),
     path("auth/", obtain_auth_token)
 ]
 
