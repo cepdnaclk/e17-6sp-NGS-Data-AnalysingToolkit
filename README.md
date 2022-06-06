@@ -79,6 +79,7 @@ In our application, User can:
 - [Project Page](https://cepdnaclk.github.io/e17-co328-NGS-Data-AnalysingToolkit/)
 - [Department Web Site](http://www.ce.pdn.ac.lk/)
 - [University of Peradeniya](https://eng.pdn.ac.lk/)
+- [AzureDevOps](https://dev.azure.com/UOP-E17-G02/NGS%20Analysing%20ToolKit)
 
 
 
