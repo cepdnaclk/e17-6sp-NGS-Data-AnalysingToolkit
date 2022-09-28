@@ -4,7 +4,10 @@ import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 const Header = () => {
   return (
     <>
-      <div className="header bg-gradient-success pb-8 pt-5 pt-md-8">
+      <div className="header  pb-8 pt-5 pt-md-8"> 
+      
+      {/* bg-gradient-success this color add in above div */}
+
         <Container fluid>
           <div className="header-body">
             {/* Card stats */}

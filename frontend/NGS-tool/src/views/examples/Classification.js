@@ -21,9 +21,13 @@ const Normalization = (props) => {
   }, [] )
 
   const NormTech = [
-    { label: "Quantile Normalization", value: 1 },
-    { label: "Min Max", value: 2 },
-    { label: "Standard Deviation", value: 3 },
+    { label: "Logistic Regression", value: 1 },
+    { label: "Linear SVM", value: 2 },
+    { label: "KNN", value: 3 },
+    { label: "Gaussian SVM", value: 4 },
+    { label: "Naive Bayes", value: 5 },
+    { label: "Random Forest", value: 6 },
+
   ];
 
   const handleChange = (e)=> {
@@ -49,7 +53,7 @@ const Normalization = (props) => {
     <> 
               <CardBody >
               <h6 className="heading-small text-muted mb-4 align-items-center">Selected file : {fileName}  </h6> 
-              <h6 className="heading-small text-muted mb-4"> Choose A Normalization Technique </h6> 
+              <h6 className="heading-small text-muted mb-4"> Choose A Feature Selection Technique </h6> 
               <div className="row">
               <div className="col-md-3"></div>
               <div className="container">
@@ -67,7 +71,7 @@ const Normalization = (props) => {
                       onClick={Choose_norm_tech}
                       size="sm"
                     >
-                      Normalize the data
+                      Select 
                     </Button>
                     </Nav>
                     </div>

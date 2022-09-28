@@ -18,6 +18,9 @@ import Header from "../../components/Headers/Header.js";
 import ChooseFile from "./ChooseFile";
 import Normalization from './Normalization';
 import NormalizedDataTable from './NormalizedDataTable';
+import Reduction from './PValue';
+import Selection from './FeatureSelection';
+import Classification from './Classification';
 
 
 const FindBiomarker = (props) => {
@@ -41,8 +44,13 @@ const FindBiomarker = (props) => {
   const status_change = () => {
        setStatus(status+1)
   }
+
+  const status_back = () => {
+    setStatus(status-1)
+}
   
-const steps = ['Step - 1: Choose File', 'Step - 2: Normalization', 'Step - 3: P-Value', 'Step - 4: Feature Selection'];
+const steps = ['Step - 1 : Choose File', 'Step - 2 : Normalization', 
+'Step - 3 : Feature Reduction', 'Step - 4 : Feature Selection', 'Step - 5 : Classification', 'Results'];
   
 
 const handleCallback = (childData) =>{
@@ -80,6 +88,25 @@ const get_normalized_data = (childData) =>{
               <CardHeader className="bg-transparent">
               
                 <h3 className="mb-0">{ steps[status]}</h3>
+                <Row style={{marginTop:40}}>
+                <Col>
+                {steps[status-1]?
+                <Nav className="justify-content-start" pills>
+                    <Button
+                      color="success"
+                      onClick={status_back}
+                      size="sm"
+                    >
+                       <i className="ni ni-bold-left" /> Back {steps[status-1]} 
+                
+                    </Button>
+                      
+                </Nav>
+                :null}
+                 </Col>
+
+                <Col>
+                 
                 <Nav className="justify-content-end" pills>
                     <Button
                       color="success"
@@ -90,7 +117,10 @@ const get_normalized_data = (childData) =>{
                 
                     </Button>
                       
-                    </Nav>
+                </Nav>
+                </Col>
+
+                 </Row>
               </CardHeader>
           {status==0?
         // <ChooseFile  fileName={fileName} key={fileName} />
@@ -110,6 +140,38 @@ const get_normalized_data = (childData) =>{
       </>
         
         :null}
+
+         {status==2?
+          
+          <>
+           
+        <Reduction   fileName={fileName} key={fileName} parentCallback={get_normalized_data}/>
+ 
+      </>
+        
+        :null}
+
+         {status==3?
+          
+          <>
+           
+        <Selection   fileName={fileName} key={fileName} parentCallback={get_normalized_data}/>
+ 
+      </>
+        
+        :null}
+
+        {status==4?
+          
+          <>
+           
+        <Classification   fileName={fileName} key={fileName} parentCallback={get_normalized_data}/>
+ 
+      </>
+        
+        :null}
+
+        
 
         </Card>
          </Col>
@@ -141,7 +203,21 @@ const get_normalized_data = (childData) =>{
       </TimelineEvent>
       
       <TimelineEvent
+        title="Feature Reduction"
+        icon={<i className="ni ni-cloud-upload-96   "> </i>}
+      >
+      <></>
+      </TimelineEvent>
+
+       <TimelineEvent
         title="Feature Selection"
+        icon={<i className="ni ni-cloud-upload-96   "> </i>}
+      >
+      <></>
+      </TimelineEvent>
+
+       <TimelineEvent
+        title="Classification"
         icon={<i className="ni ni-cloud-upload-96   "> </i>}
       >
       <></>

@@ -1,21 +1,11 @@
 import { useState , useEffect} from "react";
-// node.js library that concatenates classes (strings)
 import {useHistory} from 'react-router-dom';
-// javascipt plugin for creating charts
 import Chart from "chart.js";
-// react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
-import {MDBBtn} from 'mdb-react-ui-kit'
-import {CCloseButton} from '@coreui/react';
 import {MDBCloseIcon} from 'mdbreact';
-import ScrollBars from 'react-scrollbar';
-import { StrictMode } from "react";
-import BoxPlot from '../../services/boxplot';  
+import BoxPlot from '../../services/boxplot'; 
+import {RangeStepInput} from 'react-range-step-input';
+import {NumericInput} from 'react-numeric-input';
 
-//import Table from "react-bootstrap/Table"
-// import { MDBSmoothScroll } from "mdbreact";
-
-// reactstrap components
 import {
   Button,
   Card,
@@ -32,21 +22,12 @@ import {
   CardTitle
 } from "reactstrap";
 
-// core components
 import { 
   chartOptions,
   parseOptions,
-  chartExample1,
-  chartExample2,
 } from "../../variables/charts.js";
 
-//import Modal from 'react-modal';
-import styled from 'styled-components';
 import Header from "../../components/Headers/Header.js";
-// import ApexChart from 'components/modal/barplotModal.js's
-import ReactApexChart from 'react-apexcharts';
-import parse from 'html-react-parser';
-import JsonToTable from 'react-json-to-table';
 import ReactHtmlParser from 'react-html-parser'
 import Normalization from "./Normalization";
 import ChooseFile from './ChooseFile';
@@ -69,6 +50,8 @@ const Index = (props) => {
   const [normalizedData, setNormalizedData] = useState({})
   const [features, setFeatures] = useState(0);
   const [samples, setSamples] = useState(0);
+ const [value, setValue] = useState(50);
+
   let history = useHistory();
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
@@ -178,6 +161,18 @@ const get_normalized_data = (childData) =>{
       }  
     },
   }
+
+  const forceNumber = function(n) {
+    n = Number(n);
+    if (isNaN(n) || typeof n === 'undefined') {
+        n = 0;
+    }
+    return n;
+};
+  const onChange = (e)=> {
+    const newVal = forceNumber(e.target.value);
+    setValue(newVal);
+}
   return (
     <>
       <Header />
@@ -228,9 +223,18 @@ const get_normalized_data = (childData) =>{
                    
                 </tbody>
               </Table>
+              {/* <RangeStepInput
+                min={0} max={100}
+                value={value} step={1}
+                onChange={onChange.bind(this)}
+            />
+               <h2>{value}</h2> */}
+
+               {/* <NumericInput className="form-control"/> */}
+		 
               </CardBody>
 
-                <Table style={{ width: '100%', height:'100%'}} className="align-items-center table-flush table-hover thead-light" responsive onClick={e => handleClick(e)}>
+                <Table style={{ width: '100%', height:'100%'}} className="align-items-center table-flush table-hover " responsive onClick={e => handleClick(e)}>
                 
                 {ReactHtmlParser(tableData)}
                 </Table>
