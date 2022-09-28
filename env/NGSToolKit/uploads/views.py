@@ -15,6 +15,7 @@ def csv_file(request):
     if request.method =="POST":
         uploadedfile = request.FILES['Document']
         userId = request.POST['userid']
+        
         fileName = uploadedfile.name
         features = 0
         samples = 0 

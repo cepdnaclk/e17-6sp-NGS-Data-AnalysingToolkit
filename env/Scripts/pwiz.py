@@ -1,4 +1,4 @@
-#!C:\Users\nisha\Desktop\NewGit\e17-co328-NGS-Data-AnalysingToolkit\env\Scripts\python.exe
+#!C:\Users\nisha\Desktop\e17-co328-NGS-Data-AnalysingToolkit\env\Scripts\python.exe
 
 import datetime
 import sys
