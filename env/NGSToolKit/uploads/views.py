@@ -71,7 +71,6 @@ def plotData(request):
                 control_list.append(col)
         # Creating List of AD values
         dataFrame = dataFrame.set_index(dataFrame["genes"])
-        
         Ad_val = dataFrame[Ad_list].loc[geneName].values.tolist()
         # Creating List of control val
         control_val = dataFrame[control_list].loc[geneName].values.tolist() 
