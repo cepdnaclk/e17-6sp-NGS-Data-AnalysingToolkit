@@ -15,7 +15,7 @@ var routes = [
   {
     path: "/index",
     name: "Home",
-    icon: "ni ni-tv-2 text-success",
+    icon: "ni ni-tv-2 font-weight-bold text-success",
     component: Index,
     layout: "/admin",
   },
