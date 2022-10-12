@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'register.apps.RegisterConfig',
     "pvalue.apps.PvalueConfig",
+    "featureSelection.apps.FeatureselectionConfig"
 ]
 
 MIDDLEWARE = [

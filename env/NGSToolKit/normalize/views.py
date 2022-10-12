@@ -30,7 +30,7 @@ def normalizeData(request):
                 dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
             elif fileName.endswith('.xls'):
                 dataFrame = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))
-            
+
             #Changing it to transpose matrix and Set the columns correctly 
             transpose = dataFrame.T
             transpose.columns = transpose.iloc[0]
@@ -44,9 +44,9 @@ def normalizeData(request):
             
             # Changing the narray data set to datafrme and seting columns and index correctly
             normalized_df = pd.DataFrame(normalized_df)
-            normalized_df = normalized_df.T
-            normalized_df.columns = dataFrame.columns[1:]
-            normalized_df.insert(0,"genes", transpose.columns)
+            normalized_df.columns = transpose.columns
+            normalized_df.index = dataFrame.columns[1:]
+
             
             # Save the normalized file in the media folder with "_normalized" in the end
             new_fileName = fileName.split('.')[0]+method+"_normalized.csv"
@@ -55,9 +55,8 @@ def normalizeData(request):
             user = User.objects.get(id__exact = userId)
             userfile = userFiles(title = new_fileName, upload_by = user)
             userfile.save()
-
-            normalized_df = normalized_df.set_index("genes").rename_axis(None)
-            
+            # normalized_df = normalized_df.set_index("genes").rename_axis(None)
+            normalized_df = normalized_df.T
             html_data = normalized_df.head(10).to_html()
             html = html_data.lstrip('<table border="1" class="dataframe">').rstrip("</table>")
             send = {'html':html,  'name':new_fileName, 'method':method}
@@ -76,4 +75,3 @@ def standardNormalize(df):
 def quantileNormalize(df):
     # ps.quantile_transform(df,random_state=0,)
     return 0
-

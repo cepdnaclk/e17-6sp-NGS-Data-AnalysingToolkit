@@ -13,6 +13,7 @@ urlpatterns = [
     path('normalize/', include('normalize.urls')),
 
     path('pval/',include('pvalue.urls') ),
+    path('feature/',include('featureSelection.urls')),
 
     path("auth/", obtain_auth_token)
 ]

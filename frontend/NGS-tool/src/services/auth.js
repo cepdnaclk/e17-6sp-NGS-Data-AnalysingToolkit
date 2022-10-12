@@ -26,7 +26,7 @@ class AuthService {
   }
 
   logout() {
-    //localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('isLoggedIn');
 
     console.log("calledd logout");
   }
