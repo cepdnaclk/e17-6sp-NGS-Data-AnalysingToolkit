@@ -114,7 +114,7 @@ So, we are proposing a online tool which can be detect the biomarkers for Alzhei
 ## 9.MACHINE LEARNING WORKFLOW
 
 
-<img src = "images/MlModel.png" width="600">
+<img src = "images/MlModel.PNG" width="600">
 
 
 
