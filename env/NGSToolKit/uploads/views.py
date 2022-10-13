@@ -6,8 +6,9 @@ import pandas as pd
 import os
 import json
 from django.views.decorators.csrf import csrf_exempt
-import numpy
+import numpy as np
 from .models import userFiles
+
 
 # Create your views here.
 @csrf_exempt
@@ -60,23 +61,19 @@ def plotData(request):
             dataFrame = pd.read_csv(os.path.join(settings.MEDIA_ROOT,fileName))
         elif fileName.endswith('.xls'):
             dataFrame = pd.read_excel(os.path.join(settings.MEDIA_ROOT,fileName))  
-        dataFrame = dataFrame.transpose()
-        columns = dataFrame.columns
-        Ad_list = []
-        control_list = []
-        # Sperating the columns
-        for col in columns:
-            if col.startswith("AD"):
-                Ad_list.append(col)
-            elif col.startswith("control"):
-                control_list.append(col)
-        # Creating List of AD values
-        dataFrame = dataFrame.set_index(dataFrame["genes"])
-        Ad_val = dataFrame[Ad_list].loc[geneName].values.tolist()
-        # Creating List of control val
-        control_val = dataFrame[control_list].loc[geneName].values.tolist() 
-        # Creating list of admin ad max and 1,2,3 quantile
-        Ad_props = [round(min(Ad_val),4),round(numpy.quantile(Ad_val,0.25),4), round(numpy.quantile(Ad_val,0.5),4), round(numpy.quantile(Ad_val,0.75),4),round(max(Ad_val),4)]
-        Control_props = [round(min(control_val),4),round(numpy.quantile(control_val,0.25),4), round(numpy.quantile(control_val,0.5),4), round(numpy.quantile(control_val,0.75),4),round(max(control_val),4)]
+        
+        Ad_val = []            
+        control_val = []
+        ind_x = dataFrame["Unnamed: 0"]
+        dataFrame = dataFrame.set_index(ind_x)
+        for r in  ind_x:
+          if r.startswith("A"):
+            Ad_val.append(dataFrame.loc[r][geneName])
+          elif r.startswith("c"):
+            control_val.append(dataFrame.loc[r][geneName])
+        # # Creating list of admin ad max and 1,2,3 quantile
+        Ad_props = [round(min(Ad_val),4),round(np.quantile(Ad_val,0.25),4), round(np.quantile(Ad_val,0.5),4), round(np.quantile(Ad_val,0.75),4),round(max(Ad_val),4)]
+        Control_props = [round(min(control_val),4),round(np.quantile(control_val,0.25),4), round(np.quantile(control_val,0.5),4), round(np.quantile(control_val,0.75),4),round(max(control_val),4)]
+
         vals = {"ad":Ad_val, "control":control_val, "Ad_props": Ad_props, "Control_props":Control_props}
         return HttpResponse(json.dumps(vals))

@@ -46,8 +46,6 @@ def normalizeData(request):
             normalized_df = pd.DataFrame(normalized_df)
             normalized_df.columns = transpose.columns
             normalized_df.index = dataFrame.columns[1:]
-
-            
             # Save the normalized file in the media folder with "_normalized" in the end
             new_fileName = fileName.split('.')[0]+method+"_normalized.csv"
             normalized_df.to_csv(os.path.join(settings.MEDIA_ROOT,new_fileName))
