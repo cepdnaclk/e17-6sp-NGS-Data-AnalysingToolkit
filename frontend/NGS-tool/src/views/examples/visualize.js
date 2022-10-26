@@ -1,21 +1,11 @@
 import { useState , useEffect} from "react";
-// node.js library that concatenates classes (strings)
 import {useHistory} from 'react-router-dom';
-// javascipt plugin for creating charts
 import Chart from "chart.js";
-// react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
-import {MDBBtn} from 'mdb-react-ui-kit'
-import {CCloseButton} from '@coreui/react';
 import {MDBCloseIcon} from 'mdbreact';
-import ScrollBars from 'react-scrollbar';
-import { StrictMode } from "react";
-import BoxPlot from '../../services/boxplot';  
+import BoxPlot from '../../services/boxplot'; 
+import {RangeStepInput} from 'react-range-step-input';
+import {NumericInput} from 'react-numeric-input';
 
-//import Table from "react-bootstrap/Table"
-// import { MDBSmoothScroll } from "mdbreact";
-
-// reactstrap components
 import {
   Button,
   Card,
@@ -32,24 +22,16 @@ import {
   CardTitle
 } from "reactstrap";
 
-// core components
 import { 
   chartOptions,
   parseOptions,
-  chartExample1,
-  chartExample2,
 } from "../../variables/charts.js";
 
-//import Modal from 'react-modal';
-import styled from 'styled-components';
 import Header from "../../components/Headers/Header.js";
-// import ApexChart from 'components/modal/barplotModal.js's
-import ReactApexChart from 'react-apexcharts';
-import parse from 'html-react-parser';
-import JsonToTable from 'react-json-to-table';
 import ReactHtmlParser from 'react-html-parser'
 import Normalization from "./Normalization";
 import ChooseFile from './ChooseFile';
+import NormalizedDataTable from './NormalizedDataTable';
 
 const Index = (props) => { 
   const [activeNav, setActiveNav] = useState(1);
@@ -64,26 +46,28 @@ const Index = (props) => {
   const [controlPoints, setControlPoinnts] = useState(0);
   const [normSelect, setNormSelect] = useState(false);
   const [tempFile, setTempFile] = useState('');
-  
+  const [normalized, setNormalized] = useState(false)
+  const [normalizedData, setNormalizedData] = useState({})
+  const [features, setFeatures] = useState(0);
+  const [samples, setSamples] = useState(0);
+ const [value, setValue] = useState(50);
+
   let history = useHistory();
-
-
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
 
 useEffect(() => {
-
-   
   var l = JSON.stringify(props.history.location.state)
   const c = props.history.location.state.data ;
+  setSamples(props.history.location.state.samples)
+  setFeatures(props.history.location.state.features)
   setFileName(props.history.location.state.name)
   console.log(c);
-
   setTableData(c);
-  
-   
-}, [] )
+  console.log(features)
+  console.log(samples)
+}, [])
   const toggleNavs = (e, index) => {
     e.preventDefault();
     setActiveNav(index);
@@ -94,35 +78,23 @@ useEffect(() => {
     let gene = e.target.innerText;
     console.log( typeof e.target.innerText);
     setGeneName(e.target.innerText)
-
-    BoxPlot.boxPlot(gene, fileName).then(res => {
-      console.log(res.data);
+    // console.log(normalizedData)
+    BoxPlot.boxPlot(gene, normalizedData.name).then(res => {
     setAD (res.data.Ad_props); //calc
     setControl(res.data.Control_props) 
     setAdPoints(res.data.ad.length)//points
     setControlPoinnts(res.data.control.length)
-    console.log(res.data.ad.length)
     setModalOpen(true)
   }).catch((err)=>console.log(err));
-
-    
-    
   }
-
   const closeHandle = () =>{
-    // setModalOpen(false)
     setNormSelect(false)
   }
 
-  const Choose_norm_tech = ()=>{
-    console.log('hhh')
+  const Choose_norm_tech = () => {
     setNormSelect(true);
-    console.log(normSelect)
-
   }
-
   const handleCallback = (childData) =>{
-
     //from back need to provide file list ---------
     //selected file come here(done)
     //need to retreive data from that file -------
@@ -130,20 +102,16 @@ useEffect(() => {
     //get result data & boxplot 
     if(childData=='submit'){
       setFileName(tempFile)
-console.log(fileName)
-
+      console.log("File name is: ",fileName)
     }
-    
     else 
       setTempFile(childData)
-
 }
 
-
-  
-
-  // const  AD = [54, 66, 69, 75, 88, 90];
-  // const control = [54, 59, 66, 71, 88];
+const get_normalized_data = (childData) =>{
+  setNormalizedData(childData);
+  setNormalized(true) 
+}
   const  series= [
     {
       type: 'boxPlot', 
@@ -192,23 +160,27 @@ console.log(fileName)
         },
       }  
     },
-     
   }
 
-   
-
-  
+  const forceNumber = function(n) {
+    n = Number(n);
+    if (isNaN(n) || typeof n === 'undefined') {
+        n = 0;
+    }
+    return n;
+};
+  const onChange = (e)=> {
+    const newVal = forceNumber(e.target.value);
+    setValue(newVal);
+}
   return (
     <>
       <Header />
       {/* Page content */}
-
       <Container className="mt--8" fluid>
-       
-       
-               
-              
         <Row className="mt-5">
+        {!normalized?
+        <>
         {!normSelect?
         <>
         {fileName? 
@@ -234,27 +206,42 @@ console.log(fileName)
                   </div>
                 </Row>
               </CardHeader>
-                  
+              <CardBody>
+              <Table className="align-items-center table-flush" responsive>
+                <thead className="thead-light">
+                  <tr>
+                    <th scope="col">FEATURES</th>
+                    <th scope="col">SAMPLES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{samples}</td>
+                    <td>{features}</td>          
+                  </tr>
+                 
+                   
+                </tbody>
+              </Table>
+              {/* <RangeStepInput
+                min={0} max={100}
+                value={value} step={1}
+                onChange={onChange.bind(this)}
+            />
+               <h2>{value}</h2> */}
 
-                <Table style={{ width: '100%',
-  height:'100%'}} className="align-items-center table-flush table-hover" responsive onClick={e => handleClick(e)}>
+               {/* <NumericInput className="form-control"/> */}
+		 
+              </CardBody>
+
+                <Table style={{ width: '100%', height:'100%'}} className="align-items-center table-flush table-hover " responsive onClick={e => handleClick(e)}>
                 
                 {ReactHtmlParser(tableData)}
-               
-      
                 </Table>
-                
-
-
- 
-
- 
-               
             </Card>
           </Col>
         :
         <>
-                 
           <Col className="mb-8 mb-xl-0" xl="8">
             <Card className="shadow">
               <CardHeader className="border-0">
@@ -277,27 +264,14 @@ console.log(fileName)
               
                 </Row>
               </CardHeader>
-            
-         <ChooseFile parentCallback={handleCallback} />
-                
-               
+        <ChooseFile parentCallback={handleCallback} />
             </Card>
           </Col>
-         
-           
-     
-       
-           </>}
-           </>
-
+</>}
+</>
           :
-
           // {/* choose normalization technique ---------------------------------------- */}
-
-            
-    
           <>
-                 
           <Col className="mb-8 mb-xl-0" xl="8">
             <Card className="shadow">
               <CardHeader className="border-0">
@@ -314,35 +288,29 @@ console.log(fileName)
                     >
                       Normalize the data
                     </Button>
-                      
                     </Nav>
                   </div> */}
-              
                 </Row>
               </CardHeader>
-            
-                
               <div style={{alignItems:'right'}} 
               >
-               <MDBCloseIcon style={{position:'absolute' , left:0, botton:0, top:5, top:5 }} onClick={closeHandle}/>
-               </div>
-                  
-                  
-         <Normalization  fileName={fileName} key={fileName}  />
+              <MDBCloseIcon style={{position:'absolute' , left:0, botton:0, top:5, top:5 }} onClick={closeHandle}/>
+              </div>        
+        <Normalization  fileName={fileName} key={fileName}  parentCallback={get_normalized_data}/>
                 
-               
+
             </Card>
           </Col>
-         
-           
-     
-       
-           </>
+          </>
             }
+            </>
+            :
+            
+            // normalized data should come here
+            <NormalizedDataTable data = {normalizedData}/>
+          }
         </Row>
       </Container>
-
-       
     </>
   );
 

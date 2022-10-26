@@ -73,6 +73,23 @@
     }
 }
 
+.table-pointer {
+    tbody th {
+        cursor: pointer;
+        font-size: $font-size-sm;
+    }
+}
+
+.table-tooltip {
+    z-index: 0;
+
+    .arrow {
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateX(-.5rem);
+    }
+}
+
 
 // Flush tables
 

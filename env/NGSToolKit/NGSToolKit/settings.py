@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
@@ -45,7 +47,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'register.apps.RegisterConfig',
-    'crispy_forms',
+    "pvalue.apps.PvalueConfig",
+    "featureSelection.apps.FeatureselectionConfig"
 ]
 
 MIDDLEWARE = [
@@ -90,7 +93,7 @@ WSGI_APPLICATION = 'NGSToolKit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
     }
 }
 
@@ -153,3 +156,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
+
+import django_heroku
+django_heroku.settings(locals())

@@ -1,0 +1,27 @@
+{
+    "title": "NGS Data Analysing Tool Kit",
+    "team": [
+    {
+        "name": "Kavinaya.Y",
+        "email": "e17159@eng.pdn.ac.lk",
+        "eNumber": "E/17/159"
+    },
+    {
+        "name": "Arshad MRM",
+        "email": "e17015@eng.pdn.ac.lk",
+        "eNumber": "E/17/015"
+    },
+    {
+        "name": "Nishankar.S",
+        "email": "e17230@eng.pdn.ac.lk",
+        "eNumber": "E/17/230"
+    }
+    ],
+    "supervisors": [
+    {
+        "name": "Dr. Damayanthi Herath",
+        "email": "damayanthiherath@eng.pdn.ac.lk"
+    }
+    ],
+    "tags": ["Web", "Machine Learning", "Data Visualization"]
+}

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
- 
 import {
 CardBody,
 Nav,
@@ -8,80 +7,60 @@ Button
 // core components
 import Select from 'react-select';
 import MlServices from '../../services/MlModel';
- 
 
 const Normalization = (props) => {
-
   const [fileName, setFileName] = useState();
   const [tech, setTech] = useState();
   const [error, setError] = useState(false); 
+
   useEffect(() => {
     console.log('norm')
     if( props.fileName)
       setFileName(props.fileName)
+    
   }, [] )
 
-
   const NormTech = [
-    { label: "Min Max", value: 1 },
-    { label: "Standard Deviation", value: 2 },
-    
+    { label: "Quantile Normalization", value: 1 },
+    { label: "Min Max", value: 2 },
+    { label: "Standard Deviation", value: 3 },
   ];
 
   const handleChange = (e)=> {
     console.log(e.label)
     setTech(e.label);
-    setFileName('GSE46579.csv') // comment this later
-   
   }
 
-  const Choose_norm_tech = (value) => {
+  const Choose_norm_tech = (value) => { //Select the file method and send to normalization
     console.log(tech)
     if(!tech)
       setError(true)
-    
     else{
       setError(false)
       var method = tech
-      
       MlServices.normalization(fileName, method)
         .then(res => {console.log(res);
-      
+          props.parentCallback(res.data);
         })
-            
         .catch(error=>{console.log(error)});
   }
 }
-    
-
   return (
     <> 
               <CardBody >
               <h6 className="heading-small text-muted mb-4 align-items-center">Selected file : {fileName}  </h6> 
-
-    <h6 className="heading-small text-muted mb-4"> Choose A Normalization Technique </h6> 
-
-    {/* {error?
-                <div  className="text-muted font-italic" >
-                        <small>
-                        <span className="text-danger font-weight-700">You haven't chose a file </span>
-                        </small>
-                </div>
-                :null} */}
-
-               <div className="container">
-               <div className="row">
-               <div className="col-md-3"></div>
-               
-              
-               <div className="col-md-6">
-                   <Select  options={NormTech} onChange={handleChange}/>
-               </div>
-               <div className="col-md-4"></div>
-               </div>
-           </div>
-           <div className="col ">
-           <div style = {{marginTop:20}}>
+              <h6 className="heading-small text-muted mb-4"> Choose A Normalization Technique </h6> 
+              <div className="row">
+              <div className="col-md-3"></div>
+              <div className="container">
+              <div className="col-md-6">
+                  <Select  options={NormTech} onChange={handleChange}/>
+              </div>
+              <div className="col-md-4"></div>
+              </div>
+          </div>
+          <div className="col ">
+          <div style = {{marginTop:20}}>
                     <Nav className="justify-content-center" pills>
                     <Button
                       color="success"
@@ -90,18 +69,12 @@ const Normalization = (props) => {
                     >
                       Normalize the data
                     </Button>
-                      
                     </Nav>
                     </div>
                   </div>
-            
-              
               </CardBody>
-  
     </>
   );
 };
-
-
 
 export default Normalization;

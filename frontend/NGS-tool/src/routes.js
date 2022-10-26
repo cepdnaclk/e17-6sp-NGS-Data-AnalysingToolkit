@@ -6,11 +6,16 @@ import Visualize from "./views/examples/visualize.js"
 import UploadFile from "./views/examples/uploadfile";
 import FindBiomarker from "./views/examples/FindBiomarker";
 
+
+let loggedIn = localStorage.getItem('loggedIn')
+
+if(loggedIn){
+
 var routes = [
   {
     path: "/index",
     name: "Home",
-    icon: "ni ni-tv-2 text-success",
+    icon: "ni ni-tv-2 font-weight-bold text-success",
     component: Index,
     layout: "/admin",
   },
@@ -51,20 +56,7 @@ var routes = [
     icon: "ni ni-ruler-pencil text-success",
    
   },
-  {
-    path: "/login",
-    name: "Login",
-    icon: "ni ni-key-25 text-success",
-    component: Login,
-    layout: "/auth",
-  },
-  {
-    path: "/register",
-    name: "Register",
-    icon: "ni ni-circle-08 text-success",
-    component: Register,
-    layout: "/auth",
-  },
+ 
   // {
   //   path: "/tables",
   //   name: "Tables",
@@ -81,4 +73,35 @@ var routes = [
   // },
   
 ];
+}
+
+else{
+  var routes = [
+    {
+      path: "/index",
+      name: "Home",
+      icon: "ni ni-tv-2 text-success",
+      component: Index,
+      layout: "/admin",
+    },
+   
+    {
+      path: "/login",
+      name: "Login",
+      icon: "ni ni-key-25 text-success",
+      component: Login,
+      layout: "/auth",
+    },
+    {
+      path: "/register",
+      name: "Register",
+      icon: "ni ni-circle-08 text-success",
+      component: Register,
+      layout: "/auth",
+    },
+   
+    
+  ];
+  
+}
 export default routes;

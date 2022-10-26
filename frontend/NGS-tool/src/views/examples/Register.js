@@ -14,15 +14,24 @@ import {
   Col,
 } from "reactstrap";
 import React, { useEffect, useState } from "react";
+import {useHistory} from 'react-router-dom';
+
 import authService from "../../services/auth";
 
 const Register = () => {
+  
+  let history = useHistory()
+
   const [user, setUser] = useState({});
   const [error, setErrors] = useState({});
   const [submit, setSubmit] = useState(false);
+  const [status, setStatus] = useState('')
+  const [success, setSuccess] = useState('')
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    setStatus('')
+    setSuccess('')
   };
 
   const handleSubmit = (e) => {
@@ -39,6 +48,17 @@ const Register = () => {
         .signup(username, email, password1, password2)
         .then((res) => {
           console.log(res);
+          if(res.data === 'Success'){
+            setSuccess('User created Succssfully!, Please login')
+            setTimeout(() => {
+              console.log('timeout');
+              history.push('/auth/login')
+          }, 4000);
+          }
+          else if(res.data === 'Fail')
+            setStatus('Your password can’t be entirely numeric.')
+          else if(res.status >=400)
+            setStatus(res.data)
         })
         .catch((error) => {
           console.log(error);
@@ -99,6 +119,7 @@ const Register = () => {
               <small>Or sign up with credentials</small>
             </div>
             <Form role="form" onChange={handleChange} onSubmit={handleSubmit}>
+
               <div className="text-muted font-italic">
                 {" "}
                 <small>
@@ -107,6 +128,23 @@ const Register = () => {
                   </span>
                 </small>
               </div>
+
+              <div className="text-muted font-italic">
+                <small>
+                  <span className="text-danger font-weight-700">
+                    {status}
+                  </span>
+                </small>
+              </div>
+
+               <div className="text-muted font-italic">
+                <small>
+                  <span className="text-success font-weight-700">
+                    {success}
+                  </span>
+                </small>
+              </div>
+
               <FormGroup>
                 <div className="text-muted font-italic">
                   <small>

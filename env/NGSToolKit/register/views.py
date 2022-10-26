@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import  AuthenticationForm
 from .forms import CreateUserForm
@@ -17,20 +17,21 @@ def register(request):
         body = json.loads(body)
         form = CreateUserForm(body)
         email = body["email"]
-        if User.objects.filter(email = email).exists():
-            return HttpResponse("Email address already exist")
         if User.objects.filter(username = body['username']).exists():
-            return HttpResponse("Username already exist")
+            return HttpResponse("Username already exist",status = 406)
+        if User.objects.filter(email = email).exists():
+            return HttpResponse("Email address already exist",status =406 )
         if form.is_valid():
             user = form.save()
-            print(user)
             login(request, user)
-            return HttpResponse("Sucess")
+
+            return HttpResponse("Success", status=202)
+
         else:
-            return HttpResponse("Fail")
+            return HttpResponse("Invalid request", status=406)
             # what is the error 
     else:
-        return HttpResponse("GET")
+        return HttpResponse("Hello world")
 
 #Login Page
 @csrf_exempt
@@ -38,39 +39,34 @@ def login_request(request):
     if request.method == "POST":
         body= request.body.decode('utf-8')
         body = json.loads(body)
-        print(body)
         form = AuthenticationForm(data=body)
-        print(form.is_valid())
         if form.is_valid():         #Check whether all the feild are correct
-            print('valid')
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username = username, password = password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now login.")
-                data = "You are now login as {username}."
+                userid=User.objects.get(username=username).pk
+                data = {'username':username, 'message':'success', "userid":userid}
+                return JsonResponse(data, status=202)
             #if the username or password wrong
             else:
-                messages.error(request, "Invalid username or password.")
-                data = "You are now login as {username}."
+                return HttpResponse("User Name or Password is wrong!", status = 401)
         else:
-            messages.error(request, "Invalid username or password.")
             data = "Invalid username or password."
-    form = AuthenticationForm()
-    #return render(request, "login.html", context={"form": form})
-    print(messages)
-    return HttpResponse(data)
+            return HttpResponse(data, status= 401)
 
 #Profile page
 @csrf_exempt
 def profile(request):
-    if request.method == "POST":
-        userId = request.POST["userid"]
+    if request.method == "GET":
+        userId = request.GET['userid']
         userfiles = userFiles.objects.filter(id=userId)
         fileLis = []
-        for file in userFiles:
+        print(userfiles)
+        for file in userfiles:
             fileLis.append(file.title)
+        print(fileLis)
         return HttpResponse(fileLis)
     else:
-        return HttpResponse("Get")
+        return HttpResponse()

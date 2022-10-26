@@ -7,18 +7,33 @@ Button
 } from "reactstrap";
 // core components
 import Select from 'react-select';
- 
-  
+
+import User from '../../services/user';  
 
 const ChooseFile = (props) => {
    
   const [fileName, setFileName] = useState();
+  const [fileList, setFileList] = useState([]);
  
 
   useEffect(() => {
-    
-    if( props.fileName)
+
+    let arr = [] ;
+    console.log('hello')
+    if( props.fileName){
       setFileName(props.fileName)
+      console.log(fileName)
+    }
+
+    else{
+      User.files().then(res => {
+        console.log(res.data);
+        arr = fileList;
+        arr.push({label:res.data, value:res.data})
+        setFileList(arr)
+     
+    }).catch((err)=>console.log(err));
+    }
  
   }, [] )
 
@@ -32,15 +47,7 @@ const submit = (event) =>{
   props.parentCallback('submit')
 }
 
-  const Countries = [
-    { label: "Albania", value: 355 },
-    { label: "Argentina", value: 54 },
-    { label: "Austria", value: 43 },
-    { label: "Cocos Islands", value: 61 },
-    { label: "Kuwait", value: 965 },
-    { label: "Sweden", value: 46 },
-    { label: "Venezuela", value: 58 }
-  ];
+  
   return (
     <>
       
@@ -65,7 +72,7 @@ const submit = (event) =>{
                     <div className="row">
                    
                     <div className="col-md-6">
-                        <Select  options={Countries} onChange={onTrigger}/>
+                        <Select  options={fileList} onChange={onTrigger}/>
                     </div>
                     
                     </div>
@@ -80,7 +87,7 @@ const submit = (event) =>{
                <div className="row">
                <div className="col-md-3"></div>
                <div className="col-md-6">
-                   <Select  options={Countries} onChange={onTrigger}/>
+                   <Select  options={fileList} onChange={onTrigger}/>
                </div>
                <div className="col-md-4"></div>
                </div>
